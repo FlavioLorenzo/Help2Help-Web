@@ -1,0 +1,6 @@
+{
+  "exampleMessage": {
+    "defaultMessage": "Hi, you're accessing through {device}",
+    "description": "Example message with device's name injection"
+  }
+}

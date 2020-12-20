@@ -1,6 +1,12 @@
 import React from 'react'
 import {Route, Switch, withRouter, Redirect} from 'react-router-dom'
 
+import {IntlProvider} from 'react-intl'
+
+import getUserLocale from 'get-user-locale';
+import locale_en from "./lang/en.json";
+import locale_it from "./lang/it.json";
+
 import useDeviceDetect from "./hooks/useDeviceDetect"
 
 import Layout from './hoc/Layout/Layout'
@@ -8,19 +14,27 @@ import ExampleComponent from './containers/ExampleComponent/ExampleComponent'
 
 import './App.css'
 
-const app = props => {
-  /*
-  const {isMobile} = useDeviceDetect()
-
-  let content = (<div>I'm mobile</div>)
-  if (!isMobile) {
-    content = (<div>I'm web</div>)
+// This function takes the locale string and decides the correct language to use
+function loadLocaleData(locale) {
+  switch (locale) {
+    case 'en':
+      return locale_en
+    default:
+      return locale_it
   }
-  */
+}
+
+const App = props => {
+
+  const isMobile = useDeviceDetect()
+  
+  const userLocale = getUserLocale();
+
+  const localeMessages = loadLocaleData(userLocale)
 
   let routes = ( 
     <Switch>
-      <Route path="/" exact component={ExampleComponent}/>
+      <Route path="/" exact render={props => <ExampleComponent {...props} isMobile={isMobile}/>} />
       <Redirect to="/"/>
     </Switch>
   )
@@ -35,16 +49,16 @@ const app = props => {
     )
   }
   */
-  
+
   return (
-    <div>
+    <IntlProvider messages={localeMessages} locale={userLocale} defaultLocale="it">
       <Layout>
         {routes}
       </Layout>
-    </div>
+    </IntlProvider>
   );
 }
 
 export default withRouter(
-  app
+  App
 );

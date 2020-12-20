@@ -38,6 +38,6 @@ export default function useDeviceDetect() {
         setMobile(hasTouchScreen)
     }, []);
 
-    return {isMobile}
+    return isMobile
 }
 

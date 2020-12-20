@@ -1,0 +1,12 @@
+{
+  "exampleMessage": [
+    {
+      "type": 0,
+      "value": "Hi, you're accessing through "
+    },
+    {
+      "type": 1,
+      "value": "device"
+    }
+  ]
+}
