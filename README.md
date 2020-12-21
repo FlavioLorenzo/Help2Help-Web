@@ -22,3 +22,7 @@ The adopted localization framework is React-intl (part of Format.js). More info 
 To add new language translations:
 * Import new language's locale file into App.js
 * Specify the new language selection in function loadLocaleData in App.js
+
+### Google Firebase
+
+Firebase location can be found at: (https://console.firebase.google.com/project/help-2-help/overview).
