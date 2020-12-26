@@ -16,6 +16,8 @@ import './App.css'
 
 // This function takes the locale string and decides the correct language to use
 function loadLocaleData(locale) {
+  locale = locale.substring(0, 2)
+  
   switch (locale) {
     case 'en':
       return locale_en
