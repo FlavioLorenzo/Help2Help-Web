@@ -1,0 +1,41 @@
+.Button {
+    border: none;
+    border-radius: 50px;
+
+    cursor: pointer;
+    font: inherit;
+
+    padding: 8px 25px;
+    margin: 10px;
+
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: capitalize;
+    transition: 0.3s;
+}
+
+.White {
+    background-color: white;
+    color: black;
+
+    &:hover {
+        background-color: #FFAA0E;
+        color: white;
+    }
+}
+
+.Green {
+    background-color: #00692F;
+    color: white;
+}
+
+.Orange {
+    background-color: #FFAA0E;
+    color: white;
+}
+
+// Please, don't kill me if it's not pink... I'M A GUY, OK? I'M BARELY ABLE TO GET THE DIFFERENCE BETWEEN GREEN AND RED!!!
+.Pink {
+    background-color: #FF5789;
+    color: white;
+}

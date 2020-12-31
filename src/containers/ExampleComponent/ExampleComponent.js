@@ -1,5 +1,6 @@
 import React from 'react'
 import {FormattedMessage} from 'react-intl'
+import Button from '../../components/UI/Button/Button'
 
 
 const exampleComponent = props => {
