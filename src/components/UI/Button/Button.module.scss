@@ -1,3 +1,5 @@
+@import '../../../styles/colors.scss';
+
 .Button {
     border: none;
     border-radius: 50px;
@@ -19,23 +21,23 @@
     color: black;
 
     &:hover {
-        background-color: #FFAA0E;
+        background-color: $orange;
         color: white;
     }
 }
 
 .Green {
-    background-color: #00692F;
+    background-color: $green;
     color: white;
 }
 
 .Orange {
-    background-color: #FFAA0E;
+    background-color: $orange;
     color: white;
 }
 
 // Please, don't kill me if it's not pink... I'M A GUY, OK? I'M BARELY ABLE TO GET THE DIFFERENCE BETWEEN GREEN AND RED!!!
 .Pink {
-    background-color: #FF5789;
+    background-color: $h2hPink;
     color: white;
 }
