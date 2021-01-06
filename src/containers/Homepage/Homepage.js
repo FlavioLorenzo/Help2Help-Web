@@ -3,7 +3,7 @@ import React from 'react'
 import ImageCard from '../../components/UI/ImageCard/ImageCard'
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary'
 
-import styles from './Homepage.module.scss'
+// import styles from './Homepage.module.scss'
 
 import exampleImage from '../../assets/images/example_environment.jpg'
 

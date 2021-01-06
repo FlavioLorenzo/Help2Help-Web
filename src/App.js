@@ -12,7 +12,7 @@ import useDeviceDetect from "./hooks/useDeviceDetect"
 import Layout from './hoc/Layout/Layout'
 import ExampleComponent from './containers/ExampleComponent/ExampleComponent'
 import ExampleComponent2 from './containers/ExampleComponent2/ExampleComponent2';
-import Homepage from './containers/Homepage/Homepage'
+// import Homepage from './containers/Homepage/Homepage'
 
 import './App.css'
 

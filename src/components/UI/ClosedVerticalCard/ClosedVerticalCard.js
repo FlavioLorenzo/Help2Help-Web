@@ -3,7 +3,7 @@ import React from 'react'
 import styles from './ClosedVerticalCard.module.scss'
 
 /*
- * Split card component provides the layout for the components containing the filters and search bar in the home section
+ * Taller card that provides an overview of an organization / event, to be generally shown in the home section
  * 
  * -- ATTRIBUTES AVAILABLE --
  * 

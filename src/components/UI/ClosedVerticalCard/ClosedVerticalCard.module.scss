@@ -21,6 +21,9 @@
     position: absolute;
     bottom: 0;
 
+    display: flex;
+    flex-direction: column;
+
     padding: 0 10px 15px 10px;
     
     color: white;
@@ -29,8 +32,22 @@
 .DescTitle {
     font-size: 1.1em;
     font-weight: bold;
+
+    width: 130px;
+    max-height: 3em;
+
+    white-space: normal;
+    overflow: hidden;
 }
 
 .DescSubtitle {
     font-size: 0.9em;
+
+    flex-basis: 100%;
+    
+    width: 130px;
+    max-height: 3em;
+
+    white-space: normal;
+    overflow: hidden;
 }
