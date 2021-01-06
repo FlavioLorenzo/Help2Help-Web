@@ -1,5 +1,5 @@
 import React from 'react'
-import FullGradientCard from '../../components/UI/FullGradientCard/FullGradientCard'
+import SplitGradientCard from '../../components/UI/SplitGradientCard/SplitGradientCard'
 import Auxiliary from '../../hoc/Auxiliary/Auxiliary'
 
 import styles from './Homepage.module.scss'
@@ -7,8 +7,9 @@ import styles from './Homepage.module.scss'
 const homepage = props => {
     return (
         <Auxiliary>
-            <FullGradientCard></FullGradientCard>
-
+            <SplitGradientCard cardBorder="BorderBottomRight" height="400px" hasPadding>
+                Ciao Mamma!
+            </SplitGradientCard>
             <div>Hello</div>
         </Auxiliary>
     )
