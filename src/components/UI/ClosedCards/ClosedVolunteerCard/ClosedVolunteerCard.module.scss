@@ -1,0 +1,53 @@
+@import '../../../../styles/colors.scss';
+
+.ClosedVolunteerCard {
+    display: flex;
+    margin: 20px 10px;
+}
+
+.ImageHalf {
+    flex: 1 0 35%;
+    padding: 10px;
+    width: 35%;
+
+    .CardImage {
+        border-radius: 100px;
+
+        width: 100%;
+    }
+}
+
+.DescHalf {
+    flex: 1 0 55%;
+    padding: 10px;
+
+    position: relative;
+
+    .VolunteerFullName {
+        font-size: 1.1em;
+        font-weight: bold;
+    }
+
+    .VolunteerAge {
+        color: $h2hPink;
+        font-weight: bold;
+    }
+
+    .KnowMore {
+        position: absolute;
+
+        bottom: 10px;
+        right: 10px;
+
+        color: $h2hPink;
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets ad horizontal screens: */
+    .ClosedVolunteerCard {
+        flex: 1 0 45%;
+        width: 45%;
+    }
+}

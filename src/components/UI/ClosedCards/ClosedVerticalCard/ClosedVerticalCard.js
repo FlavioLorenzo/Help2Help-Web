@@ -11,7 +11,9 @@ import styles from './ClosedVerticalCard.module.scss'
  *
  * 'title' - main title, usually referring to the organization / event
  * 
- * 'subtitle' - Subtitle of the 
+ * 'subtitle' - Subtitle to show below the org/event's name
+ * 
+ * 'itemSelected()' - Handler triggered upon clicking on the card. Receives the identifier of the card's subject as an argument
  * 
  */
 const closedVerticalCard = (props) => {
