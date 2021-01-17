@@ -3,9 +3,9 @@ import React from 'react'
 import styles from './HorizontalScrollingCardWrapper.module.scss'
 
 /*
- * Wrapper for providing horizontal scrolling capability
+ * Wrapper for providing horizontal scrolling capability. Designed to be used with VerticalClosedCard components.
  * 
- * -- ATTRIBUTES AVAILABLE --
+ * -- PROPS ATTRIBUTES AVAILABLE --
  * 
  * 'children' - Cards to be made available within the wrapper
  * 

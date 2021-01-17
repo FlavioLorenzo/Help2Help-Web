@@ -2,10 +2,10 @@ import React from 'react'
 
 import styles from './SplitGradientCard.module.scss'
 
-/*
+/**
  * Split card component provides the layout for the components containing the filters and search bar in the home section
  * 
- * -- ATTRIBUTES AVAILABLE --
+ * -- PROPS ATTRIBUTES AVAILABLE --
  * 
  * 'cardBorder': defines if there should be a rounded border to provide a movement illusion. Valid values are:
  * - BorderTopLeft, BorderTopRight, BorderBottomRight, BorderBottomLeft smooth the selected angle
@@ -15,7 +15,6 @@ import styles from './SplitGradientCard.module.scss'
  * 'height' - forces a custom height to the card
  * 
  * 'hasPadding' - Forces a given border
- * 
  */
 const splitGradientCard = (props) => {
 

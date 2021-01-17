@@ -39,8 +39,8 @@ const exampleComponent2 = props => {
 
     return (
         <Auxiliary>
-            <ImageCard cardBorder="BorderBottomRight" hasPadding imageSrc={environmentImage} height="200px"></ImageCard>
-            <SplitGradientCard cardBorder="BorderBottomRight" hasPadding></SplitGradientCard>
+            <SplitGradientCard cardBorder="BorderBottomRight" hasPadding height="200px"></SplitGradientCard>
+            <ImageCard cardBorder="BorderBottomRight" hasPadding imageSrc={environmentImage}></ImageCard>
             <HorizontalScrollingCardWrapper>{listVCards}</HorizontalScrollingCardWrapper>
             <VerticalScrollingCardWrapper >{listHCards}</VerticalScrollingCardWrapper>
             <VerticalScrollingCardWrapper >{listVolunteerCards}</VerticalScrollingCardWrapper>
