@@ -1,0 +1,27 @@
+---
+name: NavBurger
+route: /components/navigation/NavBurger
+menu: Navigation
+---
+
+import { Playground, Props } from 'docz'
+import NavBurger from './NavBurger'
+
+# NavBurger
+
+Navigation menu burger displayed on the top left corner of the app.
+
+## Basic usage
+
+<Playground>
+    <NavBurger 
+        clicked={() => alert("Menu was clicked.")} 
+        isMenuOpen={false}/>
+    <NavBurger 
+        clicked={() => alert("Menu was clicked.")} 
+        isMenuOpen={true}/>
+</Playground>
+
+## Properties
+
+<Props of={NavBurger} />

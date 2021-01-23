@@ -1,0 +1,30 @@
+---
+name: ClosedVolunteerCard
+route: /components/ui/ClosedVolunteerCard
+menu: UI
+---
+
+import { Playground, Props } from 'docz'
+import {IntlProvider} from 'react-intl';
+import ClosedVolunteerCard from './ClosedVolunteerCard'
+
+# ClosedVolunteerCard
+
+Card that provides an overview of a volunteer, to be generally shown in the home section of an organization.
+
+## Basic usage
+
+ClosedVolunteerCard uses react-intl for internationalization purposes. For the component to work, it must be wrapped inside an IntlProvider component 
+(in the actual implementation the whole app is wrapped with IntlProvider, so usually wrapping is not required).
+
+<Playground>
+    <IntlProvider defaultLocale="it">
+        <ClosedVolunteerCard fullName="Jane Doe" age="21" imageSrc="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?cs=srgb&dl=pexels-pixabay-415829.jpg&fm=jpg" itemSelected={() => alert("Closed card was clicked.")}></ClosedVolunteerCard>
+    </IntlProvider>
+</Playground>
+
+## Properties
+
+<Props of={ClosedVolunteerCard} />
+
+

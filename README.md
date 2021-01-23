@@ -26,3 +26,10 @@ To add new language translations:
 ### Google Firebase
 
 Firebase location can be found at: (https://console.firebase.google.com/project/help-2-help/overview).
+
+### Component Documentation
+
+For component documentation we adopted the docz library. More info here: (https://www.docz.site/)
+
+* Run the documentation server (should run at port 3000)
+`npm run docz:dev`

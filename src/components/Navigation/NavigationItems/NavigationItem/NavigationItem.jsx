@@ -12,8 +12,7 @@ import styles from './NavigationItem.module.scss'
  */
 
 /*
- * Component to style a single menu entry
- *
+ * 
  * -- PROPS ATTRIBUTES AVAILABLE --
  * 
  * 'active': used in mockup to signal the page currently displayed.

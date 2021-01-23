@@ -1,22 +1,9 @@
 import React from 'react'
 import {useIntl, FormattedMessage} from 'react-intl';
+import PropTypes from 'prop-types'
 
 import styles from './ClosedVolunteerCard.module.scss'
 
-/*
- * Card that provides an overview of a volunteer, to be generally shown in the home section of an organization.
- * 
- * -- ATTRIBUTES AVAILABLE --
- * 
- * 'fullName' - Name and surname of the volunteer
- * 
- * 'age' - Age of the volunteer
- * 
- * 'imageSrc' - Where to find the requested image
- * 
- * 'itemSelected()' - Handler triggered upon clicking on the card. Receives the identifier of the card's subject as an argument
- * 
- */
 const ClosedVolunteerCard = (props) => {
 
     const intl = useIntl()
@@ -42,8 +29,18 @@ const ClosedVolunteerCard = (props) => {
         />
     )
 
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            props.itemSelected(props.fullName)
+        }
+    }
+
     return (
-        <div className={styles.ClosedVolunteerCard} onClick={() => props.itemSelected(props.title)}>
+        <div className={styles.ClosedVolunteerCard} 
+            onClick={() => props.itemSelected(props.fullName)}
+            onKeyDown={handleKeyPress}
+            role="button"
+            tabIndex={0}>
             <div className={styles.ImageHalf}>
                 <img className={styles.CardImage} src={props.imageSrc} alt={profileAlt}/>
             </div>
@@ -56,6 +53,25 @@ const ClosedVolunteerCard = (props) => {
             </div>
         </div>
     )
+}
+
+ClosedVolunteerCard.propTypes = {
+    /**
+     * Name and surname of the volunteer
+     */
+    fullName: PropTypes.string,
+    /**
+     * Age of the volunteer
+     */
+    age: PropTypes.number,
+    /**
+     * Where to find the requested image
+     */
+    imageSrc: PropTypes.object,
+    /**
+     * Handler triggered upon clicking on the card. Receives the identifier of the card's subject as an argument
+     */
+    itemSelected: PropTypes.func,
 }
 
 export default ClosedVolunteerCard

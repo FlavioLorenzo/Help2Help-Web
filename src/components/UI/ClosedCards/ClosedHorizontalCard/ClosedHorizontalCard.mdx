@@ -1,0 +1,28 @@
+---
+name: ClosedHorizontalCard
+route: /components/ui/closedHorizontalCard
+menu: UI
+---
+
+import { Playground, Props } from 'docz'
+import {IntlProvider} from 'react-intl';
+import ClosedHorizontalCard from './ClosedHorizontalCard'
+
+# ClosedHorizontalCard
+
+Wider card that provides an overview of an organization / event, to be generally shown in the home section when requesting detailed list of organizations / events
+
+## Basic usage
+
+ClosedHorizontalCard uses react-intl for internationalization purposes. For the component to work, it must be wrapped inside an IntlProvider component 
+(in the actual implementation the whole app is wrapped with IntlProvider, so usually wrapping is not required).
+
+<Playground>
+  <IntlProvider defaultLocale="it">
+    <ClosedHorizontalCard title="Title" subtitle="Lorem ipsum dolor sit" imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" itemSelected={() => alert("Closed card was clicked.")}></ClosedHorizontalCard>
+  </IntlProvider>
+</Playground>
+
+## Properties
+
+<Props of={ClosedHorizontalCard} />

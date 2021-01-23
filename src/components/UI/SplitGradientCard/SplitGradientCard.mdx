@@ -1,0 +1,30 @@
+---
+name: SplitGradientCard
+route: /components/ui/SplitGradientCard
+menu: UI
+---
+
+import { Playground, Props } from 'docz'
+import SplitGradientCard from './SplitGradientCard'
+
+# SplitGradientCard
+
+Split card component provides the layout for the components containing the filters and search bar in the home section
+
+## Basic usage
+
+<Playground>
+    <SplitGradientCard cardBorder="BorderBottomRight" hasPadding height="200px"></SplitGradientCard>
+</Playground>
+
+## Properties
+
+<Props of={SplitGradientCard} />
+
+## Using different kinds
+
+<Playground>
+    <SplitGradientCard cardBorder="BorderTop" hasPadding></SplitGradientCard>
+    <br />
+    <SplitGradientCard cardBorder="BorderAll" hasPadding></SplitGradientCard>
+</Playground>

@@ -1,0 +1,31 @@
+---
+name: VerticalScrollingCardWrapper
+route: /components/ui/VerticalScrollingCardWrapper
+menu: UI
+---
+
+import { Playground, Props } from 'docz'
+import {IntlProvider} from 'react-intl'
+import VerticalScrollingCardWrapper from './VerticalScrollingCardWrapper'
+import ClosedHorizontalCard from '../../ClosedCards/ClosedHorizontalCard/ClosedHorizontalCard'
+
+# VerticalScrollingCardWrapper
+
+Container for ClosedHorizonal and ClosedVoluteers cards. Currently not much of a use if not for styling, but who knows?
+
+## Basic usage
+ClosedHorizontalCard uses react-intl for internationalization purposes. For the component to work, it must be wrapped inside an IntlProvider component 
+(in the actual implementation the whole app is wrapped with IntlProvider, so usually wrapping is not required).
+
+<Playground>
+    <IntlProvider defaultLocale="it">
+        <VerticalScrollingCardWrapper>
+            <ClosedHorizontalCard title="Title" subtitle="Lorem ipsum dolor sit" imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" itemSelected={() => alert("Closed card was clicked.")}></ClosedHorizontalCard>
+            <ClosedHorizontalCard title="Title" subtitle="Lorem ipsum dolor sit" imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" itemSelected={() => alert("Closed card was clicked.")}></ClosedHorizontalCard>
+        </VerticalScrollingCardWrapper>    
+    </IntlProvider>
+</Playground>
+
+## Properties
+
+<Props of={VerticalScrollingCardWrapper} />

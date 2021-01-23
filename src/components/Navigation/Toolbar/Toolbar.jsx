@@ -1,21 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types'
+import NavBurger from './NavBurger/NavBurger';
+import {useIntl} from 'react-intl';
 
 import styles from './Toolbar.module.scss';
-import {useIntl} from 'react-intl';
-import NavBurger from './NavBurger/NavBurger';
 
-/*
- * Container for the toolbar to be printed at the top of each page. Contains the user profile image and the navigation menu burger.
- * 
- * -- PROPS ATTRIBUTES AVAILABLE --
- * 
- * 'isMenuOpen': boolean. True if menu is open.
- *
- * 'menuToggleClicked' - action to be trigggered upon clicking on the navigation menu burger
- * 
- * 'imageSrc' - Image for the profile picture of the user
- * 
- */
 const Toolbar = props => {
     const intl = useIntl()
     const imageAlt= intl.formatMessage({
@@ -39,6 +28,21 @@ const Toolbar = props => {
             </div>
         </header>
     )
+}
+
+Toolbar.propTypes = {
+    /**
+     * True if menu is open.
+     */
+    isMenuOpen: PropTypes.bool,
+    /**
+     * Action to be trigggered upon clicking on the navigation menu burger
+     */
+    menuToggleClicked: PropTypes.func,
+    /**
+     * Image for the profile picture of the user
+     */
+    imageSrc: PropTypes.object
 }
 
 export default Toolbar;

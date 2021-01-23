@@ -1,0 +1,30 @@
+---
+name: ImageCard
+route: /components/ui/ImageCard
+menu: UI
+---
+
+import { Playground, Props } from 'docz'
+import ImageCard from './ImageCard'
+
+# ImageCard
+
+Image card component provides a header with provided image
+
+## Basic usage
+
+<Playground>
+    <ImageCard cardBorder="BorderBottomRight" hasPadding imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" height="200px"></ImageCard>
+</Playground>
+
+## Properties
+
+<Props of={ImageCard} />
+
+## Using different kinds
+
+<Playground>
+    <ImageCard cardBorder="BorderTop" hasPadding imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></ImageCard>
+    <br />
+    <ImageCard cardBorder="BorderAll" hasPadding imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"></ImageCard>
+</Playground>

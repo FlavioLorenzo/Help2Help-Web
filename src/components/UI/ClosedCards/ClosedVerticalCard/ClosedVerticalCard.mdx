@@ -1,0 +1,22 @@
+---
+name: ClosedVerticalCard
+route: /components/ui/ClosedVerticalCard
+menu: UI
+---
+
+import { Playground, Props } from 'docz'
+import ClosedVerticalCard from './ClosedVerticalCard'
+
+# ClosedVerticalCard
+
+Taller card that provides an overview of an organization / event, to be generally shown in the home section
+
+## Basic usage
+
+<Playground>
+    <ClosedVerticalCard title="Title" subtitle="Lorem ipsum dolor sit" imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" itemSelected={() => alert("Closed card was clicked.")}></ClosedVerticalCard>
+</Playground>
+
+## Properties
+
+<Props of={ClosedVerticalCard} />

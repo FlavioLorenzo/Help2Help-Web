@@ -1,0 +1,26 @@
+---
+name: HorizontalScrollingCardWrapper
+route: /components/ui/HorizontalScrollingCardWrapper
+menu: UI
+---
+
+import { Playground, Props } from 'docz'
+import HorizontalScrollingCardWrapper from './HorizontalScrollingCardWrapper'
+import ClosedVerticalCard from '../../ClosedCards/ClosedVerticalCard/ClosedVerticalCard'
+
+# HorizontalScrollingCardWrapper
+
+Wrapper for providing horizontal scrolling capability. Designed to be used with VerticalClosedCard components.
+
+## Basic usage
+
+<Playground>
+    <HorizontalScrollingCardWrapper>
+        <ClosedVerticalCard title="Title" subtitle="Lorem ipsum dolor sit" imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" itemSelected={() => alert("Closed card was clicked.")}></ClosedVerticalCard>
+        <ClosedVerticalCard title="Title" subtitle="Lorem ipsum dolor sit" imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" itemSelected={() => alert("Closed card was clicked.")}></ClosedVerticalCard>
+    </HorizontalScrollingCardWrapper>
+</Playground>
+
+## Properties
+
+<Props of={HorizontalScrollingCardWrapper} />
