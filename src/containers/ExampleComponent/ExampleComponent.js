@@ -1,7 +1,6 @@
 import React from 'react'
 import {FormattedMessage} from 'react-intl'
 
-
 const exampleComponent = props => {
     let device = "mobile"
     if (!props.isMobile) {

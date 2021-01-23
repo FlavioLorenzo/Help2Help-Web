@@ -1,0 +1,38 @@
+.ImageCard{
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    min-height: 100px;
+
+    &.BorderTopLeft {
+        border-radius: 80px 0 0 0;
+    }
+
+    &.BorderTopRight {
+        border-radius: 0 80px 0 0;
+    }
+
+    &.BorderBottomRight {
+        border-radius: 0 0 80px 0;
+    }
+
+    &.BorderBottomLeft {
+        border-radius: 0 0 0 80px;
+    }
+
+    &.BorderBottom {
+        border-radius: 0 0 40px 40px;
+    }
+
+    &.BorderTop {
+        border-radius: 40px 40px 0 0;
+    }
+
+    &.BorderAll {
+        border-radius: 40px;
+    }
+
+    &.HasPadding {
+        padding: 20px;
+    }
+}

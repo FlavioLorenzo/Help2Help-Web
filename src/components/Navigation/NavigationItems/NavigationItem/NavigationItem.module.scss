@@ -1,0 +1,14 @@
+@import '../../../../styles/colors.scss';
+
+.NavigationItem {
+    border-radius: 15px;
+    color: white;
+
+    font-size: 1.5rem;
+    padding: 1rem 5% 1rem 5%;
+    width: 70%;
+
+    &.Active {
+        background-color: $orange;
+    }
+}

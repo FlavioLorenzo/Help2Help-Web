@@ -1,0 +1,47 @@
+@import '../../../styles/colors.scss';
+
+.SideDrawer {
+    position: relative;
+    z-index: 300;
+
+    .MenuProfileHeader {
+        position: fixed;
+    
+        top: -40vh;
+        margin: 0 auto;
+        padding-top: 7vh;
+        width: 100%;
+    
+        background-color: #d3516c;
+        border-radius: 0 0 40px 40px;
+        box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        color: white;
+        text-align: center;
+    
+        transition: top 0.5s ease-in;
+    
+        & > div {
+            // background-color: rgba(93, 73, 164, 0.4);
+            border-radius: 100% 100% 0 0;
+            padding-top: 9vh;
+            padding-bottom: 3vh;
+
+            :first-child {
+                font-size: 1.5rem;
+            }
+            
+            :nth-child(2) {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
+    &.IsMenuOpen {
+        .MenuProfileHeader {
+            top: 0;
+            transition: top 0.5s ease-out;
+        }
+    }
+}
+
