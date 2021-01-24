@@ -1,0 +1,28 @@
+---
+name: Toolbar
+route: /components/navigation/Toolbar
+menu: Navigation
+---
+
+import { Playground, Props } from 'docz'
+import Toolbar from './Toolbar'
+import {IntlProvider} from 'react-intl';
+
+# Toolbar
+
+Container for the toolbar to be printed at the top of each page. Contains the user profile image and the navigation menu burger.
+
+## Basic usage
+
+Toolbar uses react-intl for internationalization purposes. For the component to work, it must be wrapped inside an IntlProvider component 
+(in the actual implementation the whole app is wrapped with IntlProvider, so usually wrapping is not required).
+
+<Playground>
+    <IntlProvider defaultLocale="it">
+        <Toolbar menuToggleClicked={() => alert("Menu was clicked.")} isMenuOpen={false} imageSrc="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?cs=srgb&dl=pexels-pixabay-415829.jpg&fm=jpg"></Toolbar>
+    </IntlProvider>
+</Playground>
+
+## Properties
+
+<Props of={Toolbar} />

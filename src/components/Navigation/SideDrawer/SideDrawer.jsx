@@ -1,18 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 import styles from './SideDrawer.module.scss';
 
 import FullGradientCard from '../../UI/FullGradientCard/FullGradientCard'
 import NavigationItems from '../NavigationItems/NavigationItems';
 
-/*
- * Container for the menu to be displayed upon clicking on the navigation menu burger.
- * 
- * -- PROPS ATTRIBUTES AVAILABLE --
- * 
- * 'isMenuOpen': boolean. True if menu is open.
- * 
- */
 const sideDrawer = props => {
     let classes = [styles.SideDrawer]
 
@@ -32,6 +25,13 @@ const sideDrawer = props => {
             {props.isMenuOpen ? <NavigationItems /> : null} 
         </div>
     )
+}
+
+sideDrawer.propTypes = {
+    /**
+     * True if menu is open.
+     */
+    isMenuOpen: PropTypes.bool
 }
 
 export default sideDrawer;

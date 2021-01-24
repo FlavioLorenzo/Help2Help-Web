@@ -3,20 +3,8 @@ import {FormattedMessage} from 'react-intl';
 
 import styles from './ClosedHorizontalCard.module.scss'
 
-/*
- * Wider card that provides an overview of an organization / event, to be generally shown in the home section when requesting detailed list of organizations / events
- * 
- * -- ATTRIBUTES AVAILABLE --
- * 
- * 'imageSrc' - Where to find the requested image
- *
- * 'title' - main title, usually referring to the organization / event
- * 
- * 'subtitle' - Subtitle to print over the image
- * 
- * 'itemSelected()' - Handler triggered upon clicking on the card. Receives the identifier of the card's subject as an argument
- *  
- */
+import PropTypes from 'prop-types'
+
 const closedHorizontalCard = (props) => {
     const knowMore = (
         <FormattedMessage
@@ -26,8 +14,18 @@ const closedHorizontalCard = (props) => {
         />
     )
 
+    const handleKeyPress = (event) => {
+        if(event.key === 'Enter'){
+            props.itemSelected(props.title)
+        }
+    }
+
     return (
-        <div className={styles.ClosedHorizontalCard} onClick={() => props.itemSelected(props.title)}>
+        <div className={styles.ClosedHorizontalCard} 
+            onClick={() => props.itemSelected(props.title)}
+            onKeyDown={handleKeyPress}
+            role="button"
+            tabIndex={0}>
             <div className={styles.CardTitle}>
                 <div className={styles.DescTitle}>{props.title}</div>
                 <div className={styles.MoreTitle}>{knowMore}</div>
@@ -42,6 +40,25 @@ const closedHorizontalCard = (props) => {
             </div>
         </div>
     )
+}
+
+closedHorizontalCard.propTypes = {
+    /**
+     * Where to find the requested image
+     */
+    imageSrc: PropTypes.object,
+    /**
+     * Main title, usually referring to the organization / event
+     */
+    title: PropTypes.string,
+    /**
+     * Subtitle to print over the image
+     */
+    subtitle: PropTypes.string,
+    /**
+     * Handler triggered upon clicking on the card. Receives the identifier of the card's subject as an argument
+     */
+    itemSelected: PropTypes.func,
 }
 
 export default closedHorizontalCard

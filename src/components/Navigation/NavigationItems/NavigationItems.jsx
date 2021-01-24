@@ -3,9 +3,6 @@ import NavigationItem from './NavigationItem/NavigationItem'
 
 import styles from './NavigationItems.module.scss'
 
-/*
- * Container for the NavigationItem components that allow the user to navigate through the app
- */
 const navigationItems = (props) => {
     return (
         <ul className={styles.NavigationItems}>
