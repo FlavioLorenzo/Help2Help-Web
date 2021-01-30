@@ -1,0 +1,25 @@
+@import '../../../styles/colors.scss';
+
+.SearchBar {
+    border: none;
+    border-radius: 50px;
+
+    cursor: text;
+    font: inherit;
+
+    padding: 8px 13% 8px 5%;    
+
+    font-size: 1.1em;
+    width: 100%;
+}
+
+.SearchIcon {
+    position: absolute;
+    z-index: 2;
+    right: 5%;
+    margin-top: 10px;
+    
+    color: #aaa;
+    pointer-events: none;
+    font-size: 1.2em;
+}

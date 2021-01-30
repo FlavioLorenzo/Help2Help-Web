@@ -16,7 +16,7 @@ const Layout = props => {
     return (
         <Aux>
             <Toolbar imageSrc={profileImage} menuToggleClicked={toggleMenuHandler} isMenuOpen={isMenuOpen}></Toolbar>
-            {isMenuOpen ? null : <main>{props.children}Body</main>}
+            {isMenuOpen ? null : <main>{props.children}</main>}
         </Aux>
     )
 }

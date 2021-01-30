@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import PropTypes from 'prop-types'
 import NavBurger from './NavBurger/NavBurger';
 import {useIntl} from 'react-intl';
@@ -7,6 +7,7 @@ import SideDrawer from '../SideDrawer/SideDrawer'
 import styles from './Toolbar.module.scss';
 
 const Toolbar = props => {
+    const headerEl = useRef(null);
     const intl = useIntl()
     const imageAlt= intl.formatMessage({
         id:"userMenuProfilePhotoAltText",
@@ -24,15 +25,22 @@ const Toolbar = props => {
         imageContainerClasses.push(styles.WithMenuOpened)
     }
 
+    const onMenuToggleClicked = () => {
+        if(props.isMenuOpen) {
+            headerEl.current.scrollTop = 0
+        }
+        props.menuToggleClicked()
+    }
+
     return (
-        <header className={toolbarClasses.join(' ')}>
+        <header className={toolbarClasses.join(' ')} ref={headerEl}>
             <div className={styles.NavBurgerIconContainer}>
-                <NavBurger clicked={props.menuToggleClicked} isMenuOpen={props.isMenuOpen}/>
+                <NavBurger clicked={onMenuToggleClicked} isMenuOpen={props.isMenuOpen}/>
             </div>
             <div className={imageContainerClasses.join(' ')}>
                 <img className={styles.UserImage} src={props.imageSrc} alt={imageAlt}/>
             </div>
-            <SideDrawer isMenuOpen={props.isMenuOpen} />
+            { props.isMenuOpen ? <SideDrawer isMenuOpen={props.isMenuOpen} /> : null }
         </header>
     )
 }
