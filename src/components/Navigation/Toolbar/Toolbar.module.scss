@@ -15,12 +15,14 @@
     &.WithMenuOpened {
         height: 100%;
         transition-delay: 0s;
+        overflow-x: scroll;
     }
 }
 
 .NavBurgerIconContainer {
-    position: relative;
-    float: left;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 100;
 
     width: 35px;
