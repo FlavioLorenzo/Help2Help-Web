@@ -16,7 +16,7 @@ button.propTypes = {
     /**
      * Select the specific style of the button.
      */
-    btnStyle: PropTypes.oneOf(['White', 'Green', 'Orange', 'Pink']),
+    btnStyle: PropTypes.oneOf(['White', 'Green', 'Orange', 'Pink', 'LightBlue']),
     /**
      * Whether the component can be interacted with
      */
@@ -28,7 +28,7 @@ button.propTypes = {
     /**
      * What to put within the button
      */
-    children: PropTypes.object,
+    children: PropTypes.string,
 }
 
 export default button

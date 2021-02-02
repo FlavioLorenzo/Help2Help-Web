@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import SplitGradientCard from '../../components/UI/SplitGradientCard/SplitGradientCard'
 import Button from '../../components/UI/Button/Button'
@@ -12,7 +12,10 @@ import styles from './Homepage.module.scss'
 import environmentImage from '../../assets/images/example_environment.jpg'
 import healthImage from '../../assets/images/example_health.jpg'
 
-const homepage = props => {
+const Homepage = props => {
+    const [searchInput, setSearchInput] = useState('')
+    const [currentView, setCurrentView] = useState('all')
+
     const itemSelectedHandler = title => console.log("Clicked " + title + "!")
 
     let listVCards = []
@@ -21,15 +24,52 @@ const homepage = props => {
     listVCards.push(<ClosedVerticalCard key="test3" title="Terza prova" subtitle="Lorem ypsylon" imageSrc={environmentImage} itemSelected={itemSelectedHandler}></ClosedVerticalCard>)
     listVCards.push(<ClosedVerticalCard key="test4" title="Quarta prova" subtitle="Oggi è una bella giornata" imageSrc={healthImage} itemSelected={itemSelectedHandler}></ClosedVerticalCard>)
 
+    const onSearchBarChanged = (event) => {
+        console.log(event.target)
+        setSearchInput(event.target.value)
+    }
+
+    const onSearchBarClicked = () => {
+        console.log(searchInput)
+    }
+
+    const viewButtonClicked = (buttonValue) => {
+        setCurrentView(buttonValue)
+    }
+
     return (
         <Auxiliary>
             <SplitGradientCard cardBorder="BorderBottomRight" hasPadding>
                 <div className={styles.CardTitle}><h2>Scopri le offerte di volontariato!</h2></div>
-                <div className={styles.SearchBarContainer}><SearchBar>Test</SearchBar></div>
+                <div className={styles.SearchBarContainer}>
+                    <SearchBar 
+                        placeholder="test" 
+                        value={searchInput}
+                        clicked={onSearchBarClicked} 
+                        changed={event => {onSearchBarChanged(event)}}/>
+                </div>
                 <div className={styles.SearchButtonsContainer}>
-                    <span><Button btnStyle="White">Tutto</Button></span>
-                    <span><Button btnStyle="Orange">Enti</Button></span>
-                    <span><Button btnStyle="Pink">Eventi</Button></span>
+                    <span>
+                        <Button 
+                            btnStyle={(currentView === 'all') ? "White" : "LightBlue"} 
+                            clicked={() => viewButtonClicked('all')}>
+                                Tutto
+                        </Button>
+                    </span>
+                    <span>
+                        <Button 
+                            btnStyle={(currentView === 'org') ? "White" : "Orange"} 
+                            clicked={() => viewButtonClicked('org')}>
+                                Enti
+                        </Button>
+                    </span>
+                    <span>
+                        <Button 
+                            btnStyle={(currentView === 'evt') ? "White" : "Pink"} 
+                            clicked={() => viewButtonClicked('evt')}>
+                                Eventi
+                        </Button>
+                    </span>
                 </div>
             </SplitGradientCard>
 
@@ -49,4 +89,4 @@ const homepage = props => {
     )
 }
 
-export default homepage
+export default Homepage

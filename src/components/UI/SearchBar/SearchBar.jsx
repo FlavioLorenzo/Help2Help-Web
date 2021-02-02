@@ -6,30 +6,55 @@ import styles from './SearchBar.module.scss'
 
 import PropTypes from 'prop-types'
 
-const searchBar = (props) => (
-    <div>
-        <input type="text" className={styles.SearchBar} placeholder={props.children}/>
-        <FontAwesomeIcon icon={faSearch} className={styles.SearchIcon}/>
-    </div>
-)
+const searchBar = (props) => {
+    const onInputFormKeyPressed = (event) => {
+        if (event.key === "Enter") {
+            props.clicked()
+        }
+    }
+
+    const onSearchIconClicked = (event) => {
+        if (event.key === "Enter") {
+            props.clicked()
+        }
+    }
+    
+    return (
+        <div>
+            <input type="text" 
+                className={styles.SearchBar} 
+                value={props.value}
+                placeholder={props.placeholder} 
+                onChange={props.changed}
+                onKeyPress={onInputFormKeyPressed} />
+            <FontAwesomeIcon 
+                icon={faSearch} 
+                className={styles.SearchIcon} 
+                onClick={props.clicked}
+                onKeyDown={onSearchIconClicked}
+                role="button"
+                tabIndex={0}/>
+        </div>
+    )
+}
 
 searchBar.propTypes = {
     /**
-     * Select the specific style of the button.
+     * Value written by the user inside the input box
      */
-    btnStyle: PropTypes.oneOf(['White', 'Green', 'Orange', 'Pink']),
+    value: PropTypes.string,
     /**
-     * Whether the component can be interacted with
+     * Placeholder value for the input
      */
-    disabled: PropTypes.bool,
+    placeholder: PropTypes.string,
     /**
-     * Function triggered upon clicking the button
+     * Function triggered upon clicking the search button or by pressing Enter
      */
     clicked: PropTypes.func,
     /**
-     * What to put within the button
+     * Function triggered every time the user writes something in the input field
      */
-    children: PropTypes.object,
+    changed: PropTypes.func
 }
 
 export default searchBar
