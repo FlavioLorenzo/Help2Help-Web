@@ -1,24 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import styles from './ImageCard.module.scss'
+import styles from "./ImageCard.module.scss";
 
 const imageCard = (props) => {
-
-    let classes = [styles.ImageCard, styles[props.cardBorder]]
+    let classes = [styles.ImageCard, styles[props.cardBorder]];
 
     if (props.hasPadding) {
-        classes.push(styles.HasPadding)
+        classes.push(styles.HasPadding);
     }
 
     return (
-        <div 
+        <div
             className={classes.join(" ")}
-            style={{height: props.height, backgroundImage: "url(" + props.imageSrc + ")"}}>
+            style={{
+                height: props.height,
+                backgroundImage: "url(" + props.imageSrc + ")",
+            }}
+        >
             {props.children}
         </div>
-    )
-}
+    );
+};
 
 imageCard.propTypes = {
     /**
@@ -35,11 +38,11 @@ imageCard.propTypes = {
     /**
      * Where to find the requested image
      */
-    imageSrc: PropTypes.object,
+    imageSrc: PropTypes.string,
     /**
      * Forces a given border
      */
     hasPadding: PropTypes.bool,
-}
+};
 
-export default imageCard
+export default imageCard;

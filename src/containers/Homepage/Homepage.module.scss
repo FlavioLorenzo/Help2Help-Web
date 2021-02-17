@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@import "../../styles/colors";
 
 .CardTitle {
     margin-top: 35px;
@@ -8,13 +8,17 @@
     }
 }
 
+.BottomPadding {
+    padding-bottom: 30px;
+}
+
 .SearchButtonsContainer {
     display: flex;
-    
+
     > span {
         flex-grow: 1;
         text-align: center;
-    } 
+    }
 }
 
 .ScrollbarTitle {
