@@ -11,6 +11,7 @@ const closedVerticalCard = (props) => {
         }
     };
 
+    // If the card refers to an event, than a Timestamp object will be returned. FormattedDate returns the date in the user's locale.
     let subtitle = props.subtitle;
     if (typeof props.subtitle === "object") {
         subtitle = (
