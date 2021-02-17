@@ -4,8 +4,15 @@ import NavigationItem from './NavigationItem/NavigationItem'
 import styles from './NavigationItems.module.scss'
 
 const navigationItems = (props) => {
+
+    let classes = [styles.NavigationItems]
+
+    if (props.isMenuOpen) {
+        classes.push(styles.WithMenuOpen)
+    }
+
     return (
-        <ul className={styles.NavigationItems}>
+        <ul className={classes.join(" ")}>
             <NavigationItem active>Home</NavigationItem>
             <NavigationItem>Associazioni</NavigationItem>
             <NavigationItem>I miei Eventi</NavigationItem>

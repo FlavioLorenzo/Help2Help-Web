@@ -1,14 +1,18 @@
 @import '../../../../styles/colors.scss';
 
 .NavBurger {
-    width: 45px;
-    height: 29px;
-    padding-top: 16px;
+    width: 35px;
+    height: 35px;
+    padding-top: 5px;
 
     border-radius: 100%;
     border: 3px solid rgba($color: #EEE, $alpha: 0.0);
 
     transition: border 0.5s linear;
+
+    &:focus {
+        outline:0;
+    }
 
     span {
         position: absolute;
@@ -16,20 +20,20 @@
 
         background-color: white;
 
-        margin-left: 3px;
-        height: 7px;
+        margin-left: 4px;
+        height: 6px;
         
         transition: width 0.5s, height 0.5s, transform 0.5s, margin-top 0.5s, margin-left 0.5s;
     }
 
     :first-child {
-        width: 38px;
+        width: 25px;
 
         margin-top: 0px;
     }
 
     :nth-child(2) {
-        width: 25px;
+        width: 15px;
 
         margin-top: 10px;
     }
@@ -39,11 +43,11 @@
 
         span {
             position: absolute;
-            margin-top: 4px;
-            margin-left: 5px;
+            margin-top: 8px;
+            margin-left: 2px;
 
-            width: 35px;
-            height: 5px;
+            width: 26px;
+            height: 4px;
         }
 
         :first-child {

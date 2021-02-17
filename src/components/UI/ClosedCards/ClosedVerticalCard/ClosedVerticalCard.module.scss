@@ -1,6 +1,6 @@
-@import '../../../../styles/colors.scss';
+@import "../../../../styles/colors.scss";
 
-.ClosedVerticalCard{
+.ClosedVerticalCard {
     border-radius: 25px;
     background-color: lightgray;
 
@@ -13,8 +13,12 @@
 
     position: relative;
 
-    background-image: linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.6) 100%);
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0) 40%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
     background-size: cover;
+    background-position: center;
 }
 
 .DescWrap {
@@ -25,7 +29,7 @@
     flex-direction: column;
 
     padding: 0 10px 15px 10px;
-    
+
     color: white;
 }
 
@@ -44,7 +48,7 @@
     font-size: 0.9em;
 
     flex-basis: 100%;
-    
+
     width: 130px;
     max-height: 3em;
 

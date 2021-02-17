@@ -7,23 +7,23 @@
     cursor: pointer;
     font: inherit;
 
-    padding: 8px 25px;
-    margin: 10px;
+    padding: 8px 20px;
 
     font-weight: bold;
     font-size: 16px;
     text-transform: capitalize;
-    transition: 0.3s;
+    transition: 0.1s;
+    width: 90%;
+    overflow: hidden;
+}
+
+.Small {
+    padding: 8px 25px;
 }
 
 .White {
     background-color: white;
     color: black;
-
-    &:hover {
-        background-color: $orange;
-        color: white;
-    }
 }
 
 .Green {
@@ -33,6 +33,11 @@
 
 .Orange {
     background-color: $orange;
+    color: white;
+}
+
+.LightBlue {
+    background-color: $lightBlue;
     color: white;
 }
 

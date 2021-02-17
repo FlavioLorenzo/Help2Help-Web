@@ -15,7 +15,7 @@ HorizontalScrollingCardWrapper.propTypes = {
     /**
      * Cards to be made available within the wrapper
      */
-    children: PropTypes.object
+    children: PropTypes.array
 }
 
 export default HorizontalScrollingCardWrapper

@@ -1,36 +1,56 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import styles from './ClosedVerticalCard.module.scss'
+import styles from "./ClosedVerticalCard.module.scss";
+import { FormattedDate } from "react-intl";
 
 const closedVerticalCard = (props) => {
     const handleKeyPress = (event) => {
-        if(event.key === 'Enter'){
-            props.itemSelected(props.title)
+        if (event.key === "Enter") {
+            props.itemSelected(props.title);
         }
+    };
+
+    // If the card refers to an event, than a Timestamp object will be returned. FormattedDate returns the date in the user's locale.
+    let subtitle = props.subtitle;
+    if (typeof props.subtitle === "object") {
+        subtitle = (
+            <FormattedDate
+                value={props.subtitle.toDate()}
+                month="long"
+                day="numeric"
+                weekday="short"
+            />
+        );
     }
 
     return (
-        <div 
+        <div
             className={styles.ClosedVerticalCard}
-            style={{backgroundImage: "linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.6) 100%), url(" + props.imageSrc + ")"}}
+            style={{
+                backgroundImage:
+                    "linear-gradient(rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.6) 100%), url(" +
+                    props.imageSrc +
+                    ")",
+            }}
             onClick={() => props.itemSelected(props.title)}
             onKeyDown={handleKeyPress}
             role="button"
-            tabIndex={0}>
+            tabIndex={0}
+        >
             <div className={styles.DescWrap}>
                 <div className={styles.DescTitle}>{props.title}</div>
-                <div className={styles.DescSubtitle}>{props.subtitle}</div>
+                <div className={styles.DescSubtitle}>{subtitle}</div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 closedVerticalCard.propTypes = {
     /**
      * Where to find the requested image
      */
-    imageSrc: PropTypes.object,
+    imageSrc: PropTypes.string,
     /**
      * Main title, usually referring to the organization / event
      */
@@ -38,11 +58,11 @@ closedVerticalCard.propTypes = {
     /**
      * Subtitle to show below the org/event's name
      */
-    subtitle: PropTypes.string,
+    subtitle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     /**
      * Handler triggered upon clicking on the card. Receives the identifier of the card's subject as an argument
      */
     itemSelected: PropTypes.func,
-}
+};
 
-export default closedVerticalCard
+export default closedVerticalCard;
