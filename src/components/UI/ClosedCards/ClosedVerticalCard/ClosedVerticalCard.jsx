@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import styles from "./ClosedVerticalCard.module.scss";
+import { FormattedDate } from "react-intl";
 
 const closedVerticalCard = (props) => {
     const handleKeyPress = (event) => {
@@ -9,6 +10,18 @@ const closedVerticalCard = (props) => {
             props.itemSelected(props.title);
         }
     };
+
+    let subtitle = props.subtitle;
+    if (typeof props.subtitle === "object") {
+        subtitle = (
+            <FormattedDate
+                value={props.subtitle.toDate()}
+                month="long"
+                day="numeric"
+                weekday="short"
+            />
+        );
+    }
 
     return (
         <div
@@ -26,7 +39,7 @@ const closedVerticalCard = (props) => {
         >
             <div className={styles.DescWrap}>
                 <div className={styles.DescTitle}>{props.title}</div>
-                <div className={styles.DescSubtitle}>{props.subtitle}</div>
+                <div className={styles.DescSubtitle}>{subtitle}</div>
             </div>
         </div>
     );
@@ -44,7 +57,7 @@ closedVerticalCard.propTypes = {
     /**
      * Subtitle to show below the org/event's name
      */
-    subtitle: PropTypes.string,
+    subtitle: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
     /**
      * Handler triggered upon clicking on the card. Receives the identifier of the card's subject as an argument
      */

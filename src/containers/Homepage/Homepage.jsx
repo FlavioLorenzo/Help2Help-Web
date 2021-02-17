@@ -57,7 +57,7 @@ const Homepage = () => {
                 <ClosedVerticalCard
                     key={event.id}
                     title={event.title}
-                    subtitle=""
+                    subtitle={event.date}
                     imageSrc={event.imgSrc}
                     itemSelected={itemSelectedHandler}
                 ></ClosedVerticalCard>
