@@ -85,6 +85,9 @@ const Homepage = () => {
 
     return (
         <Auxiliary>
+            {
+                // Filter's card
+            }
             <SplitGradientCard cardBorder="BorderBottomRight" hasPadding>
                 <div className={styles.CardTitle}>
                     <h2>{translations.homepageIntro}</h2>
@@ -131,6 +134,9 @@ const Homepage = () => {
                 </div>
             </SplitGradientCard>
 
+            {
+                // Organization section
+            }
             <div
                 className={[
                     styles.ScrollbarTitle,
@@ -144,6 +150,9 @@ const Homepage = () => {
                 {listOrganizationCards}
             </HorizontalScrollingCardWrapper>
 
+            {
+                // Events section
+            }
             <div
                 className={[
                     styles.ScrollbarTitle,
