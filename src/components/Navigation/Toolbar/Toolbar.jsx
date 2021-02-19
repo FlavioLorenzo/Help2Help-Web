@@ -10,7 +10,7 @@ const Toolbar = (props) => {
     const headerEl = useRef(null);
     const intl = useIntl();
     const imageAlt = intl.formatMessage({
-        id: "userMenuProfilePhotoAltText",
+        id: "user_menu_profile_photo_alt_text",
         defaultMessage: "La mia foto utente",
         description: "Alt text for image of the current user",
     });

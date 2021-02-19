@@ -9,6 +9,7 @@ import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import ClosedVerticalCard from "../../components/UI/ClosedCards/ClosedVerticalCard/ClosedVerticalCard";
 import HorizontalScrollingCardWrapper from "../../components/UI/ScrollingWrappers/HorizontalScrollingCardWrapper/HorizontalScrollingCardWrapper";
 
+import * as translations from "./Homepage.translations";
 import styles from "./Homepage.module.scss";
 
 const Homepage = () => {
@@ -22,6 +23,7 @@ const Homepage = () => {
     );
     const eventList = useSelector((state) => state.event.eventList);
 
+    // UseCallback is needed to wrap the dispatch method of React-Redux
     const dispatch = useDispatch();
     const getOrganizationList = useCallback(
         () => dispatch(actions.fetchOrganizationList()),
@@ -31,6 +33,7 @@ const Homepage = () => {
         dispatch,
     ]);
 
+    // Load Organization information and display results
     useEffect(() => {
         getOrganizationList();
     }, [getOrganizationList]);
@@ -48,6 +51,7 @@ const Homepage = () => {
         );
     }, [organizationList]);
 
+    // Load events informations and display results
     useEffect(() => {
         getEventList();
     }, [getEventList]);
@@ -65,6 +69,7 @@ const Homepage = () => {
         );
     }, [eventList]);
 
+    // Placeholder, will be removed
     const itemSelectedHandler = (title) =>
         console.log("Clicked " + title + "!");
 
@@ -82,7 +87,7 @@ const Homepage = () => {
         <Auxiliary>
             <SplitGradientCard cardBorder="BorderBottomRight" hasPadding>
                 <div className={styles.CardTitle}>
-                    <h2>Scopri le offerte di volontariato!</h2>
+                    <h2>{translations.homepageIntro}</h2>
                 </div>
                 <div className={styles.SearchBarContainer}>
                     <SearchBar
@@ -102,7 +107,7 @@ const Homepage = () => {
                             }
                             clicked={() => viewButtonClicked("all")}
                         >
-                            Tutto
+                            {translations.allDenomination}
                         </Button>
                     </span>
                     <span>
@@ -112,7 +117,7 @@ const Homepage = () => {
                             }
                             clicked={() => viewButtonClicked("org")}
                         >
-                            Enti
+                            {translations.organizationDenomination}
                         </Button>
                     </span>
                     <span>
@@ -120,7 +125,7 @@ const Homepage = () => {
                             btnStyle={currentView === "evt" ? "White" : "Pink"}
                             clicked={() => viewButtonClicked("evt")}
                         >
-                            Eventi
+                            {translations.eventDenomination}
                         </Button>
                     </span>
                 </div>
@@ -132,8 +137,8 @@ const Homepage = () => {
                     styles.ScrollbarTitleOrg,
                 ].join(" ")}
             >
-                <h2>Enti</h2>
-                <span>scopri di più</span>
+                <h2>{translations.organizationDenomination}</h2>
+                <span>{translations.knowMore}</span>
             </div>
             <HorizontalScrollingCardWrapper>
                 {listOrganizationCards}
@@ -145,8 +150,8 @@ const Homepage = () => {
                     styles.ScrollbarTitleEvent,
                 ].join(" ")}
             >
-                <h2>Eventi</h2>
-                <span>scopri di più</span>
+                <h2>{translations.eventDenomination}</h2>
+                <span>{translations.knowMore}</span>
             </div>
             <HorizontalScrollingCardWrapper>
                 {listEventCards}
