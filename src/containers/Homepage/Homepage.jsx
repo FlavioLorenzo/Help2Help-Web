@@ -51,7 +51,7 @@ const Homepage = () => {
         );
     }, [organizationList]);
 
-    // Load events informations and display results
+    // Load events information and display results
     useEffect(() => {
         getEventList();
     }, [getEventList]);
