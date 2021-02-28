@@ -10,10 +10,10 @@ import locale_it from "./lang/it.json";
 import useDeviceDetect from "./hooks/useDeviceDetect";
 
 import Layout from "./hoc/Layout/Layout";
-import ExampleComponent2 from "./containers/ExampleComponent2/ExampleComponent2";
+import SearchResults from "./containers/SearchResults/SearchResults";
+import Homepage from "./containers/Homepage/Homepage";
 
 import "./App.css";
-import Homepage from "./containers/Homepage/Homepage";
 
 // This function takes the locale string and decides the correct language to use
 function loadLocaleData(locale) {
@@ -37,9 +37,8 @@ const App = (props) => {
     let routes = (
         <Switch>
             <Route
-                path="/test"
-                exact
-                render={(props) => <ExampleComponent2 {...props} />}
+                path="/search"
+                render={(props) => <SearchResults {...props} />}
             />
             <Route
                 path="/"

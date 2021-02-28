@@ -1,8 +1,12 @@
-@import '../../../styles/colors.scss';
+@import "../../../styles/colors.scss";
 
 .Toolbar {
     position: fixed;
-    background: linear-gradient(160deg, $gradientFirstColor 0%, $gradientSecondColor 100%);
+    background: linear-gradient(
+        160deg,
+        $gradientFirstColor 0%,
+        $gradientSecondColor 100%
+    );
     box-shadow: 0px 0px 2px white;
 
     top: 0;
@@ -19,7 +23,8 @@
     }
 }
 
-.NavBurgerIconContainer {
+.NavBurgerIconContainer,
+.BackIconContainer {
     position: fixed;
     top: 0;
     left: 0;
@@ -27,8 +32,13 @@
 
     width: 35px;
     height: 35px;
-    
+
     margin: 8px 8px 8px 8px;
+
+    &.BackIconContainer {
+        color: white;
+        font-size: 23px;
+    }
 }
 
 .UserImageContainer {
@@ -45,18 +55,17 @@
     .UserImage {
         border-radius: 100%;
         box-shadow: 0px 0px 5px;
-    
+
         height: inherit;
     }
 
     &.WithMenuOpened {
         left: 50%;
         top: 2vh;
-        
+
         margin: 0 0 0 -6vh;
         height: 12vh;
 
         transition: all 0.35s ease-in-out 0.15s;
     }
 }
-

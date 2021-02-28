@@ -12,7 +12,7 @@ import HorizontalScrollingCardWrapper from "../../components/UI/ScrollingWrapper
 import * as translations from "./Homepage.translations";
 import styles from "./Homepage.module.scss";
 
-const Homepage = () => {
+const Homepage = (props) => {
     const [searchInput, setSearchInput] = useState("");
     const [currentView, setCurrentView] = useState("all");
     const [listOrganizationCards, setListOrganizationCards] = useState([]);
@@ -73,11 +73,18 @@ const Homepage = () => {
     const itemSelectedHandler = (title) =>
         console.log("Clicked " + title + "!");
 
+    // Detect that the value inside the search bar has changed
     const onSearchBarChanged = (event) => {
         setSearchInput(event.target.value);
     };
 
-    const onSearchBarClicked = () => {};
+    // Act upon detecting the click of the search bar
+    const onSearchBarClicked = () => {
+        props.history.push({
+            pathname: "/search",
+            search: "?t:organizations&q:" + searchInput,
+        });
+    };
 
     const viewButtonClicked = (buttonValue) => {
         setCurrentView(buttonValue);

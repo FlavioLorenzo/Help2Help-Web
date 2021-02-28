@@ -1,13 +1,20 @@
-import React, { useRef } from "react";
-import PropTypes from "prop-types";
-import NavBurger from "./NavBurger/NavBurger";
+import React, { useState, useRef } from "react";
 import { useIntl } from "react-intl";
+import PropTypes from "prop-types";
+
+import NavBurger from "./NavBurger/NavBurger";
 import SideDrawer from "../SideDrawer/SideDrawer";
+import SearchBar from "../../UI/SearchBar/SearchBar";
 
 import styles from "./Toolbar.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Toolbar = (props) => {
     const headerEl = useRef(null);
+
+    const [searchInput, setSearchInput] = useState("");
+
     const intl = useIntl();
     const imageAlt = intl.formatMessage({
         id: "user_menu_profile_photo_alt_text",
@@ -15,11 +22,13 @@ const Toolbar = (props) => {
         description: "Alt text for image of the current user",
     });
 
+    // Define toolbar style based on menu being opened
     let toolbarClasses = [styles.Toolbar];
     if (props.isMenuOpen) {
         toolbarClasses.push(styles.WithMenuOpened);
     }
 
+    // Define user image style based on menu being opened
     let imageContainerClasses = [styles.UserImageContainer];
     if (props.isMenuOpen) {
         imageContainerClasses.push(styles.WithMenuOpened);
@@ -32,14 +41,59 @@ const Toolbar = (props) => {
         props.menuToggleClicked();
     };
 
-    return (
-        <header className={toolbarClasses.join(" ")} ref={headerEl}>
-            <div className={styles.NavBurgerIconContainer}>
-                <NavBurger
-                    clicked={onMenuToggleClicked}
-                    isMenuOpen={props.isMenuOpen}
+    let searchBar = null;
+    if (props.searchBarRequired) {
+        // Detect that the value inside the search bar has changed
+        const onSearchBarChanged = (event) => {
+            setSearchInput(event.target.value);
+        };
+
+        // Act upon detecting the click of the search bar
+        const onSearchBarClicked = () => {
+            props.history.push({
+                pathname: "/search",
+                search: "?t:organizations&q:" + searchInput,
+            });
+        };
+
+        // Add the search bar to the menu
+        searchBar = (
+            <div className={styles.SearchBarContainer}>
+                <SearchBar
+                    placeholder="test"
+                    value={searchInput}
+                    clicked={onSearchBarClicked}
+                    changed={(event) => {
+                        onSearchBarChanged(event);
+                    }}
                 />
             </div>
+        );
+    }
+
+    // Decide which button to display (burger or back)
+    let navTopLeftButton = (
+        <div className={styles.NavBurgerIconContainer}>
+            <NavBurger
+                clicked={onMenuToggleClicked}
+                isMenuOpen={props.isMenuOpen}
+            />
+        </div>
+    );
+    if (props.backRequired) {
+        navTopLeftButton = (
+            <div className={styles.BackIconContainer}>
+                <FontAwesomeIcon icon={faChevronLeft} />
+            </div>
+        );
+    }
+
+    return (
+        <header className={toolbarClasses.join(" ")} ref={headerEl}>
+            {navTopLeftButton}
+
+            {props.searchBarRequired ? searchBar : null}
+
             <div className={imageContainerClasses.join(" ")}>
                 <img
                     className={styles.UserImage}
@@ -47,6 +101,7 @@ const Toolbar = (props) => {
                     alt={imageAlt}
                 />
             </div>
+
             {props.isMenuOpen ? (
                 <SideDrawer isMenuOpen={props.isMenuOpen} />
             ) : null}
@@ -67,6 +122,14 @@ Toolbar.propTypes = {
      * Image for the profile picture of the user
      */
     imageSrc: PropTypes.string,
+    /**
+     * Whether to display the back button instead of the hamburger
+     */
+    backRequired: PropTypes.bool,
+    /**
+     * Whether the search bar should be displayed on top of the page
+     */
+    searchBarRequired: PropTypes.bool,
 };
 
 export default Toolbar;

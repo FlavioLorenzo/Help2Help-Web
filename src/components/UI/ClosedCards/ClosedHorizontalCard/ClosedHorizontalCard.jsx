@@ -53,7 +53,7 @@ closedHorizontalCard.propTypes = {
     /**
      * Where to find the requested image
      */
-    imageSrc: PropTypes.object,
+    imageSrc: PropTypes.string,
     /**
      * Main title, usually referring to the organization / event
      */
