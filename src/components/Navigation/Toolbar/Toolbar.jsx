@@ -41,6 +41,7 @@ const Toolbar = (props) => {
         props.menuToggleClicked();
     };
 
+    // If needed introduce the search bar and related functionalities
     let searchBar = null;
     if (props.searchBarRequired) {
         // Detect that the value inside the search bar has changed

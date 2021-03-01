@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import "../../../styles/colors.scss";
 
 .SearchBar {
     border: none;
@@ -7,20 +7,21 @@
     cursor: text;
     font: inherit;
 
-    padding: 8px 13% 8px 5%;    
+    padding: 8px 50px 8px 20px;
 
     font-size: 1.1em;
     width: 100%;
+    height: inherit;
 }
 
 .SearchIcon {
     position: absolute;
     z-index: 2;
-    right: 5%;
-    margin-top: 10px;
-    
+    margin-top: 11px;
+    margin-left: -40px;
+
     color: #aaa;
     //pointer-events: none;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1.15em;
 }
