@@ -3,12 +3,14 @@ import { updateObject } from "../../shared/miscUtils";
 
 const initState = {
     isBackRequired: false,
+    backLocation: "/",
     isSearchBarRequired: false,
 };
 
 const setBackRequired = (state, action) => {
     const updatedState = {
         isBackRequired: action.isBackRequired,
+        backLocation: action.backLocation,
     };
 
     return updateObject(state, updatedState);

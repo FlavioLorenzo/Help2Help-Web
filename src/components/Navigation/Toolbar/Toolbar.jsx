@@ -63,6 +63,7 @@ const Toolbar = (props) => {
                 <SearchBar
                     placeholder="test"
                     value={searchInput}
+                    small
                     clicked={onSearchBarClicked}
                     changed={(event) => {
                         onSearchBarChanged(event);
@@ -82,8 +83,20 @@ const Toolbar = (props) => {
         </div>
     );
     if (props.backRequired) {
+        const handleKeyPress = (event) => {
+            if (event.key === "Enter") {
+                props.backButtonClicked();
+            }
+        };
+
         navTopLeftButton = (
-            <div className={styles.BackIconContainer}>
+            <div
+                className={styles.BackIconContainer}
+                onClick={() => props.backButtonClicked()}
+                onKeyDown={handleKeyPress}
+                role="button"
+                tabIndex={0}
+            >
                 <FontAwesomeIcon icon={faChevronLeft} />
             </div>
         );
@@ -127,6 +140,10 @@ Toolbar.propTypes = {
      * Whether to display the back button instead of the hamburger
      */
     backRequired: PropTypes.bool,
+    /**
+     * Fire when the back button has been clicked
+     */
+    backButtonClicked: PropTypes.func,
     /**
      * Whether the search bar should be displayed on top of the page
      */

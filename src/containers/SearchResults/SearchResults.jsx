@@ -6,15 +6,23 @@ import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import VerticalScrollingCardWrapper from "../../components/UI/ScrollingWrappers/VerticalScrollingCardWrapper/VerticalScrollingCardWrapper";
 import ClosedHorizontalCard from "../../components/UI/ClosedCards/ClosedHorizontalCard/ClosedHorizontalCard";
 
-import * as translations from "./SearchResults.translations";
-import styles from "./SearchResults.module.scss";
+//import * as translations from "./SearchResults.translations";
+//import styles from "./SearchResults.module.scss";
 
 const SearchResults = (props) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchTarget, setSearchTarget] = useState("");
 
     // UseCallback is needed to wrap the dispatch method of React-Redux
+    // Set the options that controls the menu when the component renders
     const dispatch = useDispatch();
+    const setLayout = useCallback(() => {
+        dispatch(actions.setLayoutBackRequired(true));
+        dispatch(actions.setLayoutSearchBarRequired(true));
+    }, [dispatch]);
+    useEffect(() => {
+        setLayout();
+    }, [setLayout]);
 
     // Parse the Query parameters as soon as the component loads
     useEffect(() => {
