@@ -1,20 +1,19 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { InstantSearch, Configure } from "react-instantsearch-dom";
-import searchClient from "../../config/algoliaConfig";
+import { connectInfiniteHits } from "react-instantsearch-dom";
 
 import * as actions from "../../store/actions/index";
 
+import Auxiliary from "../../hoc/Auxiliary/Auxiliary";
 import VerticalScrollingCardWrapper from "../../components/UI/ScrollingWrappers/VerticalScrollingCardWrapper/VerticalScrollingCardWrapper";
 import ClosedHorizontalCard from "../../components/UI/ClosedCards/ClosedHorizontalCard/ClosedHorizontalCard";
 
 //import * as translations from "./SearchResults.translations";
-import styles from "./SearchResults.module.scss";
+//import styles from "./SearchResults.module.scss";
 
 const SearchResults = (props) => {
     const [searchQuery, setSearchQuery] = useState("");
-    const [, setSearchTarget] = useState("");
-    const hitsPerPage = 3;
+    const [searchTarget, setSearchTarget] = useState("");
 
     // UseCallback is needed to wrap the dispatch method of React-Redux
     // Set the options that controls the menu when the component renders
@@ -46,15 +45,22 @@ const SearchResults = (props) => {
     }, [props.location.search]);
 
     return (
-        <div className={styles.SearchResults}>
-            <InstantSearch
-                indexName="organizations"
-                searchClient={searchClient}
-            >
-                <Configure hitsPerPage={hitsPerPage} query={searchQuery} />
-                <VerticalScrollingCardWrapper minHitsPerPage={hitsPerPage} />
-            </InstantSearch>
-        </div>
+        <Auxiliary>
+            <VerticalScrollingCardWrapper>
+                <ClosedHorizontalCard
+                    title="Title"
+                    subtitle="Lorem ipsum dolor sit"
+                    imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    itemSelected={() => alert("Closed card was clicked.")}
+                ></ClosedHorizontalCard>
+                <ClosedHorizontalCard
+                    title="Title"
+                    subtitle="Lorem ipsum dolor sit"
+                    imageSrc="https://images.pexels.com/photos/235615/pexels-photo-235615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    itemSelected={() => alert("Closed card was clicked.")}
+                ></ClosedHorizontalCard>
+            </VerticalScrollingCardWrapper>
+        </Auxiliary>
     );
 };
 

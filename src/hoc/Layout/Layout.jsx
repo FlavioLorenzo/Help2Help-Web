@@ -28,6 +28,14 @@ const Layout = (props) => {
         });
     };
 
+    // Act upon detecting the click of the search bar
+    const setHistoryFromMenu = (searchInput) => {
+        history.push({
+            pathname: "/search",
+            search: "?t:organizations&q:" + searchInput,
+        });
+    };
+
     return (
         <Aux>
             <Toolbar
@@ -37,6 +45,7 @@ const Layout = (props) => {
                 backRequired={isBackRequired}
                 backButtonClicked={goBack}
                 searchBarRequired={isSearchBarRequired}
+                searchBarTriggered={setHistoryFromMenu}
             ></Toolbar>
             {isMenuOpen ? null : (
                 <main className={styles.MobileMain}>{props.children}</main>

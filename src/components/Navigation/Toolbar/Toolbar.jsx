@@ -51,10 +51,7 @@ const Toolbar = (props) => {
 
         // Act upon detecting the click of the search bar
         const onSearchBarClicked = () => {
-            props.history.push({
-                pathname: "/search",
-                search: "?t:organizations&q:" + searchInput,
-            });
+            props.searchBarTriggered(searchInput);
         };
 
         // Add the search bar to the menu

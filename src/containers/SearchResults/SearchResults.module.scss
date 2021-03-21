@@ -1,52 +1,5 @@
 @import "../../styles/colors";
 
-.CardTitle {
-    margin-top: 35px;
-
-    > h2 {
-        font-size: 1.9rem;
-    }
-}
-
-.BottomPadding {
-    padding-bottom: 30px;
-}
-
-.SearchButtonsContainer {
-    display: flex;
-
-    > span {
-        flex-grow: 1;
-        text-align: center;
-    }
-}
-
-.ScrollbarTitle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1.2em 8% 0.7em 8%;
-
-    > h2 {
-        font-size: 1.8em;
-        margin: 0;
-    }
-
-    &.ScrollbarTitleOrg {
-        > h2 {
-            color: $orange;
-        }
-    }
-
-    &.ScrollbarTitleEvent {
-        > h2 {
-            color: $h2hPink;
-        }
-    }
-}
-
-.SearchBarContainer {
-    position: relative;
-    width: 100%;
-    margin: 1em auto 1.5em auto;
+.SearchResults {
+    padding-top: 4px;
 }

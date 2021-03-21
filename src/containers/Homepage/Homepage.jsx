@@ -43,7 +43,6 @@ const Homepage = (props) => {
         getOrganizationList();
     }, [getOrganizationList]);
     useEffect(() => {
-        console.log("Here");
         setListOrganizationCards(
             organizationList.map((org) => (
                 <ClosedVerticalCard
@@ -93,7 +92,7 @@ const Homepage = (props) => {
     const onSearchBarClicked = () => {
         props.history.push({
             pathname: "/search",
-            search: "?t:organizations&q:" + searchInput,
+            search: "?t=organizations&q=" + searchInput,
         });
     };
 
