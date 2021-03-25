@@ -32,7 +32,7 @@ const Layout = (props) => {
     const setHistoryFromMenu = (searchInput) => {
         history.push({
             pathname: "/search",
-            search: "?t:organizations&q:" + searchInput,
+            search: "?t=organizations&q=" + searchInput,
         });
     };
 

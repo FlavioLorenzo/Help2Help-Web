@@ -1,13 +1,13 @@
 import React, { useState, useRef, useCallback } from "react";
 import { connectInfiniteHits } from "react-instantsearch-dom";
+import PropTypes from "prop-types";
 
 import ClosedHorizontalCard from "../../ClosedCards/ClosedHorizontalCard/ClosedHorizontalCard";
 
 import styles from "./VerticalScrollingCardWrapper.module.scss";
 
 const VerticalScrollingCardWrapper = (props) => {
-    const hits = props.hits;
-    const { hasMore, refineNext } = props;
+    const { hits, hasMore, refineNext } = props;
 
     // TODO: Callback gets triggered several times. By dealing with the dependencies the method may become faster.
     const observer = useRef();
@@ -54,6 +54,21 @@ const VerticalScrollingCardWrapper = (props) => {
             </div>
         </div>
     );
+};
+
+VerticalScrollingCardWrapper.propTypes = {
+    /**
+     * Result list returned by Algolia
+     */
+    hits: PropTypes.array,
+    /*
+     * Whether there are more results to be retrieved from the server
+     */
+    hasMore: PropTypes.bool,
+    /*
+     * Return next set of results from Algolia
+     */
+    refineNext: PropTypes.func,
 };
 
 export default connectInfiniteHits(VerticalScrollingCardWrapper);
