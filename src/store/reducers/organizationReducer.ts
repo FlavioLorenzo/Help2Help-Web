@@ -1,11 +1,24 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/miscUtils";
+import { OrganizationType } from "../../types/ReduxTypes";
+
+export interface OrganizationState {
+    organizationList: OrganizationType[];
+}
+
+export type OrganizationAction = {
+    type: string;
+    organizationList: OrganizationType[];
+};
 
 const initState = {
     organizationList: [],
 };
 
-const setOrganizationList = (state, action) => {
+const setOrganizationList = (
+    state: OrganizationState,
+    action: OrganizationAction
+) => {
     const updatedState = {
         organizationList: action.organizationList,
     };
@@ -13,7 +26,10 @@ const setOrganizationList = (state, action) => {
     return updateObject(state, updatedState);
 };
 
-const organizationReducer = (state = initState, action) => {
+const organizationReducer = (
+    state: OrganizationState = initState,
+    action: OrganizationAction
+) => {
     switch (action.type) {
         case actionTypes.SET_ORGANIZATION_LIST:
             return setOrganizationList(state, action);

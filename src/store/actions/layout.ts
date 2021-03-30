@@ -1,6 +1,9 @@
 import * as actionTypes from "./actionTypes";
 
-export const setLayoutBackRequired = (isBackRequired, backLocation = "/") => {
+export const setLayoutBackRequired = (
+    isBackRequired: boolean,
+    backLocation: string = "/"
+) => {
     return {
         type: actionTypes.SET_LAYOUT_BACK_REQUIRED,
         isBackRequired: isBackRequired,
@@ -8,7 +11,7 @@ export const setLayoutBackRequired = (isBackRequired, backLocation = "/") => {
     };
 };
 
-export const setLayoutSearchBarRequired = (isSearchBarRequired) => {
+export const setLayoutSearchBarRequired = (isSearchBarRequired: boolean) => {
     return {
         type: actionTypes.SET_LAYOUT_SEARCH_BAR_REQUIRED,
         isSearchBarRequired: isSearchBarRequired,

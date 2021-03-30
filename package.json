@@ -60,6 +60,8 @@
     ]
   },
   "devDependencies": {
-    "@formatjs/cli": "^3.0.5"
+    "@formatjs/cli": "^3.0.5",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7"
   }
 }

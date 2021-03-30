@@ -1,13 +1,26 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/miscUtils";
 
-const initState = {
+export interface LayoutState {
+    isBackRequired: boolean;
+    backLocation: string;
+    isSearchBarRequired: boolean;
+}
+
+type LayoutAction = {
+    type: string;
+    isBackRequired?: boolean;
+    backLocation?: boolean;
+    isSearchBarRequired?: boolean;
+};
+
+const initState: LayoutState = {
     isBackRequired: false,
     backLocation: "/",
     isSearchBarRequired: false,
 };
 
-const setBackRequired = (state, action) => {
+const setBackRequired = (state: LayoutState, action: LayoutAction) => {
     const updatedState = {
         isBackRequired: action.isBackRequired,
         backLocation: action.backLocation,
@@ -16,7 +29,7 @@ const setBackRequired = (state, action) => {
     return updateObject(state, updatedState);
 };
 
-const setSearchBarRequired = (state, action) => {
+const setSearchBarRequired = (state: LayoutState, action: LayoutAction) => {
     const updatedState = {
         isSearchBarRequired: action.isSearchBarRequired,
     };
@@ -24,7 +37,7 @@ const setSearchBarRequired = (state, action) => {
     return updateObject(state, updatedState);
 };
 
-const layoutReducer = (state = initState, action) => {
+const layoutReducer = (state = initState, action: LayoutAction) => {
     switch (action.type) {
         case actionTypes.SET_LAYOUT_BACK_REQUIRED:
             return setBackRequired(state, action);

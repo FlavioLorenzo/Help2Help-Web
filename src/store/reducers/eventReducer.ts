@@ -1,11 +1,21 @@
 import * as actionTypes from "../actions/actionTypes";
 import { updateObject } from "../../shared/miscUtils";
+import { EventType } from "../../types/ReduxTypes";
 
-const initState = {
+export interface EventState {
+    eventList: EventType[];
+}
+
+export type EventAction = {
+    type: string;
+    eventList: EventType[];
+};
+
+const initState: EventState = {
     eventList: [],
 };
 
-const setEventList = (state, action) => {
+const setEventList = (state: EventState, action: EventAction) => {
     const updatedState = {
         eventList: action.eventList,
     };
@@ -13,7 +23,7 @@ const setEventList = (state, action) => {
     return updateObject(state, updatedState);
 };
 
-const eventReducer = (state = initState, action) => {
+const eventReducer = (state: EventState = initState, action: EventAction) => {
     switch (action.type) {
         case actionTypes.SET_EVENT_LIST:
             return setEventList(state, action);

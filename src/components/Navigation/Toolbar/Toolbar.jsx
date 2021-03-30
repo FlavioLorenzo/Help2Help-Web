@@ -145,6 +145,10 @@ Toolbar.propTypes = {
      * Whether the search bar should be displayed on top of the page
      */
     searchBarRequired: PropTypes.bool,
+    /**
+     * Action to perform when search bar gets triggered (enter or click on the lens)
+     */
+    searchBarTriggered: PropTypes.func,
 };
 
 export default Toolbar;

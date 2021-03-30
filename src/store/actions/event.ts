@@ -1,7 +1,10 @@
 import * as actionTypes from "./actionTypes";
 import { firestoreDB } from "../../config/fbConfig";
+import { EventType } from "../../types/ReduxTypes";
+import { EventAction } from "../reducers/eventReducer";
+import { Dispatch } from "react";
 
-export const setEventList = (eventList) => {
+export const setEventList = (eventList: EventType[]) => {
     return {
         type: actionTypes.SET_EVENT_LIST,
         eventList: eventList,
@@ -9,16 +12,16 @@ export const setEventList = (eventList) => {
 };
 
 export const fetchEventList = () => {
-    return (dispatch) => {
+    return (dispatch: Dispatch<EventAction>) => {
         firestoreDB
             .collection("event")
             .orderBy("date")
             .limit(5)
             .get()
             .then((response) => {
-                const eventList = [];
+                const eventList: EventType[] = [];
                 response.forEach((doc) => {
-                    const newEvent = doc.data();
+                    const newEvent: any = doc.data();
                     newEvent.id = doc.id;
 
                     eventList.push(newEvent);

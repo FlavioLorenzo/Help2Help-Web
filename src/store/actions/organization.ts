@@ -1,7 +1,10 @@
+import { Dispatch } from "react";
 import * as actionTypes from "./actionTypes";
 import { firestoreDB } from "../../config/fbConfig";
+import { OrganizationType } from "../../types/ReduxTypes";
+import { OrganizationAction } from "../reducers/organizationReducer";
 
-export const setOrganizationsList = (organizationList) => {
+export const setOrganizationsList = (organizationList: OrganizationType[]) => {
     return {
         type: actionTypes.SET_ORGANIZATION_LIST,
         organizationList: organizationList,
@@ -9,16 +12,16 @@ export const setOrganizationsList = (organizationList) => {
 };
 
 export const fetchOrganizationList = () => {
-    return (dispatch) => {
+    return (dispatch: Dispatch<OrganizationAction>) => {
         firestoreDB
             .collection("organization")
             .orderBy("name")
             .limit(5)
             .get()
             .then((response) => {
-                const organizationList = [];
+                const organizationList: OrganizationType[] = [];
                 response.forEach((doc) => {
-                    const newOrg = doc.data();
+                    const newOrg: any = doc.data();
                     newOrg.id = doc.id;
 
                     organizationList.push(newOrg);
