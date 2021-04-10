@@ -20,7 +20,13 @@ const searchTarget = (props: SearchTargetProps) => {
                 <span>
                     <Button
                         value={"all"}
-                        btnStyle={currentView === "all" ? "White" : "LightBlue"}
+                        btnStyle={
+                            currentView === "all" ? "LightBlue" : "LightBlue"
+                        }
+                        outline
+                        small
+                        shadow
+                        active
                         clicked={viewButtonClicked}
                     >
                         {translations.allDenomination}
@@ -32,6 +38,9 @@ const searchTarget = (props: SearchTargetProps) => {
                         btnStyle={
                             "Orange" /*currentView === "org" ? "White" : "Orange"*/
                         }
+                        outline
+                        small
+                        shadow
                         clicked={viewButtonClicked}
                     >
                         {translations.organizationDenomination}
@@ -41,8 +50,11 @@ const searchTarget = (props: SearchTargetProps) => {
                     <Button
                         value={"evt"}
                         btnStyle={
-                            "White" /*currentView === "evt" ? "White" : "Pink"*/
+                            "Pink" /*currentView === "evt" ? "White" : "Pink"*/
                         }
+                        outline
+                        small
+                        shadow
                         clicked={viewButtonClicked}
                     >
                         {translations.eventDenomination}

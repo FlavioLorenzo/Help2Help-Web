@@ -1,12 +1,14 @@
-import React /*useState, useEffect, useCallback*/ from "react";
+import React /*, { useState, useEffect, useCallback }*/ from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
-// import SearchTarget from "../../components/Navigation/SearchTarget/SearchTarget";
+import SearchTarget from "../../components/Navigation/SearchTarget/SearchTarget";
 
 import profileImage from "../../assets/images/example_profile.jpg";
 import { RootState } from "../../store/reducers/rootReducer";
+
+import styles from "./Header.module.scss";
 
 interface HeaderProps {
     isMenuOpen: boolean;
@@ -16,7 +18,7 @@ interface HeaderProps {
 const Header = (props: HeaderProps) => {
     // TODO: Include indication about volunteer
     // Setting the filter based on user type (volunteer / association)
-    //const [searchTarget, setSearchTarget] = useState(false);
+    // const [searchTarget, setSearchTarget] = useState(false);
 
     const isBackRequired = useSelector(
         (state: RootState) => state.layout.isBackRequired
@@ -45,18 +47,23 @@ const Header = (props: HeaderProps) => {
 
     return (
         <>
-            <Toolbar
-                imageSrc={profileImage}
-                menuToggleClicked={props.toggleMenuHandler}
-                isMenuOpen={props.isMenuOpen}
-                backRequired={isBackRequired}
-                backButtonClicked={goBack}
-                searchBarRequired={isSearchBarRequired}
-                searchBarTriggered={setHistoryFromMenu}
-            ></Toolbar>
-            {
-                //<SearchTarget />
-            }
+            <div className={styles.Toolbar}>
+                <Toolbar
+                    imageSrc={profileImage}
+                    menuToggleClicked={props.toggleMenuHandler}
+                    isMenuOpen={props.isMenuOpen}
+                    backRequired={isBackRequired}
+                    backButtonClicked={goBack}
+                    searchBarRequired={isSearchBarRequired}
+                    searchBarTriggered={setHistoryFromMenu}
+                ></Toolbar>
+            </div>
+
+            {isSearchBarRequired ? (
+                <div className={styles.SearchTargetBar}>
+                    <SearchTarget />
+                </div>
+            ) : null}
         </>
     );
 };

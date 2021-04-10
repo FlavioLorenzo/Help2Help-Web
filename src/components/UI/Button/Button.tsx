@@ -1,12 +1,28 @@
 import React from "react";
 
-import classes from "./Button.module.scss";
+import styles from "./Button.module.scss";
 
 interface ButtonProps {
     /**
      * Select the specific style of the button.
      */
     btnStyle: "White" | "Green" | "Orange" | "Pink" | "LightBlue";
+    /**
+     * Whether the button should be small
+     */
+    small?: boolean;
+    /**
+     * Whether the button should be filled with color or just have the outline
+     */
+    outline?: boolean;
+    /**
+     * Whether the button should have shadow
+     */
+    shadow?: boolean;
+    /**
+     * If the button is currently selected
+     */
+    active?: boolean;
     /**
      * Whether the component can be interacted with
      */
@@ -26,11 +42,26 @@ interface ButtonProps {
 }
 
 const button = (props: ButtonProps) => {
+    const classes = [styles.Button, styles[props.btnStyle]];
+
+    if (props.outline) {
+        classes.push(styles.Outline);
+    }
+    if (props.small) {
+        classes.push(styles.Small);
+    }
+    if (props.shadow) {
+        classes.push(styles.Shadow);
+    }
+    if (props.active) {
+        classes.push(styles.Active);
+    }
+
     return (
         <button
             disabled={props.disabled}
             value={props.value}
-            className={[classes.Button, classes[props.btnStyle]].join(" ")}
+            className={classes.join(" ")}
             onClick={props.clicked}
         >
             {props.children}

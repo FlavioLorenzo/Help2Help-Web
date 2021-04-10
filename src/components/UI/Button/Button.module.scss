@@ -1,4 +1,4 @@
-@import '../../../styles/colors.scss';
+@import "../../../styles/colors.scss";
 
 .Button {
     border: none;
@@ -15,34 +15,93 @@
     transition: 0.1s;
     width: 90%;
     overflow: hidden;
-}
 
-.Small {
-    padding: 8px 25px;
+    &.Small {
+        padding: 4px 0;
+        font-size: 0.9em;
+        width: 80%;
+    }
+
+    &.Shadow {
+        -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+
+        &.Active {
+            -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5),
+                inset 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+            -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5),
+                inset 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.8),
+                inset 0px 0px 8px 0px rgba(0, 0, 0, 0.5);
+        }
+    }
 }
 
 .White {
     background-color: white;
     color: black;
+
+    &.Active {
+    }
 }
 
 .Green {
     background-color: $green;
     color: white;
+
+    &.Active {
+    }
 }
 
 .Orange {
     background-color: $orange;
     color: white;
+
+    &.Outline {
+        background-color: white;
+        border: 2px solid $orange;
+        color: black;
+
+        &.Active {
+            background-color: $orange;
+            border: 2px solid darken($orange, 35%);
+            color: white;
+        }
+    }
 }
 
 .LightBlue {
     background-color: $lightBlue;
     color: white;
+
+    &.Outline {
+        background-color: white;
+        border: 2px solid $lightBlue;
+        color: black;
+
+        &.Active {
+            background-color: $lightBlue;
+            border: 2px solid darken($lightBlue, 35%);
+            color: white;
+        }
+    }
 }
 
 // Please, don't kill me if it's not pink... I'M A GUY, OK? I'M BARELY ABLE TO GET THE DIFFERENCE BETWEEN GREEN AND RED!!!
 .Pink {
     background-color: $h2hPink;
     color: white;
+
+    &.Outline {
+        background-color: white;
+        border: 2px solid $h2hPink;
+        color: black;
+
+        &.Active {
+            background-color: $h2hPink;
+            border: 2px solid darken($h2hPink, 35%);
+            color: white;
+        }
+    }
 }

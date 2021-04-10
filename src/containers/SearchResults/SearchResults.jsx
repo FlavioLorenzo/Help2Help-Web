@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { useDispatch /*useSelector*/ } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { InstantSearch, Configure } from "react-instantsearch-dom";
 import searchClient from "../../config/algoliaConfig";
@@ -7,7 +7,6 @@ import searchClient from "../../config/algoliaConfig";
 import * as actions from "../../store/actions/index";
 
 import VerticalScrollingCardWrapper from "../../components/UI/ScrollingWrappers/VerticalScrollingCardWrapper/VerticalScrollingCardWrapper";
-// import ClosedHorizontalCard from "../../components/UI/ClosedCards/ClosedHorizontalCard/ClosedHorizontalCard";
 
 //import * as translations from "./SearchResults.translations";
 import styles from "./SearchResults.module.scss";
