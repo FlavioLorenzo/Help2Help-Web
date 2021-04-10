@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+
 import Toolbar from "../../components/Navigation/Toolbar/Toolbar";
+import SearchTarget from "../../components/Navigation/SearchTarget/SearchTarget";
 
 import profileImage from "../../assets/images/example_profile.jpg";
 import { RootState } from "../../store/reducers/rootReducer";
@@ -52,6 +54,9 @@ const Header = (props: HeaderProps) => {
                 searchBarRequired={isSearchBarRequired}
                 searchBarTriggered={setHistoryFromMenu}
             ></Toolbar>
+            {
+                //<SearchTarget />
+            }
         </>
     );
 };

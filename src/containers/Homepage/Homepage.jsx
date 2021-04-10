@@ -97,7 +97,7 @@ const Homepage = (props) => {
     };
 
     const viewButtonClicked = (buttonValue) => {
-        setCurrentView(buttonValue);
+        setCurrentView(buttonValue.target.value);
     };
 
     return (
@@ -122,28 +122,31 @@ const Homepage = (props) => {
                 <div className={styles.SearchButtonsContainer}>
                     <span>
                         <Button
+                            value={"all"}
                             btnStyle={
                                 currentView === "all" ? "White" : "LightBlue"
                             }
-                            clicked={() => viewButtonClicked("all")}
+                            clicked={viewButtonClicked}
                         >
                             {translations.allDenomination}
                         </Button>
                     </span>
                     <span>
                         <Button
+                            value={"org"}
                             btnStyle={
                                 currentView === "org" ? "White" : "Orange"
                             }
-                            clicked={() => viewButtonClicked("org")}
+                            clicked={viewButtonClicked}
                         >
                             {translations.organizationDenomination}
                         </Button>
                     </span>
                     <span>
                         <Button
+                            value={"evt"}
                             btnStyle={currentView === "evt" ? "White" : "Pink"}
-                            clicked={() => viewButtonClicked("evt")}
+                            clicked={viewButtonClicked}
                         >
                             {translations.eventDenomination}
                         </Button>

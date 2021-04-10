@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useRef, useCallback } from "react";
 import { connectInfiniteHits } from "react-instantsearch-dom";
 import PropTypes from "prop-types";
 
