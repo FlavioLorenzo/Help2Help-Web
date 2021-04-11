@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useIntl } from "react-intl";
 import PropTypes from "prop-types";
 
@@ -13,8 +13,14 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 const Toolbar = (props) => {
     const headerEl = useRef(null);
 
+    // Store the search input value. Initialized with the value currently being queued
     const [searchInput, setSearchInput] = useState("");
+    const searchQuery = props.searchQuery;
+    useEffect(() => {
+        setSearchInput(searchQuery ? searchQuery : "");
+    }, [searchQuery]);
 
+    // Internationalization support
     const intl = useIntl();
     const imageAlt = intl.formatMessage({
         id: "user_menu_profile_photo_alt_text",
@@ -141,6 +147,10 @@ Toolbar.propTypes = {
      * Fire when the back button has been clicked
      */
     backButtonClicked: PropTypes.func,
+    /**
+     * The value currently being searched by the user
+     */
+    searchQuery: PropTypes.string,
     /**
      * Whether the search bar should be displayed on top of the page
      */

@@ -6,7 +6,7 @@ interface ButtonProps {
     /**
      * Select the specific style of the button.
      */
-    btnStyle: "White" | "Green" | "Orange" | "Pink" | "LightBlue";
+    colorStyle: "White" | "Green" | "Orange" | "Pink" | "LightBlue";
     /**
      * Whether the button should be small
      */
@@ -42,7 +42,7 @@ interface ButtonProps {
 }
 
 const button = (props: ButtonProps) => {
-    const classes = [styles.Button, styles[props.btnStyle]];
+    const classes = [styles.Button, styles[props.colorStyle]];
 
     if (props.outline) {
         classes.push(styles.Outline);

@@ -92,7 +92,7 @@ const Homepage = (props) => {
     const onSearchBarClicked = () => {
         props.history.push({
             pathname: "/search",
-            search: "?t=organizations&q=" + searchInput,
+            search: "?t=all&q=" + searchInput,
         });
     };
 
@@ -123,7 +123,7 @@ const Homepage = (props) => {
                     <span>
                         <Button
                             value={"all"}
-                            btnStyle={
+                            colorStyle={
                                 currentView === "all" ? "White" : "LightBlue"
                             }
                             clicked={viewButtonClicked}
@@ -134,7 +134,7 @@ const Homepage = (props) => {
                     <span>
                         <Button
                             value={"org"}
-                            btnStyle={
+                            colorStyle={
                                 currentView === "org" ? "White" : "Orange"
                             }
                             clicked={viewButtonClicked}
@@ -145,7 +145,9 @@ const Homepage = (props) => {
                     <span>
                         <Button
                             value={"evt"}
-                            btnStyle={currentView === "evt" ? "White" : "Pink"}
+                            colorStyle={
+                                currentView === "evt" ? "White" : "Pink"
+                            }
                             clicked={viewButtonClicked}
                         >
                             {translations.eventDenomination}

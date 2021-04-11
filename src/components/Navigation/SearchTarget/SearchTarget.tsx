@@ -5,43 +5,37 @@ import Button from "../../UI/Button/Button";
 import styles from "./SearchTarget.module.scss";
 import * as translations from "./SearchTarget.translations";
 
-interface SearchTargetProps {}
+interface SearchTargetProps {
+    currentView: string;
+    searchTargetButtonClicked(e: any): void;
+}
 
 const searchTarget = (props: SearchTargetProps) => {
-    const currentView = "all";
-
-    const viewButtonClicked = (e: React.MouseEvent<HTMLButtonElement>) => {
-        console.log(e);
-    };
-
     return (
         <>
             <div className={styles.SearchButtonsContainer}>
                 <span>
                     <Button
                         value={"all"}
-                        btnStyle={
-                            currentView === "all" ? "LightBlue" : "LightBlue"
-                        }
+                        colorStyle={"LightBlue"}
                         outline
                         small
                         shadow
-                        active
-                        clicked={viewButtonClicked}
+                        active={props.currentView === "all"}
+                        clicked={props.searchTargetButtonClicked}
                     >
                         {translations.allDenomination}
                     </Button>
                 </span>
                 <span>
                     <Button
-                        value={"all"}
-                        btnStyle={
-                            "Orange" /*currentView === "org" ? "White" : "Orange"*/
-                        }
+                        value={"org"}
+                        colorStyle={"Orange"}
                         outline
                         small
                         shadow
-                        clicked={viewButtonClicked}
+                        active={props.currentView === "org"}
+                        clicked={props.searchTargetButtonClicked}
                     >
                         {translations.organizationDenomination}
                     </Button>
@@ -49,13 +43,12 @@ const searchTarget = (props: SearchTargetProps) => {
                 <span>
                     <Button
                         value={"evt"}
-                        btnStyle={
-                            "Pink" /*currentView === "evt" ? "White" : "Pink"*/
-                        }
+                        colorStyle={"Pink"}
                         outline
                         small
                         shadow
-                        clicked={viewButtonClicked}
+                        active={props.currentView === "evt"}
+                        clicked={props.searchTargetButtonClicked}
                     >
                         {translations.eventDenomination}
                     </Button>
