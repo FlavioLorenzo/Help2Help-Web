@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import * as actionTypes from "./actionTypes";
-import { firestoreDB } from "../../config/fbConfig";
+import { firestoreDB } from "../../config/firebaseConfig";
 import { OrganizationType } from "../../types/ReduxTypes";
 import { OrganizationAction } from "../reducers/organizationReducer";
 

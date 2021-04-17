@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import { firestoreDB } from "../../config/fbConfig";
+import { firestoreDB } from "../../config/firebaseConfig";
 import { EventType } from "../../types/ReduxTypes";
 import { EventAction } from "../reducers/eventReducer";
 import { Dispatch } from "react";
