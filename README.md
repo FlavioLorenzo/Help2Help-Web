@@ -44,3 +44,8 @@ For component documentation we adopted the docz library. More info here: (https:
 We opted for Algolia service ((https://www.algolia.com/)) to easily provide a Full Text and AI-Powered search over the data about organizations, events and volunteers.
 
 Algolia has been integrated with the Firestore DB so that, whenever a new organization is added/updated/removed to/from the system, the Algolia index gets automatically updated through Google Cloud Functions.
+
+Algolia cheat-sheet to work locally:
+
+-   Set up the Algolia Keys, which can be retrieved from Algolia User page:
+    `firebase functions:config:set algolia.appid=xxxxxxx algolia.apikey=xxxxxxx`
