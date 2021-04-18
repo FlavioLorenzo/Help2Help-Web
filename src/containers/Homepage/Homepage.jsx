@@ -32,11 +32,6 @@ const Homepage = (props) => {
     const getEventList = useCallback(() => dispatch(actions.fetchEventList()), [
         dispatch,
     ]);
-    // Set the options that controls the menu when the component renders
-    const setLayout = useCallback(() => {
-        dispatch(actions.setLayoutBackRequired(false));
-        dispatch(actions.setLayoutSearchBarRequired(false));
-    }, [dispatch]);
 
     // Load Organization information and display results
     useEffect(() => {
@@ -73,11 +68,6 @@ const Homepage = (props) => {
             ))
         );
     }, [eventList]);
-
-    // Set the options that controls the menu when the component renders
-    useEffect(() => {
-        setLayout();
-    }, [setLayout]);
 
     // Placeholder, will be removed
     const itemSelectedHandler = (title) =>

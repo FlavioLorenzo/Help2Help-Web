@@ -17,14 +17,8 @@ export default function useHeader() {
     const searchQuery = searchFilters.query;
     const searchTarget = searchFilters.target;
 
-    const isBackRequired = useSelector(
-        (state: RootState) => state.layout.isBackRequired
-    );
     const backLocation = useSelector(
-        (state: RootState) => state.layout.backLocation
-    );
-    const isSearchBarRequired = useSelector(
-        (state: RootState) => state.layout.isSearchBarRequired
+        (state: RootState) => state.navigation.backLocation
     );
     const history = useHistory();
 
@@ -57,11 +51,9 @@ export default function useHeader() {
     };
 
     return {
-        isBackRequired,
         goBack,
         searchQuery,
         searchTarget,
-        isSearchBarRequired,
         setSearchQuery,
         setSearchTarget,
     };

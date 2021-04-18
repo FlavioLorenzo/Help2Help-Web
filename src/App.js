@@ -12,6 +12,7 @@ import useDeviceDetect from "./hooks/useDeviceDetect";
 import Layout from "./hoc/Layout/Layout";
 import SearchResults from "./containers/SearchResults/SearchResults";
 import Homepage from "./containers/Homepage/Homepage";
+import Login from "./containers/Login/Login";
 
 import "./App.css";
 
@@ -37,14 +38,15 @@ const App = (props) => {
     let routes = (
         <Switch>
             <Route
-                path="/search"
-                render={(props) => <SearchResults {...props} />}
-            />
-            <Route
                 path="/"
                 exact
                 render={(props) => <Homepage {...props} isMobile={isMobile} />}
             />
+            <Route
+                path="/search"
+                render={(props) => <SearchResults {...props} />}
+            />
+            <Route path="/login" render={(props) => <Login {...props} />} />
             <Redirect to="/" />
         </Switch>
     );
@@ -66,7 +68,7 @@ const App = (props) => {
             locale={userLocale}
             defaultLocale="it"
         >
-            <Layout>{routes}</Layout>
+            <Layout path={props.location.pathname}>{routes}</Layout>
         </IntlProvider>
     );
 };

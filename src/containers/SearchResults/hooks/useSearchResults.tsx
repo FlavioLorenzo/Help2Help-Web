@@ -28,13 +28,6 @@ export default function useSearchResults() {
     // UseCallback is needed to wrap the dispatch method of React-Redux
     // Set the options that controls the menu when the component renders
     const dispatch = useDispatch();
-    const setLayout = useCallback(() => {
-        dispatch(actions.setLayoutBackRequired(true));
-        dispatch(actions.setLayoutSearchBarRequired(true));
-    }, [dispatch]);
-    useEffect(() => {
-        setLayout();
-    }, [setLayout]);
 
     // Sync the search state
     const onSearchStateChange = (searchState: any) =>

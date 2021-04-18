@@ -9,17 +9,17 @@ import styles from "./Header.module.scss";
 import useHeader from "./hooks/useHeader";
 
 interface HeaderProps {
+    isBackRequired: boolean;
+    isSearchBarRequired: boolean;
     isMenuOpen: boolean;
     toggleMenuHandler(): void;
 }
 
 const Header = (props: HeaderProps) => {
     const {
-        isBackRequired,
         goBack,
         searchQuery,
         searchTarget,
-        isSearchBarRequired,
         setSearchQuery,
         setSearchTarget,
     } = useHeader();
@@ -31,15 +31,15 @@ const Header = (props: HeaderProps) => {
                     imageSrc={profileImage}
                     menuToggleClicked={props.toggleMenuHandler}
                     isMenuOpen={props.isMenuOpen}
-                    backRequired={isBackRequired}
+                    backRequired={props.isBackRequired}
                     backButtonClicked={goBack}
                     searchQuery={searchQuery}
-                    searchBarRequired={isSearchBarRequired}
+                    searchBarRequired={props.isSearchBarRequired}
                     searchBarTriggered={setSearchQuery}
                 ></Toolbar>
             </div>
 
-            {isSearchBarRequired ? (
+            {props.isSearchBarRequired ? (
                 <div className={styles.SearchTargetBar}>
                     <SearchTarget
                         currentView={searchTarget}
