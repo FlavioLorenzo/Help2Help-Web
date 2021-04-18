@@ -34,7 +34,7 @@ interface ButtonProps {
     /**
      * Function triggered upon clicking the button
      */
-    clicked(e: React.MouseEvent<HTMLButtonElement>): void;
+    clicked?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     /**
      * What to put within the button
      */

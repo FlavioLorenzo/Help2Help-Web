@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 import Aux from "../Auxiliary/Auxiliary";
 import Header from "../../containers/Header/Header";
