@@ -11,11 +11,17 @@ const Layout = (props) => {
     let showHeader = true;
     let searchBarRequired = false;
     let backRequired = false;
-    switch (props.path) {
-        case "/login":
+
+    // Set a number of properties for the page. For simplicity, we will only use the first part of the path
+    // e.g. the pate /login/volunteers will be simply evaluated as login
+    const path = props.path.split("/");
+    switch (path[1]) {
+        case "login":
+        case "signup":
+        case "password-recovery":
             showHeader = false;
             break;
-        case "/search":
+        case "search":
             searchBarRequired = true;
             backRequired = true;
             break;

@@ -1,0 +1,93 @@
+@import "../../styles/colors";
+
+.Authentication {
+    position: absolute;
+
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.LoginSection {
+    margin-bottom: 30px;
+
+    .Text {
+        color: white;
+        font-size: 1.15rem;
+        font-weight: bold;
+    }
+
+    .BackToStandardButton {
+        color: white;
+        font-size: 1.5rem;
+
+        position: absolute;
+        left: 10px;
+    }
+
+    .ButtonGroup {
+        width: 225px;
+
+        margin: 10px auto;
+
+        .Button {
+            margin: 10px 0;
+        }
+    }
+
+    .LinkText {
+        margin: 15px 0;
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    .LoginForm {
+        color: white;
+        margin: 15px 0;
+
+        label {
+            display: block;
+            margin: 15px auto;
+            max-width: 250px;
+
+            .LoginFormLabel {
+                text-align: left;
+                width: 100%;
+            }
+
+            .LoginFormInput {
+                input {
+                    background-color: rgba($color: #ffffff, $alpha: 0.3);
+                    border: 1px solid white;
+                    border-radius: 30px;
+                    color: white;
+
+                    height: 2.5em;
+                    padding-left: 5%;
+                    width: 100%;
+                }
+            }
+        }
+
+        .ButtonGroup {
+            margin-top: 20px;
+        }
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    .Login {
+        position: static;
+        transform: none;
+        margin: 20px 0;
+        width: 100%;
+        text-align: center;
+    }
+}

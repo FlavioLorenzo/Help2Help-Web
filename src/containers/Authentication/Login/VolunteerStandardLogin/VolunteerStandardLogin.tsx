@@ -1,19 +1,32 @@
 import { Link } from "react-router-dom";
 
-import Button from "../../../components/UI/Button/Button";
+import Button from "../../../../components/UI/Button/Button";
 // import useLogin from "./hooks/useLogin"
 
-import * as translations from "./StandardLogin.translations";
-import styles from "../Login.module.scss";
+import * as translations from "../../Authentication.translations";
+import styles from "../../Authentication.module.scss";
 
-import facebookLogo from "../../../assets/images/facebookLogo.png";
-import googleLogo from "../../../assets/images/googleLogo.svg";
+import { useHistory } from "react-router";
+
+import facebookLogo from "../../../../assets/images/facebookLogo.png";
+import googleLogo from "../../../../assets/images/googleLogo.svg";
 
 interface StandardLoginProps {
     emailPageTextClicked(): void;
 }
 
-const StandardLogin = (props: StandardLoginProps) => {
+export const VolunteerStandardLogin = (props: StandardLoginProps) => {
+    let history = useHistory();
+
+    // Act upon detecting the click of the search bar
+    const onEmailPageButtonClicked = (e: any) => {
+        e.preventDefault();
+
+        history.push({
+            pathname: "/login/volunteer/email",
+        });
+    };
+
     return (
         <>
             <div className={styles.LoginSection}>
@@ -52,7 +65,7 @@ const StandardLogin = (props: StandardLoginProps) => {
                     <div className={styles.Button}>
                         <Button
                             colorStyle="White"
-                            clicked={props.emailPageTextClicked}
+                            clicked={onEmailPageButtonClicked}
                         >
                             {translations.loginContinueWithEmail}
                         </Button>
@@ -62,7 +75,7 @@ const StandardLogin = (props: StandardLoginProps) => {
 
             <div className={styles.LoginSection}>
                 <div className={styles.LinkText}>
-                    <Link to="/loginOrganization">
+                    <Link to="/login/organization">
                         {translations.loginOrganization}
                     </Link>
                 </div>
@@ -70,5 +83,3 @@ const StandardLogin = (props: StandardLoginProps) => {
         </>
     );
 };
-
-export default StandardLogin;

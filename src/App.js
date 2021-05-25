@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 import { IntlProvider } from "react-intl";
 
@@ -7,12 +7,9 @@ import getUserLocale from "get-user-locale";
 import locale_en from "./lang/en.json";
 import locale_it from "./lang/it.json";
 
-import useDeviceDetect from "./hooks/useDeviceDetect";
-
 import Layout from "./hoc/Layout/Layout";
-import SearchResults from "./containers/SearchResults/SearchResults";
-import Homepage from "./containers/Homepage/Homepage";
-import Login from "./containers/Login/Login";
+
+import Router from "./router";
 
 import "./App.css";
 
@@ -29,38 +26,9 @@ function loadLocaleData(locale) {
 }
 
 const App = (props) => {
-    const isMobile = useDeviceDetect();
-
     const userLocale = getUserLocale();
 
     const localeMessages = loadLocaleData(userLocale);
-
-    let routes = (
-        <Switch>
-            <Route
-                path="/"
-                exact
-                render={(props) => <Homepage {...props} isMobile={isMobile} />}
-            />
-            <Route
-                path="/search"
-                render={(props) => <SearchResults {...props} />}
-            />
-            <Route path="/login" render={(props) => <Login {...props} />} />
-            <Redirect to="/" />
-        </Switch>
-    );
-
-    /*
-  if(this.props.isAuthenticated) {
-    routes = ( 
-      <Switch>
-        <Route path="/" exact component={ExampleComponent}/>
-        <Redirect to="/"/>
-      </Switch>
-    )
-  }
-  */
 
     return (
         <IntlProvider
@@ -68,7 +36,9 @@ const App = (props) => {
             locale={userLocale}
             defaultLocale="it"
         >
-            <Layout path={props.location.pathname}>{routes}</Layout>
+            <Layout path={props.location.pathname}>
+                <Router props={props} />
+            </Layout>
         </IntlProvider>
     );
 };
