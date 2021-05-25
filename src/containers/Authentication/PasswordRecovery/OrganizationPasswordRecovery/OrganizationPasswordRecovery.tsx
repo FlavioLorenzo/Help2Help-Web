@@ -10,12 +10,12 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import * as translations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
 
-interface VolunteerEmailLoginProps {
+interface OrganizationPasswordRecoveryProps {
     onSubmit(e: any): void;
 }
 
 export const OrganizationPasswordRecovery = (
-    props: VolunteerEmailLoginProps
+    props: OrganizationPasswordRecoveryProps
 ) => {
     return (
         <>
