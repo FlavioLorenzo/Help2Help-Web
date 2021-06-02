@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import { IntlProvider } from "react-intl";
+import { AuthProvider } from "./contexts/AuthContext";
 
 import getUserLocale from "get-user-locale";
 import locale_en from "./lang/en.json";
@@ -36,9 +37,11 @@ const App = (props) => {
             locale={userLocale}
             defaultLocale="it"
         >
-            <Layout path={props.location.pathname}>
-                <Router props={props} />
-            </Layout>
+            <AuthProvider>
+                <Layout path={props.location.pathname}>
+                    <Router props={props} />
+                </Layout>
+            </AuthProvider>
         </IntlProvider>
     );
 };

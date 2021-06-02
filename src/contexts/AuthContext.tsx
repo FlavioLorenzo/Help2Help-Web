@@ -2,6 +2,8 @@
  * This file contains the context that handles the authentication of the user.
  * It provides both information about the currently logged user, as well as the functions that handle user's registration
  * and basic account management capabilities.
+ *
+ * Reference video: https://www.youtube.com/watch?v=PKwu15ldZ7k
  */
 
 import React, { useContext, useState, useEffect } from "react";
@@ -40,6 +42,10 @@ export function useAuth() {
 
 export function AuthProvider(props: AuthProviderProps) {
     const [currentUser, setCurrentUser] = useState<firebase.User | null>();
+    // When the page initially gets rendered, the current user will be null. Only after
+    // the local storage is configured by Firebase the currentUser variable will be
+    // populated.
+    // The loading check determines whether this initialization has already been done
     const [loading, setLoading] = useState<boolean>(true);
 
     function signup(email: string, password: string) {
@@ -74,7 +80,12 @@ export function AuthProvider(props: AuthProviderProps) {
         return currentUser?.updatePassword(password);
     }
 
+    /**
+     * When the user logs in or gets created Firebase notifies the event through the listener onAuthStateChanged.
+     * This gets run only when the component gets mounted
+     */
     useEffect(() => {
+        // The unsubscribe method will get triggered when component gets unmounted
         const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
             setCurrentUser(user);
             setLoading(false);
