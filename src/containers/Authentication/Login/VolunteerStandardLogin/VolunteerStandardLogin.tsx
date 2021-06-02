@@ -30,8 +30,10 @@ export const VolunteerStandardLogin = (props: StandardLoginProps) => {
     return (
         <>
             <div className={styles.LoginSection}>
-                <div className={styles.Text}>
-                    {translations.loginAccessWith}
+                <div className={styles.TitleGroup}>
+                    <h1 className={styles.Title}>
+                        {translations.loginAccessWith}
+                    </h1>
                 </div>
                 <div className={styles.ButtonGroup}>
                     <div className={styles.Button}>

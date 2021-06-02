@@ -18,8 +18,10 @@ export const OrganizationLogin = (props: OrganizationLoginProps) => {
     return (
         <>
             <div className={styles.LoginSection}>
-                <div className={styles.Text}>
-                    {translations.loginAsOrganization}
+                <div className={styles.TitleGroup}>
+                    <h1 className={styles.Title}>
+                        {translations.loginAsOrganization}
+                    </h1>
                 </div>
 
                 <form onSubmit={props.onSubmit} className={styles.LoginForm}>

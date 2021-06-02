@@ -8,20 +8,6 @@ import AuthRouter from "./Authentication.routing";
 interface AuthenticationProps {}
 
 const Authentication = (props: AuthenticationProps) => {
-    /**const goToEmailPage = () => {
-        setLoginPage("email");
-    };
-
-    const loginWithEmailHandler = (e: any) => {
-        e.preventDefault();
-        console.log("Logged");
-    };
-
-    let loginComponent = <StandardLogin emailPageTextClicked={goToEmailPage} />;
-    if (loginPage === "email") {
-        loginComponent = <EmailLogin onSubmit={loginWithEmailHandler} />;
-    }*/
-
     return (
         <>
             <FullGradientCard />

@@ -7,13 +7,28 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 
-    margin: 0;
+    margin: 25px 0;
     width: 100%;
     text-align: center;
 }
 
 .LoginSection {
     margin-bottom: 30px;
+
+    .TitleGroup {
+        .Title {
+            color: white;
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        .LinkSubtitle {
+            a {
+                color: white;
+                text-decoration: underline;
+            }
+        }
+    }
 
     .Text {
         color: white;
@@ -60,6 +75,10 @@
             .LoginFormLabel {
                 text-align: left;
                 width: 100%;
+
+                &::first-letter {
+                    text-transform: capitalize;
+                }
             }
 
             .LoginFormInput {
@@ -83,10 +102,10 @@
 }
 
 @media only screen and (max-height: 400px) {
-    .Login {
+    .Authentication {
         position: static;
         transform: none;
-        margin: 20px 0;
+        margin: 25px 0;
         width: 100%;
         text-align: center;
     }

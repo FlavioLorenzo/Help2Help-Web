@@ -31,6 +31,26 @@ const AuthRouter = (props) => {
                 path={["/signup", "/signup/volunteer"]}
                 render={(props) => <SignUp.VolunteerSignUp {...props} />}
             />
+            <Route
+                exact
+                path={"/signup/organization"}
+                render={(props) => <SignUp.OrganizationSignUp {...props} />}
+            />
+
+            <Route
+                exact
+                path={["/password-recovery", "/password-recovery/volunteer"]}
+                render={(props) => (
+                    <PasswordRecovery.VolunteerPasswordRecovery {...props} />
+                )}
+            />
+            <Route
+                exact
+                path={"/password-recovery/organization"}
+                render={(props) => (
+                    <PasswordRecovery.OrganizationPasswordRecovery {...props} />
+                )}
+            />
 
             <Redirect to="/login" />
         </Switch>

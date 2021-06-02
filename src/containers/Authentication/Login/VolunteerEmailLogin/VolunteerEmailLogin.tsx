@@ -2,9 +2,6 @@ import { Link } from "react-router-dom";
 
 import Button from "../../../../components/UI/Button/Button";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-
 // import useLogin from "./hooks/useLogin"
 
 import * as translations from "../../Authentication.translations";
@@ -18,13 +15,13 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
     return (
         <>
             <div className={styles.LoginSection}>
-                {/* TODO: Ask Elisa to make this part appealing */}
-                <div className={styles.BackToStandardButton}>
-                    <FontAwesomeIcon icon={faChevronLeft} />
-                </div>
-
-                <div className={styles.Text}>
-                    {translations.loginAccessWithEmail}
+                <div className={styles.TitleGroup}>
+                    <h1 className={styles.Title}>
+                        {translations.loginAccessWithEmail}
+                    </h1>
+                    <div className={styles.LinkSubtitle}>
+                        <Link to="/login">{translations.authGoBack}</Link>
+                    </div>
                 </div>
 
                 <form onSubmit={props.onSubmit} className={styles.LoginForm}>

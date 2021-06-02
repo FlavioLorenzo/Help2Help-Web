@@ -34,7 +34,7 @@ const Router = () => {
 
             {/* AUTHENTICATION - the exact routing is properly handled in the Authentication component */}
             <Route
-                path={["/login", "/signUp", "/restorePassword"]}
+                path={["/login", "/signUp", "/password-recovery"]}
                 render={(props) => <Authentication {...props} />}
             />
 

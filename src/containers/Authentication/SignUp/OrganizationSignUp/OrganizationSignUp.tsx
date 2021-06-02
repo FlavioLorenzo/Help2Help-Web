@@ -8,36 +8,27 @@ import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
 
-interface VolunteerSignUpProps {
+interface OrganizationSignUpProps {
     onSubmit(e: any): void;
 }
 
-export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
+export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
     return (
         <>
             <div className={styles.LoginSection}>
                 <div className={styles.TitleGroup}>
                     <h1 className={styles.Title}>
-                        {authTranslations.signupAsVolunteerTitle}
+                        {authTranslations.signupAsOrganizationTitle}
                     </h1>
                 </div>
 
                 <form onSubmit={props.onSubmit} className={styles.LoginForm}>
                     <label>
                         <div className={styles.LoginFormLabel}>
-                            {translations.firstName}
+                            {authTranslations.signupAsOrganizationName}
                         </div>
                         <div className={styles.LoginFormInput}>
-                            <input type="text" autoComplete="given-name" />
-                        </div>
-                    </label>
-
-                    <label>
-                        <div className={styles.LoginFormLabel}>
-                            {translations.surname}
-                        </div>
-                        <div className={styles.LoginFormInput}>
-                            <input type="text" autoComplete="family-name" />
+                            <input type="text" autoComplete="organization" />
                         </div>
                     </label>
 
@@ -76,7 +67,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
 
                     <div className={styles.ButtonGroup}>
                         <Button colorStyle="White">
-                            {authTranslations.signupAsVolunteerButton}
+                            {authTranslations.signupAsOrganizationButton}
                         </Button>
                     </div>
                 </form>
@@ -84,8 +75,8 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
 
             <div className={styles.LoginSection}>
                 <div className={styles.LinkText}>
-                    <Link to="/login">
-                        {authTranslations.signupAsVolunteerAlreadySubscribed}
+                    <Link to="/login/organization">
+                        {authTranslations.signupAsOrganizationAlreadySubscribed}
                     </Link>
                 </div>
             </div>
