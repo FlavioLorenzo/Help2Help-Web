@@ -49,13 +49,15 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
 
     return (
         <>
-            <div className={styles.LoginSection}>
-                <div className={styles.TitleGroup}>
-                    <h1 className={styles.Title}>
-                        {authTranslations.signupAsVolunteerTitle}
-                    </h1>
-                </div>
+            <div className={styles.TitleGroup}>
+                <h1 className={styles.Title}>
+                    {authTranslations.signupAsVolunteerTitle}
+                </h1>
+            </div>
 
+            <div className={styles.Errors}>C'è un errore nella funzione</div>
+
+            <div className={styles.LoginSection}>
                 {error && <div>{error}</div>}
 
                 <form onSubmit={props.onSubmit} className={styles.LoginForm}>
@@ -125,7 +127,11 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                     </label>
 
                     <div className={styles.ButtonGroup}>
-                        <Button colorStyle="White" disabled={loading}>
+                        <Button
+                            colorStyle="White"
+                            disabled={loading}
+                            clicked={handleSubmit}
+                        >
                             {authTranslations.signupAsVolunteerButton}
                         </Button>
                     </div>

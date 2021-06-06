@@ -7,28 +7,42 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 
-    margin: 25px 0;
     width: 100%;
     text-align: center;
+
+    &.AuthenticationLongForm {
+        position: static;
+        transform: none;
+        margin: 25px 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.TitleGroup {
+    .Title {
+        color: white;
+        font-size: 1.15rem;
+        font-weight: bold;
+    }
+
+    .LinkSubtitle {
+        a {
+            color: white;
+            text-decoration: underline;
+        }
+    }
+}
+
+.Errors {
+    background: white;
+    margin: 0 auto;
+    max-width: 250px;
+    padding: 10px;
 }
 
 .LoginSection {
     margin-bottom: 30px;
-
-    .TitleGroup {
-        .Title {
-            color: white;
-            font-size: 1.15rem;
-            font-weight: bold;
-        }
-
-        .LinkSubtitle {
-            a {
-                color: white;
-                text-decoration: underline;
-            }
-        }
-    }
 
     .Text {
         color: white;
