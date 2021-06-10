@@ -9,6 +9,7 @@ import { useAuth } from "../../../../contexts/AuthContext";
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
+import Toast from "../../../../components/UI/Toast/Toast";
 
 interface VolunteerSignUpProps {
     onSubmit(e: any): void;
@@ -55,7 +56,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                 </h1>
             </div>
 
-            <div className={styles.Errors}>C'è un errore nella funzione</div>
+            <Toast />
 
             <div className={styles.LoginSection}>
                 {error && <div>{error}</div>}
