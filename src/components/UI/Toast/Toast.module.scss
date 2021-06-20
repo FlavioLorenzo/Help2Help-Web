@@ -89,6 +89,22 @@
     white-space: nowrap;
 }
 
+.Success {
+    background-color: #5cb85c;
+}
+
+.Info {
+    background-color: #5bc0de;
+}
+
+.Warning {
+    background-color: #f0ad4e;
+}
+
+.Error {
+    background-color: #d9534f;
+}
+
 .Top {
     top: 12px;
     transition: transform 0.6s ease-in-out;

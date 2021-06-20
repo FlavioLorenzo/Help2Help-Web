@@ -1,4 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+
+import toastInfo from "../../../assets/images/toastInfo.svg";
+import toastWarning from "../../../assets/images/toastWarning.svg";
+import toastError from "../../../assets/images/toastError.svg";
+import toastSuccess from "../../../assets/images/toastSuccess.svg";
 
 import styles from "./Toast.module.scss";
 
@@ -9,8 +14,7 @@ interface ToastElement {
     id: number;
     title: string;
     description: string;
-    backgroundColor: string;
-    icon: 'success' | 'error' | 'info' | 'warning';
+    type: "Success" | "Error" | "Info" | "Warning";
     /**
      * Icon image, added automatically based on the 'icon' property
      */
@@ -29,65 +33,88 @@ interface ToastProps {
     /**
      * Placement of the notification container on the page
      */
-    position: 'Top' | 'Bottom' | 'TopRight' | 'TopLeft' | 'BottomRight' | 'BottomLeft';
+    position:
+        | "Top"
+        | "Bottom"
+        | "TopRight"
+        | "TopLeft"
+        | "BottomRight"
+        | "BottomLeft";
 }
 
 const Toast = (props: ToastProps) => {
     const [list, setList] = useState<Array<ToastElement>>(props.toastList);
 
     useEffect(() => {
-        setList(props.toastList.map((toast) => {
-            let iconPng, iconDesc;
+        setList(
+            props.toastList.map((toast) => {
+                let iconPng, iconDesc;
 
-            switch (toast.icon) {
-                case 'success':
-                    iconPng= 'X'
-                    iconDesc= 'success message icon'
-                    break;
-                case 'error':
-                    iconPng= 'X'
-                    iconDesc= 'error message icon'
-                    break;
-                case 'info':
-                    iconPng= 'X'
-                    iconDesc= 'info message icon'
-                    break;
-                case 'warning':
-                    iconPng= 'X'
-                    iconDesc= 'warning message icon'
-                    break;
-            }
-            return {
-                ...toast,
-                iconPng: iconPng,
-                iconDesc: iconDesc
-            }
-        }));
+                switch (toast.type) {
+                    case "Success":
+                        iconPng = toastSuccess;
+                        iconDesc = "success message icon";
+                        break;
+                    case "Error":
+                        iconPng = toastError;
+                        iconDesc = "error message icon";
+                        break;
+                    case "Info":
+                        iconPng = toastInfo;
+                        iconDesc = "info message icon";
+                        break;
+                    case "Warning":
+                        iconPng = toastWarning;
+                        iconDesc = "warning message icon";
+                        break;
+                }
+                return {
+                    ...toast,
+                    iconPng: iconPng,
+                    iconDesc: iconDesc,
+                };
+            })
+        );
     }, [props.toastList, list]);
+
+    const deleteToast = (id: number) => {
+        const index = list.findIndex((e) => e.id === id);
+        list.splice(index, 1);
+        setList([...list]);
+    };
 
     return (
         <>
-            <div className={[styles.NotificationContainer, styles[props.position]].join(" ")}>
-                {
-                    list.map((toast, i) => (
-                        <div 
-                            key={i} 
-                            className={[styles.Notification, styles.Toast, styles[props.position]].join(" ")}
-                            style={{ backgroundColor: toast.backgroundColor }}
-                         >
-                            <button>X</button>
-                            <div className={styles.NotificationImage}>
-                                <img src={toast.iconPng} alt={toast.iconDesc} />
-                            </div>
-                            <div>
-                                <p className={styles.NotificationTitle}>{toast.title}</p>
-                                <p className={styles.NotificationMessage}>{toast.description}</p>
-                            </div>
+            <div
+                className={[
+                    styles.NotificationContainer,
+                    styles[props.position],
+                ].join(" ")}
+            >
+                {list.map((toast, i) => (
+                    <div
+                        key={i}
+                        className={[
+                            styles.Notification,
+                            styles.Toast,
+                            styles[props.position],
+                            styles[toast.type],
+                        ].join(" ")}
+                    >
+                        <button onClick={() => deleteToast(toast.id)}>X</button>
+                        <div className={styles.NotificationImage}>
+                            <img src={toast.iconPng} alt={toast.iconDesc} />
                         </div>
-                        )
-                    )
-                }
-                
+                        <div>
+                            <p className={styles.NotificationTitle}>
+                                {toast.title}
+                            </p>
+                            <p className={styles.NotificationMessage}>
+                                {toast.description}
+                            </p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </>
     );
