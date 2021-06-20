@@ -56,7 +56,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                 </h1>
             </div>
 
-            <Toast />
+            <Toast position="Bottom" />
 
             <div className={styles.LoginSection}>
                 {error && <div>{error}</div>}
