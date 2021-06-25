@@ -6,11 +6,12 @@ import toastError from "../../../assets/images/toastError.svg";
 import toastSuccess from "../../../assets/images/toastSuccess.svg";
 
 import styles from "./Toast.module.scss";
+import { useCallback } from "react";
 
 /*
  * Define a given element for the toast component
  */
-interface ToastElement {
+export interface ToastElement {
     id: number;
     title: string;
     description: string;
@@ -40,10 +41,24 @@ interface ToastProps {
         | "TopLeft"
         | "BottomRight"
         | "BottomLeft";
+
+    autodelete?: boolean;
+
+    dismissTime?: number;
 }
 
 const Toast = (props: ToastProps) => {
     const [list, setList] = useState<Array<ToastElement>>(props.toastList);
+
+    const dismissTime = props.dismissTime ? props.dismissTime : 2000;
+
+    const deleteToast = useCallback((id: number) => {
+        const listItemIndex = list.findIndex((e) => e.id === id);
+        const toastListItem = props.toastList.findIndex((e) => e.id === id)
+        list.splice(listItemIndex, 1);
+        props.toastList.splice(toastListItem, 1);
+        setList([...list]);
+    }, [list, props.toastList]);
 
     useEffect(() => {
         setList(
@@ -75,16 +90,21 @@ const Toast = (props: ToastProps) => {
                 };
             })
         );
-    }, [props.toastList, list]);
+    }, [props.toastList]);
 
-    const deleteToast = (id: number) => {
-        const index = list.findIndex((e) => e.id === id);
-        list.splice(index, 1);
-        setList([...list]);
-    };
+    useEffect(() => {
+        if(props.autodelete && props.toastList.length && list.length) {
+            const interval = setInterval(() => {
+                deleteToast(props.toastList[0].id);
+            }, dismissTime);
 
-    return (
-        <>
+            return () => {
+                clearInterval(interval);
+            }
+        }
+    }, [props.toastList, props.autodelete, dismissTime, list, deleteToast]);
+
+       return (
             <div
                 className={[
                     styles.NotificationContainer,
@@ -116,7 +136,6 @@ const Toast = (props: ToastProps) => {
                     </div>
                 ))}
             </div>
-        </>
     );
 };
 

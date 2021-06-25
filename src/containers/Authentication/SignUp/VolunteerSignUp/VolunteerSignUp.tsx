@@ -9,7 +9,7 @@ import { useAuth } from "../../../../contexts/AuthContext";
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
-import Toast from "../../../../components/UI/Toast/Toast";
+import Toast, { ToastElement } from "../../../../components/UI/Toast/Toast";
 
 interface VolunteerSignUpProps {
     onSubmit(e: any): void;
@@ -21,10 +21,12 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const passwordConfirmationRef = useRef<HTMLInputElement>(null);
-
+// eslint-disable-next-line
     const { signup } = useAuth();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+
+    const [toastMessages, setToastMessages] = useState<Array<ToastElement>>([])
 
     async function handleSubmit(e: any) {
         e.preventDefault();
@@ -37,7 +39,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
         ) {
             try {
                 setError("");
-                setLoading(true);
+                setLoading(false);
                 // signup(emailRef.current.value, passwordRef.current.value);
             } catch {
                 setError(
@@ -45,6 +47,17 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                 );
                 setLoading(false);
             }
+        } else {
+            const newId = toastMessages.length ? toastMessages[toastMessages.length-1].id + 1 : 0;
+
+            const newToastMessage: ToastElement = {
+                id: newId,
+                title: 'Dati mancanti',
+                description: 'Completa tutti i campi per poterti iscrivere',
+                type: 'Error'
+            }
+
+            setToastMessages([newToastMessage])
         }
     }
 
@@ -55,8 +68,6 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                     {authTranslations.signupAsVolunteerTitle}
                 </h1>
             </div>
-
-            <Toast position="Bottom" />
 
             <div className={styles.LoginSection}>
                 {error && <div>{error}</div>}
@@ -71,6 +82,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                                 type="text"
                                 autoComplete="given-name"
                                 ref={firstNameRef}
+                                required
                             />
                         </div>
                     </label>
@@ -84,6 +96,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                                 type="text"
                                 autoComplete="family-name"
                                 ref={surnameRef}
+                                required
                             />
                         </div>
                     </label>
@@ -97,6 +110,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                                 type="text"
                                 autoComplete="email"
                                 ref={emailRef}
+                                required
                             />
                         </div>
                     </label>
@@ -110,6 +124,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                                 type="password"
                                 autoComplete="new-password"
                                 ref={passwordRef}
+                                required
                             />
                         </div>
                     </label>
@@ -123,6 +138,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                                 type="password"
                                 autoComplete="new-password"
                                 ref={passwordConfirmationRef}
+                                required
                             />
                         </div>
                     </label>
@@ -146,6 +162,8 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                     </Link>
                 </div>
             </div>
+
+            <Toast position="Top" toastList={toastMessages} autodelete />
         </>
     );
 };
