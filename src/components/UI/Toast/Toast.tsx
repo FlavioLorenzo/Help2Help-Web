@@ -50,15 +50,18 @@ interface ToastProps {
 const Toast = (props: ToastProps) => {
     const [list, setList] = useState<Array<ToastElement>>(props.toastList);
 
-    const dismissTime = props.dismissTime ? props.dismissTime : 2000;
+    const dismissTime = props.dismissTime ? props.dismissTime : 3000;
 
-    const deleteToast = useCallback((id: number) => {
-        const listItemIndex = list.findIndex((e) => e.id === id);
-        const toastListItem = props.toastList.findIndex((e) => e.id === id)
-        list.splice(listItemIndex, 1);
-        props.toastList.splice(toastListItem, 1);
-        setList([...list]);
-    }, [list, props.toastList]);
+    const deleteToast = useCallback(
+        (id: number) => {
+            const listItemIndex = list.findIndex((e) => e.id === id);
+            const toastListItem = props.toastList.findIndex((e) => e.id === id);
+            list.splice(listItemIndex, 1);
+            props.toastList.splice(toastListItem, 1);
+            setList([...list]);
+        },
+        [list, props.toastList]
+    );
 
     useEffect(() => {
         setList(
@@ -93,49 +96,49 @@ const Toast = (props: ToastProps) => {
     }, [props.toastList]);
 
     useEffect(() => {
-        if(props.autodelete && props.toastList.length && list.length) {
+        if (props.autodelete && props.toastList.length && list.length) {
             const interval = setInterval(() => {
                 deleteToast(props.toastList[0].id);
             }, dismissTime);
 
             return () => {
                 clearInterval(interval);
-            }
+            };
         }
     }, [props.toastList, props.autodelete, dismissTime, list, deleteToast]);
 
-       return (
-            <div
-                className={[
-                    styles.NotificationContainer,
-                    styles[props.position],
-                ].join(" ")}
-            >
-                {list.map((toast, i) => (
-                    <div
-                        key={i}
-                        className={[
-                            styles.Notification,
-                            styles.Toast,
-                            styles[props.position],
-                            styles[toast.type],
-                        ].join(" ")}
-                    >
-                        <button onClick={() => deleteToast(toast.id)}>X</button>
-                        <div className={styles.NotificationImage}>
-                            <img src={toast.iconPng} alt={toast.iconDesc} />
-                        </div>
-                        <div>
-                            <p className={styles.NotificationTitle}>
-                                {toast.title}
-                            </p>
-                            <p className={styles.NotificationMessage}>
-                                {toast.description}
-                            </p>
-                        </div>
+    return (
+        <div
+            className={[
+                styles.NotificationContainer,
+                styles[props.position],
+            ].join(" ")}
+        >
+            {list.map((toast, i) => (
+                <div
+                    key={i}
+                    className={[
+                        styles.Notification,
+                        styles.Toast,
+                        styles[props.position],
+                        styles[toast.type],
+                    ].join(" ")}
+                >
+                    <button onClick={() => deleteToast(toast.id)}>X</button>
+                    <div className={styles.NotificationImage}>
+                        <img src={toast.iconPng} alt={toast.iconDesc} />
                     </div>
-                ))}
-            </div>
+                    <div>
+                        <p className={styles.NotificationTitle}>
+                            {toast.title}
+                        </p>
+                        <p className={styles.NotificationMessage}>
+                            {toast.description}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
     );
 };
 

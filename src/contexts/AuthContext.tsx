@@ -17,24 +17,24 @@ interface AuthProviderProps {
 }
 
 interface AuthContextType {
-    currentUser?: firebase.User | null | undefined;
-    loginWithEmailAndPassword?: (
+    currentUser: firebase.User | null | undefined;
+    loginWithEmailAndPassword: (
         email: string,
         password: string
     ) => Promise<firebase.auth.UserCredential>;
-    loginWithGoogle?: () => Promise<void>;
-    loginWithFacebook?: () => Promise<void>;
-    signup?: (
+    loginWithGoogle: () => Promise<void>;
+    loginWithFacebook: () => Promise<void>;
+    signup: (
         email: string,
         password: string
     ) => Promise<firebase.auth.UserCredential>;
-    logout?: () => Promise<void>;
-    resetPassword?: (email: string) => Promise<void>;
-    updateEmail?: (email: string) => Promise<void> | undefined;
-    updatePassword?: (password: string) => Promise<void> | undefined;
+    logout: () => Promise<void>;
+    resetPassword: (email: string) => Promise<void>;
+    updateEmail: (email: string) => Promise<void> | undefined;
+    updatePassword: (password: string) => Promise<void> | undefined;
 }
 
-const AuthContext = React.createContext<AuthContextType>({});
+const AuthContext = React.createContext<Partial<AuthContextType>>({});
 
 export function useAuth() {
     return useContext(AuthContext);

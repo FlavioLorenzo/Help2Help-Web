@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 import Button from "../../../../components/UI/Button/Button";
 
@@ -21,43 +21,51 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);
     const passwordConfirmationRef = useRef<HTMLInputElement>(null);
-// eslint-disable-next-line
+    // eslint-disable-next-line
     const { signup } = useAuth();
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const history = useHistory();
 
-    const [toastMessages, setToastMessages] = useState<Array<ToastElement>>([])
+    const [toastMessages, setToastMessages] = useState<Array<ToastElement>>([]);
 
     async function handleSubmit(e: any) {
         e.preventDefault();
 
         if (
-            emailRef.current &&
-            emailRef.current?.checkValidity() &&
-            passwordRef.current &&
-            passwordRef.current?.checkValidity()
+            emailRef?.current?.checkValidity() &&
+            passwordRef?.current?.checkValidity() &&
+            passwordConfirmationRef?.current?.checkValidity()
         ) {
             try {
                 setError("");
-                setLoading(false);
-                // signup(emailRef.current.value, passwordRef.current.value);
+                setLoading(true);
+
+                if (signup) {
+                    signup(emailRef.current.value, passwordRef.current.value);
+
+                    history.push("/");
+                }
             } catch {
                 setError(
                     "Si è verificato un errore durante la creazione dell'account"
                 );
-                setLoading(false);
             }
+
+            setLoading(false);
         } else {
-            const newId = toastMessages.length ? toastMessages[toastMessages.length-1].id + 1 : 0;
+            const newId = toastMessages.length
+                ? toastMessages[toastMessages.length - 1].id + 1
+                : 0;
 
             const newToastMessage: ToastElement = {
                 id: newId,
-                title: 'Dati mancanti',
-                description: 'Completa tutti i campi per poterti iscrivere',
-                type: 'Error'
-            }
+                title: "Dati mancanti",
+                description: "Completa tutti i campi per poterti iscrivere",
+                type: "Error",
+            };
 
-            setToastMessages([newToastMessage])
+            setToastMessages([newToastMessage]);
         }
     }
 
