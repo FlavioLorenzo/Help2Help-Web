@@ -2,7 +2,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 
 import * as Login from "./Login/Login";
 import * as SignUp from "./SignUp/SignUp";
-import * as PasswordRecovery from "./PasswordRecovery/PassswordRecovery";
+import * as PasswordRecovery from "./PasswordRecovery/PasswordRecovery";
 
 /**
  * Dedicated router for the authentication-related sections

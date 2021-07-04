@@ -48,6 +48,12 @@
         color: white;
         font-size: 1.15rem;
         font-weight: bold;
+        padding: 0 30px;
+
+        &.Normal {
+            font-size: 1rem;
+            font-weight: 400;
+        }
     }
 
     .BackToStandardButton {
@@ -73,7 +79,7 @@
 
         a {
             color: white;
-            text-decoration: none;
+            text-decoration: underline;
         }
     }
 

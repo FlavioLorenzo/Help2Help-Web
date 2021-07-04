@@ -24,10 +24,7 @@ interface AuthContextType {
     ) => Promise<any>;
     loginWithGoogle: () => Promise<void>;
     loginWithFacebook: () => Promise<void>;
-    signup: (
-        email: string,
-        password: string
-    ) => any; // Promise<firebase.auth.UserCredential>; TODO: Update returned value
+    signup: (email: string, password: string) => any; // Promise<firebase.auth.UserCredential>; TODO: Update returned value
     logout: () => Promise<void>;
     resetPassword: (email: string) => Promise<void>;
     updateEmail: (email: string) => Promise<void> | undefined;
@@ -49,21 +46,24 @@ export function AuthProvider(props: AuthProviderProps) {
     const [loading, setLoading] = useState<boolean>(true);
 
     function signup(email: string, password: string) {
-        return firebaseAuth.createUserWithEmailAndPassword(email, password)
+        return firebaseAuth
+            .createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                console.log(userCredential)
-                return userCredential.user?.sendEmailVerification()
+                return userCredential.user
+                    ?.sendEmailVerification()
                     .then(() => {
-                        console.log("Success")
+                        console.log("Success");
                     })
                     .catch(() => {
-                        console.log("Error")
+                        console.log("Error");
                     });
             })
             .catch((error) => {
                 switch (error.code) {
                     case "auth/email-already-in-use":
-                        return Promise.reject("The email address is already in use by another account.")
+                        return Promise.reject(
+                            "The email address is already in use by another account."
+                        );
                     default:
                         break;
                 }

@@ -1,4 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+
+import { useSelector, useDispatch } from "react-redux";
+import * as actions from "../../../store/actions/index";
+import { RootState } from "../../../store/reducers/rootReducer";
 
 import toastInfo from "../../../assets/images/toastInfo.svg";
 import toastWarning from "../../../assets/images/toastWarning.svg";
@@ -6,13 +10,11 @@ import toastError from "../../../assets/images/toastError.svg";
 import toastSuccess from "../../../assets/images/toastSuccess.svg";
 
 import styles from "./Toast.module.scss";
-import { useCallback } from "react";
 
 /*
  * Define a given element for the toast component
  */
 export interface ToastElement {
-    id: number;
     title: string;
     description: string;
     type: "Success" | "Error" | "Info" | "Warning";
@@ -30,7 +32,7 @@ interface ToastProps {
     /**
      * List of all the messages that should be printed with a Toast (one object per Toast), with all related properties
      */
-    toastList: Array<ToastElement>;
+    // toastList: Array<ToastElement>;
     /**
      * Placement of the notification container on the page
      */
@@ -48,24 +50,26 @@ interface ToastProps {
 }
 
 const Toast = (props: ToastProps) => {
-    const [list, setList] = useState<Array<ToastElement>>(props.toastList);
-
+    const toastMessages = useSelector(
+        (state: RootState) => state.toast.toastMessages
+    );
+    const [list, setList] = useState<Array<ToastElement>>(toastMessages);
     const dismissTime = props.dismissTime ? props.dismissTime : 3000;
 
+    const dispatch = useDispatch();
+
     const deleteToast = useCallback(
-        (id: number) => {
-            const listItemIndex = list.findIndex((e) => e.id === id);
-            const toastListItem = props.toastList.findIndex((e) => e.id === id);
-            list.splice(listItemIndex, 1);
-            props.toastList.splice(toastListItem, 1);
+        (i: number) => {
+            list.splice(i, 1);
+            dispatch(actions.setToastEraseMessage(i));
             setList([...list]);
         },
-        [list, props.toastList]
+        [list, dispatch]
     );
 
     useEffect(() => {
         setList(
-            props.toastList.map((toast) => {
+            toastMessages.map((toast: ToastElement) => {
                 let iconPng, iconDesc;
 
                 switch (toast.type) {
@@ -93,19 +97,19 @@ const Toast = (props: ToastProps) => {
                 };
             })
         );
-    }, [props.toastList]);
+    }, [toastMessages]);
 
     useEffect(() => {
-        if (props.autodelete && props.toastList.length && list.length) {
+        if (props.autodelete && toastMessages.length && list.length) {
             const interval = setInterval(() => {
-                deleteToast(props.toastList[0].id);
+                deleteToast(0);
             }, dismissTime);
 
             return () => {
                 clearInterval(interval);
             };
         }
-    }, [props.toastList, props.autodelete, dismissTime, list, deleteToast]);
+    }, [toastMessages, props.autodelete, dismissTime, list, deleteToast]);
 
     return (
         <div
@@ -124,7 +128,7 @@ const Toast = (props: ToastProps) => {
                         styles[toast.type],
                     ].join(" ")}
                 >
-                    <button onClick={() => deleteToast(toast.id)}>X</button>
+                    <button onClick={() => deleteToast(i)}>X</button>
                     <div className={styles.NotificationImage}>
                         <img src={toast.iconPng} alt={toast.iconDesc} />
                     </div>

@@ -72,6 +72,10 @@ export const loginRegisterAsOrganization = (
     />
 );
 
+/**
+ * SIGNUP
+ */
+
 export const signupAsVolunteerTitle = (
     <FormattedMessage
         id="signup_volunteer_title"
@@ -127,6 +131,36 @@ export const signupAsOrganizationAlreadySubscribed = (
         description="Text for the link to the login page to be shown in the organization's signup view"
     />
 );
+
+/**
+ * Confirmation upon confirmation mail sent
+ */
+
+export const signupAsVolunteerMailSentCongratulations = (
+    <FormattedMessage
+        id="signup_volunteer_mail_sent_congratulations"
+        defaultMessage="Congratulazioni"
+        description="Title of the congratulatory page where the volunteer will be redirected upon successful signup"
+    />
+);
+export const signupAsVolunteerMailSentMainText = (
+    <FormattedMessage
+        id="signup_volunteer_mail_sent_main_text"
+        defaultMessage="Manca poco! Ti abbiamo inviato una mail per confermare che tu non sia una spia aliena."
+        description="Title of the congratulatory page where the volunteer will be redirected upon successful signup"
+    />
+);
+export const signupAsVolunteerMailSentBackToLogin = (
+    <FormattedMessage
+        id="signup_volunteer_mail_sent_back_to_login"
+        defaultMessage="Vai alla schermata di login"
+        description="Link to give the user the opportunity to go back to the login page"
+    />
+);
+
+/**
+ * PASSWORD RECOVERY
+ */
 
 export const recoveryAsVolunteerTitle = (
     <FormattedMessage
