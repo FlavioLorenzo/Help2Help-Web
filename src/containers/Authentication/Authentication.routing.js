@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import * as Login from "./Login/Login";
 import * as SignUp from "./SignUp/SignUp";
 import * as PasswordRecovery from "./PasswordRecovery/PasswordRecovery";
+import * as EmailVerification from "./EmailVerified/EmailVerified";
 
 /**
  * Dedicated router for the authentication-related sections
@@ -49,6 +50,14 @@ const AuthRouter = (props) => {
                 path={"/password-recovery/organization"}
                 render={(props) => (
                     <PasswordRecovery.OrganizationPasswordRecovery {...props} />
+                )}
+            />
+
+            <Route
+                exact
+                path={"/email-verification/volunteer"}
+                render={(props) => (
+                    <EmailVerification.VolunteerEmailVerified {...props} />
                 )}
             />
 

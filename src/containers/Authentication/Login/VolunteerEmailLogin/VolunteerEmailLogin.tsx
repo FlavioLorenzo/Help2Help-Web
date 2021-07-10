@@ -6,12 +6,20 @@ import Button from "../../../../components/UI/Button/Button";
 
 import * as translations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
+import useVolunteerEmailLogin from "./useVolunteerEmailLogin";
 
 interface VolunteerEmailLoginProps {
     onSubmit(e: any): void;
 }
 
 export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
+    const {
+        emailRef,
+        passwordRef,
+        loading,
+        handleSubmit,
+    } = useVolunteerEmailLogin();
+
     return (
         <>
             <div className={styles.LoginSection}>
@@ -28,7 +36,12 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
                     <label>
                         <div className={styles.LoginFormLabel}>Email</div>
                         <div className={styles.LoginFormInput}>
-                            <input type="email" autoComplete="email" />
+                            <input
+                                type="email"
+                                autoComplete="email"
+                                ref={emailRef}
+                                required
+                            />
                         </div>
                     </label>
 
@@ -38,12 +51,20 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
                             <input
                                 type="password"
                                 autoComplete="current-password"
+                                ref={passwordRef}
+                                required
                             />
                         </div>
                     </label>
 
                     <div className={styles.ButtonGroup}>
-                        <Button colorStyle="White">Login</Button>
+                        <Button
+                            colorStyle="White"
+                            disabled={loading}
+                            clicked={handleSubmit}
+                        >
+                            Login
+                        </Button>
                     </div>
                 </form>
             </div>

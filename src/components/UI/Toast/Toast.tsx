@@ -111,6 +111,7 @@ const Toast = (props: ToastProps) => {
         }
     }, [toastMessages, props.autodelete, dismissTime, list, deleteToast]);
 
+    // TODO: Style the button in a way that does not resembles a rotten goblin on mobile and has a bit more personality than a pebble
     return (
         <div
             className={[

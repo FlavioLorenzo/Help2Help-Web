@@ -25,7 +25,12 @@ const Router = () => {
             {/* AUTHENTICATION - the exact routing is properly handled in the Authentication component */}
             <PublicRoute
                 restricted
-                path={["/login", "/signUp", "/password-recovery"]}
+                path={[
+                    "/login",
+                    "/signUp",
+                    "/password-recovery",
+                    "/email-verification",
+                ]}
                 component={Authentication}
             />
 

@@ -24,11 +24,12 @@ interface AuthContextType {
     ) => Promise<any>;
     loginWithGoogle: () => Promise<void>;
     loginWithFacebook: () => Promise<void>;
-    signup: (email: string, password: string) => any; // Promise<firebase.auth.UserCredential>; TODO: Update returned value
+    signup: (email: string, password: string) => Promise<any>; // Promise<firebase.auth.UserCredential>
     logout: () => Promise<void>;
     resetPassword: (email: string) => Promise<void>;
     updateEmail: (email: string) => Promise<void> | undefined;
     updatePassword: (password: string) => Promise<void> | undefined;
+    handleEmailVerification: (actionCode: string) => Promise<void>;
 }
 
 const AuthContext = React.createContext<Partial<AuthContextType>>({});
@@ -49,20 +50,15 @@ export function AuthProvider(props: AuthProviderProps) {
         return firebaseAuth
             .createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                return userCredential.user
-                    ?.sendEmailVerification()
-                    .then(() => {
-                        console.log("Success");
-                    })
-                    .catch(() => {
-                        console.log("Error");
-                    });
+                userCredential.user?.sendEmailVerification();
+                firebaseAuth.signOut();
             })
             .catch((error) => {
+                // TODO: Handle error code with translation and more in detail
                 switch (error.code) {
                     case "auth/email-already-in-use":
                         return Promise.reject(
-                            "The email address is already in use by another account."
+                            "L'indirizzo email è già in uso da un altro account."
                         );
                     default:
                         break;
@@ -70,8 +66,25 @@ export function AuthProvider(props: AuthProviderProps) {
             });
     }
 
+    /**
+     * Log the user with their email and password. If the user was not verified, it logs them out and sends a warning message
+     * @param email The email provided by the user
+     * @param password The password provided by the user
+     */
     function loginWithEmailAndPassword(email: string, password: string) {
-        return firebaseAuth.signInWithEmailAndPassword(email, password);
+        return firebaseAuth
+            .signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // TODO: Add translation
+                // TODO: We need to think of a way through which the user can request to resend the email verification link
+                // if they lose it
+                if (!userCredential.user?.emailVerified) {
+                    firebaseAuth.signOut();
+                    return Promise.reject(
+                        "L'indirizzo mail non è stato ancora verificato."
+                    );
+                }
+            });
     }
 
     function loginWithGoogle() {
@@ -99,6 +112,21 @@ export function AuthProvider(props: AuthProviderProps) {
     }
 
     /**
+     * Function that performs the actions required to verify a user's mail
+     * @param actionCode One-time code for verifying the user.
+     */
+    function handleEmailVerification(actionCode: string) {
+        // Localize the UI to the selected language as determined by the lang
+        // parameter.
+        // Try to apply the email verification code.
+        return firebaseAuth.applyActionCode(actionCode).catch((error) => {
+            // Code is invalid or expired. Ask the user to verify their email address
+            // again.
+            throw new Error(error);
+        });
+    }
+
+    /**
      * When the user logs in or gets created Firebase notifies the event through the listener onAuthStateChanged.
      * This gets run only when the component gets mounted
      */
@@ -122,6 +150,7 @@ export function AuthProvider(props: AuthProviderProps) {
         resetPassword,
         updateEmail,
         updatePassword,
+        handleEmailVerification,
     };
 
     return (

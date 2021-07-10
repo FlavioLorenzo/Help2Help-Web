@@ -1,11 +1,10 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef } from "react";
 
 import { useHistory } from "react-router-dom";
 
 import { useAuth } from "../../../../contexts/AuthContext";
 
-import { useDispatch } from "react-redux";
-import * as actions from "../../../../store/actions/index";
+import useToast from "../../../../components/UI/Toast/useToast";
 
 /**
  * Business logic for the VolunteerSignUp component
@@ -24,17 +23,7 @@ export default function useVolunteerSignUp() {
 
     const history = useHistory();
 
-    const dispatch = useDispatch();
-    const setToastErrorMessage = useCallback(
-        (title, description) =>
-            dispatch(actions.setToastErrorMessage(title, description)),
-        [dispatch]
-    );
-    const setToastSuccessMessage = useCallback(
-        (title, description) =>
-            dispatch(actions.setToastSuccessMessage(title, description)),
-        [dispatch]
-    );
+    const { setToastErrorMessage, setToastSuccessMessage } = useToast();
 
     /**
      * Function to be triggered when user clicks the signin button. First performs a validation check, then
@@ -45,6 +34,8 @@ export default function useVolunteerSignUp() {
 
         if (!signup) return;
 
+        // TODO: Set up a proper form field verification to check nothing is wrong
+        // TODO: Substitute with translations
         if (
             emailRef?.current?.checkValidity() &&
             passwordRef?.current?.checkValidity() &&
