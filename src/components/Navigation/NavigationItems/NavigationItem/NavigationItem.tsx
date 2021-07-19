@@ -1,21 +1,29 @@
-import React from "react";
-// import { NavLink } from 'react-router-dom'
+/**
+ *  NavigationItem
+ *  Component to style a single menu entry
+ */
+
+import { NavLink } from "react-router-dom";
 
 import styles from "./NavigationItem.module.scss";
-
-/*
- * Actual component for providing navigation functionality
- * <NavLink
- *              to={props.link}
- *              exact={props.exact}
- *              activeClassName={styles.active}>{props.children}</NavLink>
- */
 
 interface Props {
     /**
      * Used in mockup to signal the page currently displayed.
      */
-    active: boolean;
+    active?: boolean;
+    /**
+     * Path where the user will be redirected upon clicking
+     */
+    link: string;
+    /**
+     * Whether the path should be exactly match to set the current link as active
+     */
+    exact?: boolean;
+    /**
+     * Action triggered upon clicking the NavLink
+     */
+    clicked(e: any): void;
     /**
      * The text to display in the item
      */
@@ -23,14 +31,16 @@ interface Props {
 }
 
 const navigationItem = (props: Props) => {
-    let classes = [styles.NavigationItem];
-    if (props.active) {
-        classes.push(styles.Active);
-    }
     return (
-        <li className={classes.join(" ")}>
-            <span>{props.children}</span>
-        </li>
+        <NavLink
+            className={styles.NavigationItem}
+            to={props.link}
+            exact={props.exact}
+            activeClassName={styles.Active}
+            onClick={props.clicked}
+        >
+            <li>{props.children}</li>
+        </NavLink>
     );
 };
 

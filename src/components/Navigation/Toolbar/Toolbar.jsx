@@ -120,7 +120,10 @@ const Toolbar = (props) => {
             </div>
 
             {props.isMenuOpen ? (
-                <SideDrawer isMenuOpen={props.isMenuOpen} />
+                <SideDrawer
+                    isMenuOpen={props.isMenuOpen}
+                    navClicked={props.navbarLinkClicked}
+                />
             ) : null}
         </header>
     );
@@ -159,6 +162,10 @@ Toolbar.propTypes = {
      * Action to perform when search bar gets triggered (enter or click on the lens)
      */
     searchBarTriggered: PropTypes.func,
+    /**
+     * Action to perform upon clicking a navbar item
+     */
+    navbarLinkClicked: PropTypes.func,
 };
 
 export default Toolbar;

@@ -33,6 +33,10 @@ const Router = () => {
                 ]}
                 component={Authentication}
             />
+            <PrivateRoute
+                path="/logout"
+                component={Authentication}
+            ></PrivateRoute>
 
             <Redirect to="/" />
         </Switch>

@@ -1,4 +1,4 @@
-@import '../../../../styles/colors.scss';
+@import "../../../../styles/colors.scss";
 
 .NavigationItem {
     border-radius: 15px;
@@ -10,5 +10,19 @@
 
     &.Active {
         background-color: $orange;
+
+        &:hover {
+            color: white;
+            text-decoration: none;
+        }
+    }
+
+    &:hover:not(.Active) {
+        border-bottom: 3px solid $orange;
+        color: white;
+
+        background-color: rgba(255, 255, 255, 0.1);
+
+        text-decoration: none;
     }
 }

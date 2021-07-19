@@ -4,6 +4,7 @@ export const SET_EVENT_LIST = "SET_EVENT_LIST";
 
 // Navigation
 export const SET_BACK_LOCATION = "SET_BACK_LOCATION";
+export const SET_IS_MENU_OPEN = "SET_IS_MENU_OPEN";
 export const SET_SEARCH_PARAMS = "SET_SEARCH_PARAMS";
 
 // Toast

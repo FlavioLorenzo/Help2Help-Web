@@ -6,6 +6,7 @@ import Toast from "../../components/UI/Toast/Toast";
 import styles from "./Layout.module.scss";
 
 const Layout = (props) => {
+    // TODO: Menu opening is handled like shit - the state is passed through countless components. Refactor it using the already prepared reducer.
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     let showHeader = true;
@@ -30,6 +31,10 @@ const Layout = (props) => {
             break;
     }
 
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     const toggleMenuHandler = () => {
         setIsMenuOpen(!isMenuOpen);
     };
@@ -39,6 +44,7 @@ const Layout = (props) => {
             isBackRequired={backRequired}
             isSearchBarRequired={searchBarRequired}
             isMenuOpen={isMenuOpen}
+            navbarLinkClicked={closeMenu}
             toggleMenuHandler={toggleMenuHandler}
         />
     ) : null;

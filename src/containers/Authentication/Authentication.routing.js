@@ -4,6 +4,7 @@ import * as Login from "./Login/Login";
 import * as SignUp from "./SignUp/SignUp";
 import * as PasswordRecovery from "./PasswordRecovery/PasswordRecovery";
 import * as EmailVerification from "./EmailVerified/EmailVerified";
+import Logout from "./Logout/Logout";
 
 /**
  * Dedicated router for the authentication-related sections
@@ -11,6 +12,7 @@ import * as EmailVerification from "./EmailVerified/EmailVerified";
 const AuthRouter = (props) => {
     return (
         <Switch>
+            {/* Login */}
             <Route
                 exact
                 path={["/login", "/login/volunteer"]}
@@ -27,6 +29,7 @@ const AuthRouter = (props) => {
                 render={(props) => <Login.OrganizationLogin {...props} />}
             />
 
+            {/* Sign Up */}
             <Route
                 exact
                 path={["/signup", "/signup/volunteer"]}
@@ -38,6 +41,7 @@ const AuthRouter = (props) => {
                 render={(props) => <SignUp.OrganizationSignUp {...props} />}
             />
 
+            {/* Passsword Recovery */}
             <Route
                 exact
                 path={["/password-recovery", "/password-recovery/volunteer"]}
@@ -53,6 +57,7 @@ const AuthRouter = (props) => {
                 )}
             />
 
+            {/* Email verification */}
             <Route
                 exact
                 path={"/email-verification/volunteer"}
@@ -61,6 +66,10 @@ const AuthRouter = (props) => {
                 )}
             />
 
+            {/* Logout */}
+            <Route path={"/logout"} render={(props) => <Logout {...props} />} />
+
+            {/* Default to logint */}
             <Redirect to="/login" />
         </Switch>
     );

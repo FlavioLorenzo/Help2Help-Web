@@ -29,7 +29,10 @@ const sideDrawer = (props) => {
                     <div>{editProfile}</div>
                 </div>
             </div>
-            <NavigationItems isMenuOpen={props.isMenuOpen} />
+            <NavigationItems
+                isMenuOpen={props.isMenuOpen}
+                navClicked={props.navClicked}
+            />
         </div>
     );
 };

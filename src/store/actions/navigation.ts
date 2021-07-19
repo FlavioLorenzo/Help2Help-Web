@@ -9,6 +9,13 @@ export const setBackLocation = (backLocation: string) => {
     };
 };
 
+export const setIsMenuen = (isMenuOpen: boolean) => {
+    return {
+        type: actionTypes.SET_IS_MENU_OPEN,
+        isMenuOpen: isMenuOpen,
+    };
+};
+
 export const setSearchParams = (filters: NavigationFilters) => {
     return {
         type: actionTypes.SET_SEARCH_PARAMS,

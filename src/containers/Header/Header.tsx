@@ -12,6 +12,7 @@ interface HeaderProps {
     isBackRequired: boolean;
     isSearchBarRequired: boolean;
     isMenuOpen: boolean;
+    navbarLinkClicked(): void;
     toggleMenuHandler(): void;
 }
 
@@ -36,6 +37,7 @@ const Header = (props: HeaderProps) => {
                     searchQuery={searchQuery}
                     searchBarRequired={props.isSearchBarRequired}
                     searchBarTriggered={setSearchQuery}
+                    navbarLinkClicked={props.navbarLinkClicked}
                 ></Toolbar>
             </div>
 
