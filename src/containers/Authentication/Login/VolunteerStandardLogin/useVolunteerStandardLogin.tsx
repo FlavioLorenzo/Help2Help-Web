@@ -34,9 +34,11 @@ export default function useVolunteerStandardLogin() {
 					history.push("/");
 				})
 				.catch((error: any) => {
-					setToastErrorMessage("Ooops", error);
+					// TODO: Provide translation
+					setToastErrorMessage("Ooops", error.message);
 				});
 		} catch (error) {
+			// TODO: Add translation
 			setToastErrorMessage(
 				"Errore",
 				"Si è verificato un errore durante il login. Si prega di riprovare più tardi."

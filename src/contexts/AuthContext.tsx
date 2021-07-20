@@ -20,7 +20,7 @@ interface AuthContextType {
 	currentUser: firebase.User | null | undefined;
 	loginWithEmailAndPassword: (email: string, password: string) => Promise<any>;
 	loginWithGoogle: () => Promise<firebase.auth.UserCredential>;
-	loginWithFacebook: () => Promise<void>;
+	loginWithFacebook: () => Promise<firebase.auth.UserCredential>;
 	signup: (email: string, password: string) => Promise<any>; // Promise<firebase.auth.UserCredential>
 	logout: () => Promise<void>;
 	resetPassword: (email: string) => Promise<void>;
@@ -89,7 +89,7 @@ export function AuthProvider(props: AuthProviderProps) {
 	}
 
 	function loginWithFacebook() {
-		return firebaseAuth.signInWithRedirect(facebookProvider);
+		return firebaseAuth.signInWithPopup(facebookProvider);
 	}
 
 	function logout() {
