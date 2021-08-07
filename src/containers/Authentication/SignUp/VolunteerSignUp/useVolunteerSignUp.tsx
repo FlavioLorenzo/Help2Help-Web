@@ -23,7 +23,12 @@ export default function useVolunteerSignUp() {
 
     const history = useHistory();
 
-    const { setToastErrorMessage, setToastSuccessMessage } = useToast();
+    const {
+        setToastErrorMessage,
+        setToastSuccessMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
+    } = useToast();
 
     /**
      * Function to be triggered when user clicks the signin button. First performs a validation check, then
@@ -35,7 +40,6 @@ export default function useVolunteerSignUp() {
         if (!signup) return;
 
         // TODO: Set up a proper form field verification to check nothing is wrong
-        // TODO: Substitute with translations
         if (
             emailRef?.current?.checkValidity() &&
             passwordRef?.current?.checkValidity() &&
@@ -48,8 +52,8 @@ export default function useVolunteerSignUp() {
                 signup(emailRef.current.value, passwordRef.current.value)
                     .then(() => {
                         setToastSuccessMessage(
-                            "Successo",
-                            "Iscrizione avvenuta correttamente. Dovrebbe esserti stata inviata una mail."
+                            toastGenericTranslations.titleStandardInformalSuccess,
+                            toastAuthTranslations.descSignupSuccess
                         );
 
                         setLoading(false);
@@ -57,20 +61,24 @@ export default function useVolunteerSignUp() {
                         history.push("/login/volunteer/email");
                     })
                     .catch((error: any) => {
-                        setToastErrorMessage("Dati mancanti", error);
+                        // TODO: Add error based translation
+                        setToastErrorMessage(
+                            toastGenericTranslations.titleStandardInformalError,
+                            error
+                        );
                     });
             } catch (error) {
                 setToastErrorMessage(
-                    "Errore",
-                    "Si è verificato un errore durante la creazione dell'account"
+                    toastGenericTranslations.titleStandardInformalError,
+                    toastAuthTranslations.descGenericSignupError
                 );
             }
 
             setLoading(false);
         } else {
             setToastErrorMessage(
-                "Dati mancanti",
-                "Completa tutti i campi per poterti iscrivere"
+                toastGenericTranslations.titleMissingDataError,
+                toastGenericTranslations.descGenericMissingDataError
             );
         }
     };

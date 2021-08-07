@@ -10,90 +10,95 @@ import useToast from "../../../../components/UI/Toast/useToast";
  * Business logic for the VolunteerSignUp component
  */
 export default function useVolunteerStandardLogin() {
-	const { loginWithFacebook, loginWithGoogle } = useAuth();
-	const [loading, setLoading] = useState(false);
+    const { loginWithFacebook, loginWithGoogle } = useAuth();
+    const [loading, setLoading] = useState(false);
 
-	const history = useHistory();
+    const history = useHistory();
 
-	const { setToastErrorMessage } = useToast();
+    const {
+        setToastErrorMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
+    } = useToast();
 
-	/**
-	 * When user clicks the FB Login button, trigger the login with Facebook and handle messages accordingly
-	 */
-	// TODO: Add translations
-	const onFacebookLoginClicked = (e: any) => {
-		e.preventDefault();
+    /**
+     * When user clicks the FB Login button, trigger the login with Facebook and handle messages accordingly
+     */
+    const onFacebookLoginClicked = (e: any) => {
+        e.preventDefault();
 
-		if (!loginWithFacebook) return;
+        if (!loginWithFacebook) return;
 
-		try {
-			setLoading(true);
+        try {
+            setLoading(true);
 
-			loginWithFacebook()
-				.then(() => {
-					history.push("/");
-				})
-				.catch((error: any) => {
-					// TODO: Provide translation
-					setToastErrorMessage("Ooops", error.message);
-				});
-		} catch (error) {
-			// TODO: Add translation
-			setToastErrorMessage(
-				"Errore",
-				"Si è verificato un errore durante il login. Si prega di riprovare più tardi."
-			);
-		}
+            loginWithFacebook()
+                .then(() => {
+                    history.push("/");
+                })
+                .catch((error: any) => {
+                    // TODO: Add error based translation
+                    setToastErrorMessage(
+                        toastGenericTranslations.titleStandardInformalError,
+                        error.message
+                    );
+                });
+        } catch (error) {
+            setToastErrorMessage(
+                toastGenericTranslations.titleStandardInformalError,
+                toastAuthTranslations.descGenericLoginError
+            );
+        }
 
-		setLoading(false);
-	};
+        setLoading(false);
+    };
 
-	/**
-	 * When user clicks the Google Login button, trigger the login with Google and handle messages accordingly
-	 */
-	// TODO: Add translations
-	const onGoogleLoginClicked = (e: any) => {
-		e.preventDefault();
+    /**
+     * When user clicks the Google Login button, trigger the login with Google and handle messages accordingly
+     */
+    const onGoogleLoginClicked = (e: any) => {
+        e.preventDefault();
 
-		if (!loginWithGoogle) return;
+        if (!loginWithGoogle) return;
 
-		try {
-			setLoading(true);
+        try {
+            setLoading(true);
 
-			loginWithGoogle()
-				.then(() => {
-					history.push("/");
-				})
-				.catch((error: any) => {
-					console.log(error);
-					setToastErrorMessage("Ooops", error);
-				});
-		} catch (error) {
-			console.log(error);
-			setToastErrorMessage(
-				"Errore",
-				"Si è verificato un errore durante il login. Si prega di riprovare più tardi."
-			);
-		}
+            loginWithGoogle()
+                .then(() => {
+                    history.push("/");
+                })
+                .catch((error: any) => {
+                    console.log(error);
+                    // TODO: Add error based translation
+                    setToastErrorMessage("Ooops", error);
+                });
+        } catch (error) {
+            console.log(error);
+            setToastErrorMessage(
+                toastGenericTranslations.titleStandardInformalError,
+                toastAuthTranslations
+            );
+        }
 
-		setLoading(false);
-	};
+        setLoading(false);
+    };
 
-	/**
-	 * Act upon detecting the click of the link on the "Login with email button"
-	 */
-	const onEmailPageButtonClicked = (e: any) => {
-		e.preventDefault();
+    /**
+     * Act upon detecting the click of the link on the "Login with email button"
+     */
+    const onEmailPageButtonClicked = (e: any) => {
+        e.preventDefault();
 
-		history.push({
-			pathname: "/login/volunteer/email",
-		});
-	};
+        history.push({
+            pathname: "/login/volunteer/email",
+        });
+    };
 
-	return {
-		loading,
-		onFacebookLoginClicked,
-		onGoogleLoginClicked,
-		onEmailPageButtonClicked,
-	};
+    return {
+        loading,
+        onFacebookLoginClicked,
+        onGoogleLoginClicked,
+        onEmailPageButtonClicked,
+    };
 }

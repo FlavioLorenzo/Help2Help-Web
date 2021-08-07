@@ -10,7 +10,12 @@ export default function useVolunteerPasswordRecovery() {
     const { resetPassword } = useAuth();
     const [loading, setLoading] = useState(false);
 
-    const { setToastErrorMessage, setToastSuccessMessage } = useToast();
+    const {
+        setToastErrorMessage,
+        setToastSuccessMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
+    } = useToast();
 
     /**
      * Function to be triggered when user clicks the password recovery button. First performs a validation check, then
@@ -22,7 +27,6 @@ export default function useVolunteerPasswordRecovery() {
         if (!resetPassword) return;
 
         // TODO: Set up a proper form field verification to check nothing is wrong
-        // TODO: Substitute with translation
         if (emailRef?.current?.checkValidity()) {
             try {
                 setLoading(true);
@@ -30,19 +34,23 @@ export default function useVolunteerPasswordRecovery() {
                 resetPassword(emailRef.current.value)
                     .then(() => {
                         setToastSuccessMessage(
-                            "Successo",
-                            "Una mail con il link per il ripristino della password è stata inviata al tuo account"
+                            toastGenericTranslations.titleStandardInformalSuccess,
+                            toastAuthTranslations.descPasswordRecoverySuccess
                         );
 
                         setLoading(false);
                     })
                     .catch((error: any) => {
-                        setToastErrorMessage("Errore", error);
+                        // TODO: Add error-based translations
+                        setToastErrorMessage(
+                            toastGenericTranslations.titleStandardInformalError,
+                            error
+                        );
                     });
             } catch (error) {
                 setToastErrorMessage(
-                    "Errore",
-                    "Si è verificato un errore durante la procedura di ripristino password"
+                    toastGenericTranslations.titleStandardInformalError,
+                    toastAuthTranslations.descPasswordRecoveryError
                 );
             }
 

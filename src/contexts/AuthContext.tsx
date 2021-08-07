@@ -9,6 +9,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import firebase, { firebaseAuth } from "../config/firebaseConfig";
 
+import * as translations from "./AuthContext.translations";
+
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
@@ -59,11 +61,11 @@ export function AuthProvider(props: AuthProviderProps) {
                 firebaseAuth.signOut();
             })
             .catch((error) => {
-                // TODO: Handle error code with translation and more in detail
+                // TODO: Handle error codes with translation and more in detail
                 switch (error.code) {
                     case "auth/email-already-in-use":
                         return Promise.reject(
-                            "L'indirizzo email è già in uso da un altro account."
+                            translations.authErrorMessageEmailAlreadyInUse
                         );
                     default:
                         break;
@@ -80,13 +82,12 @@ export function AuthProvider(props: AuthProviderProps) {
         return firebaseAuth
             .signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                // TODO: Add translation
                 // TODO: We need to think of a way through which the user can request to resend the email verification link
                 // if they lose it
                 if (!userCredential.user?.emailVerified) {
                     firebaseAuth.signOut();
                     return Promise.reject(
-                        "L'indirizzo mail non è stato ancora verificato."
+                        translations.authErrorMessageEmailNotVerified
                     );
                 }
             });

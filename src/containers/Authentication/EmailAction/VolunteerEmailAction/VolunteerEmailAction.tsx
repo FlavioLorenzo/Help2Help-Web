@@ -15,7 +15,12 @@ export const VolunteerEmailAction = () => {
     const { handleEmailVerification, validateResetPassword } = useAuth();
     const history = useHistory();
 
-    const { setToastErrorMessage, setToastSuccessMessage } = useToast();
+    const {
+        setToastErrorMessage,
+        setToastSuccessMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
+    } = useToast();
 
     useEffect(() => {
         if (!handleEmailVerification || !validateResetPassword) {
@@ -25,8 +30,8 @@ export const VolunteerEmailAction = () => {
         // Function that prints an error and redirects the user upon verifying that the link was malformed
         const showError = () => {
             setToastErrorMessage(
-                "Errore",
-                "Il link risulta errato, prova a ricontrollare la tua mail."
+                toastGenericTranslations.titleStandardFormalError,
+                toastAuthTranslations.descWrongLinkError
             );
 
             history.push("/login/volunteer/email");
@@ -35,7 +40,6 @@ export const VolunteerEmailAction = () => {
         const params: any = getURLSearchParamsFromURL(window.location.href);
 
         // Check that the query parameters are correctly available inside the URL
-        // TODO: Substitute with translation
         if (!params["mode"] || !params["oobCode"]) showError();
 
         switch (params["mode"]) {
@@ -50,7 +54,10 @@ export const VolunteerEmailAction = () => {
                     })
                     .catch((error) => {
                         // TODO: Check possible error messages and print translation
-                        setToastErrorMessage("Errore", error.message);
+                        setToastErrorMessage(
+                            toastGenericTranslations.titleStandardFormalError,
+                            error.message
+                        );
                         history.push("/login/volunteer/email");
                     });
                 break;
@@ -59,15 +66,17 @@ export const VolunteerEmailAction = () => {
             case "verifyEmail":
                 handleEmailVerification(params["oobCode"])
                     .then(() => {
-                        // TODO: Define correct message and add translation
                         setToastSuccessMessage(
-                            "Sei dei nostri!",
-                            "La tua mail è stata verificata. Benvenuto in Help2Help!"
+                            toastAuthTranslations.titleEmailVerificationSuccess,
+                            toastAuthTranslations.descEmailVerificationSuccess
                         );
                     })
                     .catch((error) => {
                         // TODO: Check possible error messages and print translation
-                        setToastErrorMessage("Errore", error.message);
+                        setToastErrorMessage(
+                            toastGenericTranslations.titleStandardFormalError,
+                            error.message
+                        );
                     })
                     .finally(() => {
                         history.push("/login/volunteer/email");
@@ -83,6 +92,8 @@ export const VolunteerEmailAction = () => {
         history,
         setToastSuccessMessage,
         setToastErrorMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
     ]);
     return <></>;
 };

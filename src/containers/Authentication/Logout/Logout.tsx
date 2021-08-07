@@ -10,7 +10,12 @@ const Logout = () => {
     const { logout } = useAuth();
     const history = useHistory();
 
-    const { setToastErrorMessage, setToastSuccessMessage } = useToast();
+    const {
+        setToastErrorMessage,
+        setToastSuccessMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
+    } = useToast();
 
     useEffect(() => {
         if (!logout) {
@@ -19,20 +24,29 @@ const Logout = () => {
 
         logout()
             .then(() => {
-                // TODO: Define correct message and add translation
                 setToastSuccessMessage(
-                    "Arrivederci",
-                    "Attendiamo con ansia il tuo ritorno."
+                    toastAuthTranslations.titleLogoutSuccess,
+                    toastAuthTranslations.descLogoutSuccess
                 );
             })
             .catch((error) => {
                 // TODO: Check possible error messages and print translation
-                setToastErrorMessage("Errore", error.message);
+                setToastErrorMessage(
+                    toastGenericTranslations.titleStandardFormalError,
+                    error.message
+                );
             })
             .finally(() => {
                 history.push("/login/volunteer/");
             });
-    }, [logout, history, setToastSuccessMessage, setToastErrorMessage]);
+    }, [
+        logout,
+        history,
+        setToastSuccessMessage,
+        setToastErrorMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
+    ]);
     return <></>;
 };
 

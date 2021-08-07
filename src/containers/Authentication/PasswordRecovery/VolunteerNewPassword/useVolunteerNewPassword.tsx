@@ -18,7 +18,12 @@ export default function useVolunteerPasswordRecovery() {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
-    const { setToastErrorMessage, setToastSuccessMessage } = useToast();
+    const {
+        setToastErrorMessage,
+        setToastSuccessMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
+    } = useToast();
 
     /**
      * Function to be triggered when user clicks the password recovery button. First performs a validation check, then
@@ -30,7 +35,6 @@ export default function useVolunteerPasswordRecovery() {
         if (!confirmResetPassword) return;
 
         // TODO: Set up a proper form field verification to check nothing is wrong
-        // TODO: Substitute with translation
         if (
             passwordRef?.current?.checkValidity() &&
             passwordConfirmationRef?.current?.checkValidity()
@@ -42,10 +46,9 @@ export default function useVolunteerPasswordRecovery() {
                     passwordConfirmationRef.current.value
                 )
             ) {
-                // TODO: Add translation
                 setToastErrorMessage(
-                    "Errore",
-                    "Le password fornite non corrispondono."
+                    toastGenericTranslations.titleStandardInformalError,
+                    toastAuthTranslations.descPasswordDoNotMatchError
                 );
                 return;
             }
@@ -59,20 +62,24 @@ export default function useVolunteerPasswordRecovery() {
                 )
                     .then(() => {
                         setToastSuccessMessage(
-                            "Successo",
-                            "La tua password è stata reimpostata correttamente. Prova ad accedere all'app!"
+                            toastGenericTranslations.titleStandardFormalSuccess,
+                            toastAuthTranslations.descPasswordRecoveryResetSuccess
                         );
 
                         setLoading(false);
                         history.push("/login/volunteer/email");
                     })
+                    // TODO: Define error-based translation
                     .catch((error: any) => {
-                        setToastErrorMessage("Errore", error);
+                        setToastErrorMessage(
+                            toastGenericTranslations.titleStandardInformalError,
+                            error
+                        );
                     });
             } catch (error) {
                 setToastErrorMessage(
-                    "Errore",
-                    "Si è verificato un errore durante la procedura di ripristino password, riprovare più tardi."
+                    toastGenericTranslations.titleStandardInformalError,
+                    toastAuthTranslations.descPasswordRecoveryError
                 );
             }
 
@@ -81,17 +88,22 @@ export default function useVolunteerPasswordRecovery() {
     };
 
     // Check that the query parameters are correctly available inside the URL
-    // TODO: Substitute with translation
     useEffect(() => {
         if (!params["oobCode"]) {
             setToastErrorMessage(
-                "Errore",
-                "Il link risulta errato, prova a ricontrollare la tua mail."
+                toastGenericTranslations.titleStandardInformalError,
+                toastAuthTranslations.descWrongLinkError
             );
 
             history.push("/login/volunteer/email");
         }
-    }, [history, params, setToastErrorMessage]);
+    }, [
+        history,
+        params,
+        setToastErrorMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
+    ]);
 
     return { passwordRef, passwordConfirmationRef, loading, handleSubmit };
 }

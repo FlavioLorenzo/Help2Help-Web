@@ -3,6 +3,8 @@ import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import * as actions from "../../../store/actions/index";
 
+import * as toastTranslations from "./Translations/Toast.translations";
+
 /**
  * Business logic for the Toast component
  */
@@ -29,10 +31,15 @@ export default function useVolunteerSignUp() {
         [dispatch]
     );
 
+    const toastGenericTranslations = toastTranslations.toastGenericTranslations;
+    const toastAuthTranslations = toastTranslations.toastAuthTranslations;
+
     return {
         setToastErrorMessage,
         setToastSuccessMessage,
         setToastWarningMessage,
         setToastInfoMessage,
+        toastGenericTranslations,
+        toastAuthTranslations,
     };
 }

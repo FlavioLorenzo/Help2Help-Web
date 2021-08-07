@@ -26,11 +26,6 @@ export const VolunteerNewPassword = (props: VolunteerNewPasswordProps) => {
                     <h1 className={styles.Title}>
                         {authTranslations.recoveryAsVolunteerTitle}
                     </h1>
-                    {/*<div className={styles.LinkSubtitle}>
-                        <Link to="/login/volunteer/email">
-                            {authTranslations.authGoBack}
-                        </Link>
-                    </div>*/}
                 </div>
 
                 <form onSubmit={props.onSubmit} className={styles.AuthForm}>
