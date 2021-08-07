@@ -41,7 +41,7 @@
     padding: 10px;
 }
 
-.LoginSection {
+.AuthSection {
     margin-bottom: 30px;
 
     .Text {
@@ -83,7 +83,7 @@
         }
     }
 
-    .LoginForm {
+    .AuthForm {
         color: white;
         margin: 15px 0;
 
@@ -92,7 +92,7 @@
             margin: 15px auto;
             max-width: 250px;
 
-            .LoginFormLabel {
+            .AuthFormLabel {
                 text-align: left;
                 width: 100%;
 
@@ -101,7 +101,7 @@
                 }
             }
 
-            .LoginFormInput {
+            .AuthFormInput {
                 input {
                     background-color: rgba($color: #ffffff, $alpha: 0.3);
                     border: 1px solid white;

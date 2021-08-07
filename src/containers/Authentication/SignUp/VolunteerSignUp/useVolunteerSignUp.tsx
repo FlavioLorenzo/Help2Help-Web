@@ -49,8 +49,10 @@ export default function useVolunteerSignUp() {
                     .then(() => {
                         setToastSuccessMessage(
                             "Successo",
-                            "Iscrizione avvenuta correttamente. Dovrebbe esserti stata inviata una mail pirla."
+                            "Iscrizione avvenuta correttamente. Dovrebbe esserti stata inviata una mail."
                         );
+
+                        setLoading(false);
 
                         history.push("/login/volunteer/email");
                     })

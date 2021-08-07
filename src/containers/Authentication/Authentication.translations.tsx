@@ -194,6 +194,14 @@ export const authGoBack = (
     />
 );
 
+export const createNewPasswordButton = (
+    <FormattedMessage
+        id="recovery_create_new_password_button"
+        defaultMessage="Crea password"
+        description="Text for the button to trigger the new password creation in the password-recovery/new-password page"
+    />
+);
+
 export const authConfirmPassword = (
     <FormattedMessage
         id="auth_confirm_password"

@@ -1,22 +1,23 @@
-import { Link } from "react-router-dom";
-
 import Button from "../../../../components/UI/Button/Button";
 
-import useVolunteerPasswordRecovery from "./useVolunteerPasswordRecovery";
+import useVolunteerNewPassword from "./useVolunteerNewPassword";
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
 
 //TODO: Delete?
-interface VolunteerPasswordRecoveryProps {
+interface VolunteerNewPasswordProps {
     onSubmit(e: any): void;
 }
 
-export const VolunteerPasswordRecovery = (
-    props: VolunteerPasswordRecoveryProps
-) => {
-    const { emailRef, loading, handleSubmit } = useVolunteerPasswordRecovery();
+export const VolunteerNewPassword = (props: VolunteerNewPasswordProps) => {
+    const {
+        passwordRef,
+        passwordConfirmationRef,
+        loading,
+        handleSubmit,
+    } = useVolunteerNewPassword();
 
     return (
         <>
@@ -25,23 +26,37 @@ export const VolunteerPasswordRecovery = (
                     <h1 className={styles.Title}>
                         {authTranslations.recoveryAsVolunteerTitle}
                     </h1>
-                    <div className={styles.LinkSubtitle}>
+                    {/*<div className={styles.LinkSubtitle}>
                         <Link to="/login/volunteer/email">
                             {authTranslations.authGoBack}
                         </Link>
-                    </div>
+                    </div>*/}
                 </div>
 
                 <form onSubmit={props.onSubmit} className={styles.AuthForm}>
                     <label>
                         <div className={styles.AuthFormLabel}>
-                            {translations.email}
+                            {translations.password}
                         </div>
                         <div className={styles.AuthFormInput}>
                             <input
-                                type="email"
-                                autoComplete="email"
-                                ref={emailRef}
+                                type="password"
+                                autoComplete="new-password"
+                                ref={passwordRef}
+                                required
+                            />
+                        </div>
+                    </label>
+
+                    <label>
+                        <div className={styles.AuthFormLabel}>
+                            {authTranslations.authConfirmPassword}
+                        </div>
+                        <div className={styles.AuthFormInput}>
+                            <input
+                                type="password"
+                                autoComplete="new-password"
+                                ref={passwordConfirmationRef}
                                 required
                             />
                         </div>
@@ -53,7 +68,7 @@ export const VolunteerPasswordRecovery = (
                             disabled={loading}
                             clicked={handleSubmit}
                         >
-                            {authTranslations.recoverySendLinkButton}
+                            {authTranslations.createNewPasswordButton}
                         </Button>
                     </div>
                 </form>

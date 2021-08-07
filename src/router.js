@@ -29,7 +29,7 @@ const Router = () => {
                     "/login",
                     "/signUp",
                     "/password-recovery",
-                    "/email-verification",
+                    "/email-action",
                 ]}
                 component={Authentication}
             />

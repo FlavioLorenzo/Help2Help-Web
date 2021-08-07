@@ -2,31 +2,28 @@ import { Link } from "react-router-dom";
 
 import Button from "../../../../components/UI/Button/Button";
 
-import useVolunteerPasswordRecovery from "./useVolunteerPasswordRecovery";
+// import useLogin from "./hooks/useLogin"
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
 
-//TODO: Delete?
-interface VolunteerPasswordRecoveryProps {
+interface OrganizationNewPasswordProps {
     onSubmit(e: any): void;
 }
 
-export const VolunteerPasswordRecovery = (
-    props: VolunteerPasswordRecoveryProps
+export const OrganizationNewPassword = (
+    props: OrganizationNewPasswordProps
 ) => {
-    const { emailRef, loading, handleSubmit } = useVolunteerPasswordRecovery();
-
     return (
         <>
             <div className={styles.AuthSection}>
                 <div className={styles.TitleGroup}>
                     <h1 className={styles.Title}>
-                        {authTranslations.recoveryAsVolunteerTitle}
+                        {authTranslations.recoveryAsOrganizationTitle}
                     </h1>
                     <div className={styles.LinkSubtitle}>
-                        <Link to="/login/volunteer/email">
+                        <Link to="/login/organization">
                             {authTranslations.authGoBack}
                         </Link>
                     </div>
@@ -38,21 +35,12 @@ export const VolunteerPasswordRecovery = (
                             {translations.email}
                         </div>
                         <div className={styles.AuthFormInput}>
-                            <input
-                                type="email"
-                                autoComplete="email"
-                                ref={emailRef}
-                                required
-                            />
+                            <input type="email" autoComplete="email" />
                         </div>
                     </label>
 
                     <div className={styles.ButtonGroup}>
-                        <Button
-                            colorStyle="White"
-                            disabled={loading}
-                            clicked={handleSubmit}
-                        >
+                        <Button colorStyle="White">
                             {authTranslations.recoverySendLinkButton}
                         </Button>
                     </div>

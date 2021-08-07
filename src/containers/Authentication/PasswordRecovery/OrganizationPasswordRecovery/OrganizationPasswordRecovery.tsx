@@ -17,7 +17,7 @@ export const OrganizationPasswordRecovery = (
 ) => {
     return (
         <>
-            <div className={styles.LoginSection}>
+            <div className={styles.AuthSection}>
                 <div className={styles.TitleGroup}>
                     <h1 className={styles.Title}>
                         {authTranslations.recoveryAsOrganizationTitle}
@@ -29,12 +29,12 @@ export const OrganizationPasswordRecovery = (
                     </div>
                 </div>
 
-                <form onSubmit={props.onSubmit} className={styles.LoginForm}>
+                <form onSubmit={props.onSubmit} className={styles.AuthForm}>
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {translations.email}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input type="email" autoComplete="email" />
                         </div>
                     </label>

@@ -15,37 +15,37 @@ interface OrganizationSignUpProps {
 export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
     return (
         <>
-            <div className={styles.LoginSection}>
+            <div className={styles.AuthSection}>
                 <div className={styles.TitleGroup}>
                     <h1 className={styles.Title}>
                         {authTranslations.signupAsOrganizationTitle}
                     </h1>
                 </div>
 
-                <form onSubmit={props.onSubmit} className={styles.LoginForm}>
+                <form onSubmit={props.onSubmit} className={styles.AuthForm}>
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {authTranslations.signupAsOrganizationName}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input type="text" autoComplete="organization" />
                         </div>
                     </label>
 
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {translations.email}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input type="text" autoComplete="email" />
                         </div>
                     </label>
 
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {translations.password}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="password"
                                 autoComplete="new-password"
@@ -54,10 +54,10 @@ export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
                     </label>
 
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {authTranslations.authConfirmPassword}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="password"
                                 autoComplete="new-password"
@@ -73,7 +73,7 @@ export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
                 </form>
             </div>
 
-            <div className={styles.LoginSection}>
+            <div className={styles.AuthSection}>
                 <div className={styles.LinkText}>
                     <Link to="/login/organization">
                         {authTranslations.signupAsOrganizationAlreadySubscribed}

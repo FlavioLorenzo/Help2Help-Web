@@ -31,13 +31,13 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                 </h1>
             </div>
 
-            <div className={styles.LoginSection}>
-                <form onSubmit={props.onSubmit} className={styles.LoginForm}>
+            <div className={styles.AuthSection}>
+                <form onSubmit={props.onSubmit} className={styles.AuthForm}>
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {translations.firstName}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="text"
                                 autoComplete="given-name"
@@ -48,10 +48,10 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                     </label>
 
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {translations.surname}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="text"
                                 autoComplete="family-name"
@@ -62,10 +62,10 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                     </label>
 
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {translations.email}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="text"
                                 autoComplete="email"
@@ -76,10 +76,10 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                     </label>
 
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {translations.password}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="password"
                                 autoComplete="new-password"
@@ -90,10 +90,10 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                     </label>
 
                     <label>
-                        <div className={styles.LoginFormLabel}>
+                        <div className={styles.AuthFormLabel}>
                             {authTranslations.authConfirmPassword}
                         </div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="password"
                                 autoComplete="new-password"
@@ -115,7 +115,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                 </form>
             </div>
 
-            <div className={styles.LoginSection}>
+            <div className={styles.AuthSection}>
                 <div className={styles.LinkText}>
                     <Link to="/login">
                         {authTranslations.signupAsVolunteerAlreadySubscribed}

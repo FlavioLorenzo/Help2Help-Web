@@ -11,54 +11,67 @@ import facebookLogo from "../../../../assets/images/facebookLogo.png";
 import googleLogo from "../../../../assets/images/googleLogo.svg";
 
 interface StandardLoginProps {
-	emailPageTextClicked(): void;
+    emailPageTextClicked(): void;
 }
 
 export const VolunteerStandardLogin = (props: StandardLoginProps) => {
-	const {
-		onFacebookLoginClicked,
-		onGoogleLoginClicked,
-		onEmailPageButtonClicked,
-	} = useVolunteerStandardLogin();
+    const {
+        onFacebookLoginClicked,
+        onGoogleLoginClicked,
+        onEmailPageButtonClicked,
+    } = useVolunteerStandardLogin();
 
-	return (
-		<>
-			<div className={styles.LoginSection}>
-				<div className={styles.TitleGroup}>
-					<h1 className={styles.Title}>{translations.loginAccessWith}</h1>
-				</div>
-				<div className={styles.ButtonGroup}>
-					<div className={styles.Button}>
-						<Button colorStyle="White" clicked={onGoogleLoginClicked}>
-							<img src={googleLogo} alt="Google logo" />
-							Google
-						</Button>
-					</div>
-					<div className={styles.Button}>
-						<Button colorStyle="White" clicked={onFacebookLoginClicked}>
-							<img src={facebookLogo} alt="Facebook logo" />
-							Facebook
-						</Button>
-					</div>
-				</div>
-			</div>
+    return (
+        <>
+            <div className={styles.AuthSection}>
+                <div className={styles.TitleGroup}>
+                    <h1 className={styles.Title}>
+                        {translations.loginAccessWith}
+                    </h1>
+                </div>
+                <div className={styles.ButtonGroup}>
+                    <div className={styles.Button}>
+                        <Button
+                            colorStyle="White"
+                            clicked={onGoogleLoginClicked}
+                        >
+                            <img src={googleLogo} alt="Google logo" />
+                            Google
+                        </Button>
+                    </div>
+                    <div className={styles.Button}>
+                        <Button
+                            colorStyle="White"
+                            clicked={onFacebookLoginClicked}
+                        >
+                            <img src={facebookLogo} alt="Facebook logo" />
+                            Facebook
+                        </Button>
+                    </div>
+                </div>
+            </div>
 
-			<div className={styles.LoginSection}>
-				<div className={styles.Text}>{translations.loginInstead}</div>
-				<div className={styles.ButtonGroup}>
-					<div className={styles.Button}>
-						<Button colorStyle="White" clicked={onEmailPageButtonClicked}>
-							{translations.loginContinueWithEmail}
-						</Button>
-					</div>
-				</div>
-			</div>
+            <div className={styles.AuthSection}>
+                <div className={styles.Text}>{translations.loginInstead}</div>
+                <div className={styles.ButtonGroup}>
+                    <div className={styles.Button}>
+                        <Button
+                            colorStyle="White"
+                            clicked={onEmailPageButtonClicked}
+                        >
+                            {translations.loginContinueWithEmail}
+                        </Button>
+                    </div>
+                </div>
+            </div>
 
-			<div className={styles.LoginSection}>
-				<div className={styles.LinkText}>
-					<Link to="/login/organization">{translations.loginOrganization}</Link>
-				</div>
-			</div>
-		</>
-	);
+            <div className={styles.AuthSection}>
+                <div className={styles.LinkText}>
+                    <Link to="/login/organization">
+                        {translations.loginOrganization}
+                    </Link>
+                </div>
+            </div>
+        </>
+    );
 };

@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import * as Login from "./Login/Login";
 import * as SignUp from "./SignUp/SignUp";
 import * as PasswordRecovery from "./PasswordRecovery/PasswordRecovery";
-import * as EmailVerification from "./EmailVerified/EmailVerified";
+import * as EmailAction from "./EmailAction/EmailAction";
 import Logout from "./Logout/Logout";
 
 /**
@@ -41,7 +41,7 @@ const AuthRouter = (props) => {
                 render={(props) => <SignUp.OrganizationSignUp {...props} />}
             />
 
-            {/* Passsword Recovery */}
+            {/* Password Recovery */}
             <Route
                 exact
                 path={["/password-recovery", "/password-recovery/volunteer"]}
@@ -49,6 +49,7 @@ const AuthRouter = (props) => {
                     <PasswordRecovery.VolunteerPasswordRecovery {...props} />
                 )}
             />
+
             <Route
                 exact
                 path={"/password-recovery/organization"}
@@ -57,12 +58,28 @@ const AuthRouter = (props) => {
                 )}
             />
 
-            {/* Email verification */}
             <Route
                 exact
-                path={"/email-verification/volunteer"}
+                path={["/password-recovery/volunteer/new-password"]}
                 render={(props) => (
-                    <EmailVerification.VolunteerEmailVerified {...props} />
+                    <PasswordRecovery.VolunteerNewPassword {...props} />
+                )}
+            />
+
+            <Route
+                exact
+                path={"/password-recovery/organization/new-password"}
+                render={(props) => (
+                    <PasswordRecovery.OrganizationNewPassword {...props} />
+                )}
+            />
+
+            {/* Email actions */}
+            <Route
+                exact
+                path={"/email-action"}
+                render={(props) => (
+                    <EmailAction.VolunteerEmailAction {...props} />
                 )}
             />
 

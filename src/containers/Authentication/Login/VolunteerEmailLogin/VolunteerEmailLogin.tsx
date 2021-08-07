@@ -22,7 +22,7 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
 
     return (
         <>
-            <div className={styles.LoginSection}>
+            <div className={styles.AuthSection}>
                 <div className={styles.TitleGroup}>
                     <h1 className={styles.Title}>
                         {translations.loginAccessWithEmail}
@@ -32,10 +32,10 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
                     </div>
                 </div>
 
-                <form onSubmit={props.onSubmit} className={styles.LoginForm}>
+                <form onSubmit={props.onSubmit} className={styles.AuthForm}>
                     <label>
-                        <div className={styles.LoginFormLabel}>Email</div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormLabel}>Email</div>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="email"
                                 autoComplete="email"
@@ -46,8 +46,8 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
                     </label>
 
                     <label>
-                        <div className={styles.LoginFormLabel}>Password</div>
-                        <div className={styles.LoginFormInput}>
+                        <div className={styles.AuthFormLabel}>Password</div>
+                        <div className={styles.AuthFormInput}>
                             <input
                                 type="password"
                                 autoComplete="current-password"
@@ -69,7 +69,7 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
                 </form>
             </div>
 
-            <div className={styles.LoginSection}>
+            <div className={styles.AuthSection}>
                 <div className={styles.LinkText}>
                     <Link to="/password-recovery">
                         {translations.loginWithEmailPasswordForgotten}
