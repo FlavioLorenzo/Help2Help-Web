@@ -24,6 +24,10 @@ interface ButtonProps {
      */
     active?: boolean;
     /**
+     * If the button has type "submit" (to be used within forms)
+     */
+    submit?: boolean;
+    /**
      * Whether the component can be interacted with
      */
     disabled?: boolean;
@@ -63,6 +67,7 @@ const button = (props: ButtonProps) => {
             value={props.value}
             className={classes.join(" ")}
             onClick={props.clicked}
+            type={props.submit ? "submit" : "button"}
         >
             {props.children}
         </button>

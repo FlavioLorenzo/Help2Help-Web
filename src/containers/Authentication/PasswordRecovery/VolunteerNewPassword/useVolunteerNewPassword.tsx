@@ -41,10 +41,8 @@ export default function useVolunteerPasswordRecovery() {
         ) {
             // TODO: add password strength check
             if (
-                !(
-                    passwordRef.current.value ===
-                    passwordConfirmationRef.current.value
-                )
+                passwordRef.current.value !==
+                passwordConfirmationRef.current.value
             ) {
                 setToastErrorMessage(
                     toastGenericTranslations.titleStandardInformalError,

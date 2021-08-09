@@ -13,15 +13,7 @@ interface VolunteerSignUpProps {
 }
 
 export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
-    const {
-        firstNameRef,
-        surnameRef,
-        emailRef,
-        passwordRef,
-        passwordConfirmationRef,
-        loading,
-        handleSubmit,
-    } = useVolunteerSignUp();
+    const { loading, onSubmit, handleSubmit, register } = useVolunteerSignUp();
 
     return (
         <>
@@ -32,16 +24,19 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
             </div>
 
             <div className={styles.AuthSection}>
-                <form onSubmit={props.onSubmit} className={styles.AuthForm}>
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className={styles.AuthForm}
+                >
                     <label>
                         <div className={styles.AuthFormLabel}>
                             {translations.firstName}
                         </div>
                         <div className={styles.AuthFormInput}>
                             <input
+                                {...register("firstName")}
                                 type="text"
                                 autoComplete="given-name"
-                                ref={firstNameRef}
                                 required
                             />
                         </div>
@@ -53,9 +48,9 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                         </div>
                         <div className={styles.AuthFormInput}>
                             <input
+                                {...register("lastName")}
                                 type="text"
                                 autoComplete="family-name"
-                                ref={surnameRef}
                                 required
                             />
                         </div>
@@ -67,9 +62,9 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                         </div>
                         <div className={styles.AuthFormInput}>
                             <input
+                                {...register("email")}
                                 type="text"
                                 autoComplete="email"
-                                ref={emailRef}
                                 required
                             />
                         </div>
@@ -81,9 +76,9 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                         </div>
                         <div className={styles.AuthFormInput}>
                             <input
+                                {...register("password")}
                                 type="password"
                                 autoComplete="new-password"
-                                ref={passwordRef}
                                 required
                             />
                         </div>
@@ -95,20 +90,16 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                         </div>
                         <div className={styles.AuthFormInput}>
                             <input
+                                {...register("passwordConfirmation")}
                                 type="password"
                                 autoComplete="new-password"
-                                ref={passwordConfirmationRef}
                                 required
                             />
                         </div>
                     </label>
 
                     <div className={styles.ButtonGroup}>
-                        <Button
-                            colorStyle="White"
-                            disabled={loading}
-                            clicked={handleSubmit}
-                        >
+                        <Button submit colorStyle="White" disabled={loading}>
                             {authTranslations.signupAsVolunteerButton}
                         </Button>
                     </div>
