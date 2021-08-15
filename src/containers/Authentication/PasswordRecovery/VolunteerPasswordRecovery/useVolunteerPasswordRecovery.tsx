@@ -1,12 +1,26 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useAuth } from "../../../../contexts/AuthContext";
+import { useForm } from "react-hook-form";
 import useToast from "../../../../components/UI/Toast/useToast";
+
+import schema from "./VolunteerPasswordRecovery.form";
+
+interface IFormInputs {
+    email: string;
+}
 
 /**
  * Business logic for the VolunteerPasswordRecoveryComponent
  */
 export default function useVolunteerPasswordRecovery() {
-    const emailRef = useRef<HTMLInputElement>(null);
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<IFormInputs>({
+        resolver: schema,
+    });
+
     const { resetPassword } = useAuth();
     const [loading, setLoading] = useState(false);
 
@@ -21,42 +35,37 @@ export default function useVolunteerPasswordRecovery() {
      * Function to be triggered when user clicks the password recovery button. First performs a validation check, then
      * triggers the user password reset process
      */
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-
+    const onSubmit = (data: IFormInputs) => {
         if (!resetPassword) return;
 
-        // TODO: Set up a proper form field verification to check nothing is wrong
-        if (emailRef?.current?.checkValidity()) {
-            try {
-                setLoading(true);
+        try {
+            setLoading(true);
 
-                resetPassword(emailRef.current.value)
-                    .then(() => {
-                        setToastSuccessMessage(
-                            toastGenericTranslations.titleStandardInformalSuccess,
-                            toastAuthTranslations.descPasswordRecoverySuccess
-                        );
+            resetPassword(data.email)
+                .then(() => {
+                    setToastSuccessMessage(
+                        toastGenericTranslations.titleStandardInformalSuccess,
+                        toastAuthTranslations.descPasswordRecoverySuccess
+                    );
 
-                        setLoading(false);
-                    })
-                    .catch((error: any) => {
-                        // TODO: Add error-based translations
-                        setToastErrorMessage(
-                            toastGenericTranslations.titleStandardInformalError,
-                            error
-                        );
-                    });
-            } catch (error) {
-                setToastErrorMessage(
-                    toastGenericTranslations.titleStandardInformalError,
-                    toastAuthTranslations.descPasswordRecoveryError
-                );
-            }
-
-            setLoading(false);
+                    setLoading(false);
+                })
+                .catch((error: any) => {
+                    // TODO: Add error-based translations
+                    setToastErrorMessage(
+                        toastGenericTranslations.titleStandardInformalError,
+                        error
+                    );
+                });
+        } catch (error) {
+            setToastErrorMessage(
+                toastGenericTranslations.titleStandardInformalError,
+                toastAuthTranslations.descPasswordRecoveryError
+            );
         }
+
+        setLoading(false);
     };
 
-    return { emailRef, loading, handleSubmit };
+    return { loading, onSubmit, handleSubmit, register, errors };
 }

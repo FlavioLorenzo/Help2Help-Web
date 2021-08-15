@@ -76,30 +76,6 @@ export const loginRegisterAsOrganization = (
  * SIGNUP
  */
 
-export const signupAsVolunteerTitle = (
-    <FormattedMessage
-        id="signup_volunteer_title"
-        defaultMessage="Iscrizione"
-        description="Title of the volunteer's signup page"
-    />
-);
-
-export const signupAsVolunteerButton = (
-    <FormattedMessage
-        id="signup_volunteer_button"
-        defaultMessage="Iscriviti"
-        description="Text for signup button"
-    />
-);
-
-export const signupAsVolunteerAlreadySubscribed = (
-    <FormattedMessage
-        id="signup_volunteer_already_subscribed"
-        defaultMessage="Sei già iscritto? Accedi al portale"
-        description="Text for the link to the login page to be shown in the volunteer's signup view"
-    />
-);
-
 export const signupAsOrganizationTitle = (
     <FormattedMessage
         id="signup_organization_title"
@@ -207,5 +183,49 @@ export const authConfirmPassword = (
         id="auth_confirm_password"
         defaultMessage="Conferma la tua password"
         description="Message for the form's field where the user must provide for a second time his password."
+    />
+);
+
+/**
+ * FORM VALIDATION
+ */
+
+export const formErrorFirstNameRequired = (
+    <FormattedMessage
+        id="form_error_first_name_required"
+        defaultMessage="Inserisci il tuo nome"
+        description="Error message when user does not fill the first name field"
+    />
+);
+
+export const formErrorLastNameRequired = (
+    <FormattedMessage
+        id="form_error_last_name_required"
+        defaultMessage="Inserisci il tuo cognome"
+        description="Error message when user does not fill the last name field"
+    />
+);
+
+export const formErrorEmailRequired = (
+    <FormattedMessage
+        id="form_error_email_required"
+        defaultMessage="Inserisci la tua email"
+        description="Error message when user does not fill the email field"
+    />
+);
+
+export const formErrorPasswordRequired = (
+    <FormattedMessage
+        id="form_error_password_required"
+        defaultMessage="Inserisci la tua password tra gli 8 e i 32 caratteri"
+        description="Error message when user does not fill the password field or the field is wrongly valued"
+    />
+);
+
+export const formErrorPasswordMustMatch = (
+    <FormattedMessage
+        id="form_error_password_must_match"
+        defaultMessage="Le password fornite devono coincidere"
+        description="Error message when user fills the password and confirmation password fields with different values"
     />
 );

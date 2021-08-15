@@ -1,0 +1,59 @@
+@import "../../../styles/colors.scss";
+
+.AuthFormField {
+    display: block;
+    margin: 15px auto;
+    max-width: 250px;
+
+    label {
+        width: 100%;
+
+        .AuthFormLabel {
+            text-align: left;
+            width: 100%;
+            margin-bottom: 0.2em;
+
+            &::first-letter {
+                text-transform: capitalize;
+            }
+        }
+
+        .AuthFormInput {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            input {
+                background-color: rgba($color: #ffffff, $alpha: 0.3);
+                border: 1px solid white;
+                border-radius: 30px;
+                color: white;
+
+                height: 2.5em;
+                padding-left: 5%;
+                width: 100%;
+
+                &.Password {
+                    padding-right: 2.2em;
+                }
+
+                &.Error {
+                    border: 1px solid #9a0000d6;
+                    box-shadow: 0px 0px 3px 2px #ffc8c8d6;
+                }
+            }
+
+            .PasswordEye {
+                font-size: 0.8em;
+
+                position: absolute;
+                right: 1em;
+                z-index: 2;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

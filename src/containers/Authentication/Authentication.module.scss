@@ -87,34 +87,6 @@
         color: white;
         margin: 15px 0;
 
-        label {
-            display: block;
-            margin: 15px auto;
-            max-width: 250px;
-
-            .AuthFormLabel {
-                text-align: left;
-                width: 100%;
-
-                &::first-letter {
-                    text-transform: capitalize;
-                }
-            }
-
-            .AuthFormInput {
-                input {
-                    background-color: rgba($color: #ffffff, $alpha: 0.3);
-                    border: 1px solid white;
-                    border-radius: 30px;
-                    color: white;
-
-                    height: 2.5em;
-                    padding-left: 5%;
-                    width: 100%;
-                }
-            }
-        }
-
         .ButtonGroup {
             margin-top: 20px;
         }

@@ -1,0 +1,33 @@
+@import "../../../styles/colors.scss";
+
+.FormError {
+    border-radius: 30px;
+
+    background-color: rgba($color: #ffffff, $alpha: 0.1);
+    color: #ffffff;
+    box-shadow: 0px 0px 3px 0px #f77676d6;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    width: 100%;
+
+    .FormErrorImage {
+        display: inline-block;
+
+        margin-right: 3%;
+        width: 10%;
+
+        img {
+            width: 1.6em;
+        }
+    }
+
+    .FormErrorMessage {
+        display: inline-block;
+        width: 87%;
+        text-align: left;
+    }
+}

@@ -7,16 +7,16 @@ import useVolunteerPasswordRecovery from "./useVolunteerPasswordRecovery";
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
+import FormField from "../../../../components/UI/FormField/FormField";
 
-//TODO: Delete?
-interface VolunteerPasswordRecoveryProps {
-    onSubmit(e: any): void;
-}
-
-export const VolunteerPasswordRecovery = (
-    props: VolunteerPasswordRecoveryProps
-) => {
-    const { emailRef, loading, handleSubmit } = useVolunteerPasswordRecovery();
+export const VolunteerPasswordRecovery = () => {
+    const {
+        loading,
+        onSubmit,
+        handleSubmit,
+        register,
+        errors,
+    } = useVolunteerPasswordRecovery();
 
     return (
         <>
@@ -32,27 +32,25 @@ export const VolunteerPasswordRecovery = (
                     </div>
                 </div>
 
-                <form onSubmit={props.onSubmit} className={styles.AuthForm}>
-                    <label>
-                        <div className={styles.AuthFormLabel}>
-                            {translations.email}
-                        </div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                type="email"
-                                autoComplete="email"
-                                ref={emailRef}
-                                required
-                            />
-                        </div>
-                    </label>
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className={styles.AuthForm}
+                >
+                    <FormField
+                        label={translations.email}
+                        type="email"
+                        registerLabel="email"
+                        autoComplete="email"
+                        maxLength={255}
+                        error={
+                            errors.email &&
+                            authTranslations.formErrorEmailRequired
+                        }
+                        register={register}
+                    />
 
                     <div className={styles.ButtonGroup}>
-                        <Button
-                            colorStyle="White"
-                            disabled={loading}
-                            clicked={handleSubmit}
-                        >
+                        <Button colorStyle="White" disabled={loading}>
                             {authTranslations.recoverySendLinkButton}
                         </Button>
                     </div>

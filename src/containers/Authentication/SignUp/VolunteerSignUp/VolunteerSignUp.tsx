@@ -1,25 +1,30 @@
 import { Link } from "react-router-dom";
 
 import Button from "../../../../components/UI/Button/Button";
+import FormField from "../../../../components/UI/FormField/FormField";
 
 import useVolunteerSignUp from "./useVolunteerSignUp";
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
+import * as localTranslations from "./VolunteerSignUp.translations";
+
 import styles from "../../Authentication.module.scss";
 
-interface VolunteerSignUpProps {
-    onSubmit(e: any): void;
-}
-
-export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
-    const { loading, onSubmit, handleSubmit, register } = useVolunteerSignUp();
+export const VolunteerSignUp = () => {
+    const {
+        loading,
+        onSubmit,
+        handleSubmit,
+        register,
+        errors,
+    } = useVolunteerSignUp();
 
     return (
         <>
             <div className={styles.TitleGroup}>
                 <h1 className={styles.Title}>
-                    {authTranslations.signupAsVolunteerTitle}
+                    {localTranslations.signupAsVolunteerTitle}
                 </h1>
             </div>
 
@@ -28,79 +33,74 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
                     onSubmit={handleSubmit(onSubmit)}
                     className={styles.AuthForm}
                 >
-                    <label>
-                        <div className={styles.AuthFormLabel}>
-                            {translations.firstName}
-                        </div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                {...register("firstName")}
-                                type="text"
-                                autoComplete="given-name"
-                                required
-                            />
-                        </div>
-                    </label>
+                    <FormField
+                        label={translations.firstName}
+                        type="text"
+                        registerLabel="firstName"
+                        autoComplete="given-name"
+                        maxLength={255}
+                        error={
+                            errors.firstName &&
+                            authTranslations.formErrorFirstNameRequired
+                        }
+                        register={register}
+                    />
 
-                    <label>
-                        <div className={styles.AuthFormLabel}>
-                            {translations.surname}
-                        </div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                {...register("lastName")}
-                                type="text"
-                                autoComplete="family-name"
-                                required
-                            />
-                        </div>
-                    </label>
+                    <FormField
+                        label={translations.surname}
+                        type="text"
+                        registerLabel="lastName"
+                        autoComplete="family-name"
+                        maxLength={255}
+                        error={
+                            errors.lastName &&
+                            authTranslations.formErrorLastNameRequired
+                        }
+                        register={register}
+                    />
 
-                    <label>
-                        <div className={styles.AuthFormLabel}>
-                            {translations.email}
-                        </div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                {...register("email")}
-                                type="text"
-                                autoComplete="email"
-                                required
-                            />
-                        </div>
-                    </label>
+                    <FormField
+                        label={translations.email}
+                        type="email"
+                        registerLabel="email"
+                        autoComplete="email"
+                        maxLength={255}
+                        error={
+                            errors.email &&
+                            authTranslations.formErrorEmailRequired
+                        }
+                        register={register}
+                    />
 
-                    <label>
-                        <div className={styles.AuthFormLabel}>
-                            {translations.password}
-                        </div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                {...register("password")}
-                                type="password"
-                                autoComplete="new-password"
-                                required
-                            />
-                        </div>
-                    </label>
+                    <FormField
+                        label={translations.password}
+                        type="password"
+                        registerLabel="password"
+                        autoComplete="new-password"
+                        maxLength={255}
+                        error={
+                            errors.password &&
+                            authTranslations.formErrorPasswordRequired
+                        }
+                        register={register}
+                    />
 
-                    <label>
-                        <div className={styles.AuthFormLabel}>
-                            {authTranslations.authConfirmPassword}
-                        </div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                {...register("passwordConfirmation")}
-                                type="password"
-                                autoComplete="new-password"
-                                required
-                            />
-                        </div>
-                    </label>
+                    <FormField
+                        label={authTranslations.authConfirmPassword}
+                        type="password"
+                        registerLabel="passwordConfirmation"
+                        autoComplete="new-password"
+                        maxLength={32}
+                        error={
+                            errors.passwordConfirmation &&
+                            authTranslations.formErrorPasswordMustMatch
+                        }
+                        register={register}
+                    />
 
                     <div className={styles.ButtonGroup}>
                         <Button submit colorStyle="White" disabled={loading}>
-                            {authTranslations.signupAsVolunteerButton}
+                            {localTranslations.signupAsVolunteerButton}
                         </Button>
                     </div>
                 </form>
@@ -109,7 +109,7 @@ export const VolunteerSignUp = (props: VolunteerSignUpProps) => {
             <div className={styles.AuthSection}>
                 <div className={styles.LinkText}>
                     <Link to="/login">
-                        {authTranslations.signupAsVolunteerAlreadySubscribed}
+                        {localTranslations.signupAsVolunteerAlreadySubscribed}
                     </Link>
                 </div>
             </div>
