@@ -36,6 +36,14 @@ export const surname = (
     />
 );
 
+export const organizationName = (
+    <FormattedMessage
+        id="global_organization_name"
+        defaultMessage="Nome dell'ente"
+        description="Organization name's translation"
+    />
+);
+
 export const email = (
     <FormattedMessage
         id="global_email"

@@ -8,10 +8,7 @@ import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import styles from "../../Authentication.module.scss";
 
-//TODO: Delete?
-interface VolunteerNewPasswordProps {
-    onSubmit(e: any): void;
-}
+interface VolunteerNewPasswordProps {}
 
 export const VolunteerNewPassword = (props: VolunteerNewPasswordProps) => {
     const {
@@ -24,13 +21,13 @@ export const VolunteerNewPassword = (props: VolunteerNewPasswordProps) => {
 
     return (
         <>
-            <div className={styles.AuthSection}>
-                <div className={styles.TitleGroup}>
-                    <h1 className={styles.Title}>
-                        {authTranslations.recoveryAsVolunteerTitle}
-                    </h1>
-                </div>
+            <div className={styles.TitleGroup}>
+                <h1 className={styles.Title}>
+                    {authTranslations.recoveryAsVolunteerTitle}
+                </h1>
+            </div>
 
+            <div className={styles.AuthSection}>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className={styles.AuthForm}
@@ -62,7 +59,7 @@ export const VolunteerNewPassword = (props: VolunteerNewPasswordProps) => {
                     />
 
                     <div className={styles.ButtonGroup}>
-                        <Button colorStyle="White" disabled={loading}>
+                        <Button submit colorStyle="White" disabled={loading}>
                             {authTranslations.createNewPasswordButton}
                         </Button>
                     </div>

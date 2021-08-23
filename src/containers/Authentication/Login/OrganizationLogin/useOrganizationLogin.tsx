@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../../../contexts/AuthContext";
 
 import useToast from "../../../../components/UI/Toast/useToast";
-import schema from "./VolunteerEmailLogin.form";
+import schema from "./OrganizationLogin.form";
 
 interface IFormInputs {
     email: string;
@@ -15,9 +15,9 @@ interface IFormInputs {
 }
 
 /**
- * Business logic for the VolunteerEmailLogin component
+ * Business logic for the OrganizationLogin component
  */
-export default function useVolunteerEmailLogin() {
+export default function useOrganizationLogin() {
     const {
         register,
         handleSubmit,
@@ -53,13 +53,13 @@ export default function useVolunteerEmailLogin() {
                 .catch((error: any) => {
                     // TODO: Translation based on error
                     setToastErrorMessage(
-                        toastGenericTranslations.titleStandardInformalError,
+                        toastGenericTranslations.titleStandardFormalError,
                         error.message
                     );
                 });
         } catch (error) {
             setToastErrorMessage(
-                toastGenericTranslations.titleStandardInformalError,
+                toastGenericTranslations.titleStandardFormalError,
                 toastAuthTranslations.descGenericLoginError
             );
         }

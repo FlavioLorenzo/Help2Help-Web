@@ -2,7 +2,7 @@ import { FormattedMessage } from "react-intl";
 
 export const loginAccessWith = (
     <FormattedMessage
-        id="login_access_with_standard"
+        id="login_volunteer_access_with_standard"
         defaultMessage="Accedi con"
         description="Initial message that invites users to login to the app"
     />
@@ -18,93 +18,33 @@ export const loginInstead = (
 
 export const loginContinueWithEmail = (
     <FormattedMessage
-        id="login_continue_with_email"
+        id="login_volunteer_continue_with_email"
         defaultMessage="Accedi con l'email"
-        description="Button message if user wants to login with email"
+        description="Button message if user chooses the login through email option"
     />
 );
 
-export const loginOrganization = (
+export const loginStandardMessage = (
     <FormattedMessage
-        id="login_organization"
+        id="login_standard_message"
+        defaultMessage="Accedi"
+        description="Standard button message through which the user can proceed with login"
+    />
+);
+
+export const loginAsOrganizationRedirect = (
+    <FormattedMessage
+        id="login_organization_redirect"
         defaultMessage="Sei un ente? Clicca qui!"
         description="Message that user will click to be redirected to organization page"
     />
 );
 
-export const loginAccessWithEmail = (
-    <FormattedMessage
-        id="email_login_access"
-        defaultMessage="Accedi"
-        description="Initial message that invites users to login to the app using his email"
-    />
-);
-
-export const loginRegisterWithEmail = (
-    <FormattedMessage
-        id="email_login_register"
-        defaultMessage="Non sei ancora iscritto? Registrati adesso!"
-        description="Message to prompt the user for registering into the app"
-    />
-);
-
-export const loginWithEmailPasswordForgotten = (
-    <FormattedMessage
-        id="email_login_password_forgotten"
-        defaultMessage="Ho dimenticato la mia password"
-        description="Message that user will click if he forgot his password"
-    />
-);
-
 export const loginAsOrganization = (
     <FormattedMessage
-        id="login_as_organization"
+        id="login_organization"
         defaultMessage="Accedi come Ente"
         description="Initial message that invites organization owners to login to the app with their email"
-    />
-);
-
-export const loginRegisterAsOrganization = (
-    <FormattedMessage
-        id="login_register_as_organization"
-        defaultMessage="Registra il tuo ente"
-        description="Message to prompt an organization owner for registering it's organization into the app"
-    />
-);
-
-/**
- * SIGNUP
- */
-
-export const signupAsOrganizationTitle = (
-    <FormattedMessage
-        id="signup_organization_title"
-        defaultMessage="Registra il tuo ente"
-        description="Title of the organization's signup page"
-    />
-);
-
-export const signupAsOrganizationName = (
-    <FormattedMessage
-        id="signup_organization_name"
-        defaultMessage="Nome dell'organizzazione"
-        description="Text for the organization's name input box"
-    />
-);
-
-export const signupAsOrganizationButton = (
-    <FormattedMessage
-        id="signup_organization_button"
-        defaultMessage="Registrazione"
-        description="Text for signup button in the organization's signup page"
-    />
-);
-
-export const signupAsOrganizationAlreadySubscribed = (
-    <FormattedMessage
-        id="signup_organization_already_subscribed"
-        defaultMessage="Il tuo ente è già iscritto? Accedi al portale"
-        description="Text for the link to the login page to be shown in the organization's signup view"
     />
 );
 

@@ -20,18 +20,18 @@ export const VolunteerPasswordRecovery = () => {
 
     return (
         <>
-            <div className={styles.AuthSection}>
-                <div className={styles.TitleGroup}>
-                    <h1 className={styles.Title}>
-                        {authTranslations.recoveryAsVolunteerTitle}
-                    </h1>
-                    <div className={styles.LinkSubtitle}>
-                        <Link to="/login/volunteer/email">
-                            {authTranslations.authGoBack}
-                        </Link>
-                    </div>
+            <div className={styles.TitleGroup}>
+                <h1 className={styles.Title}>
+                    {authTranslations.recoveryAsVolunteerTitle}
+                </h1>
+                <div className={styles.LinkSubtitle}>
+                    <Link to="/login/volunteer/email">
+                        {authTranslations.authGoBack}
+                    </Link>
                 </div>
+            </div>
 
+            <div className={styles.AuthSection}>
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className={styles.AuthForm}
@@ -50,7 +50,7 @@ export const VolunteerPasswordRecovery = () => {
                     />
 
                     <div className={styles.ButtonGroup}>
-                        <Button colorStyle="White" disabled={loading}>
+                        <Button submit colorStyle="White" disabled={loading}>
                             {authTranslations.recoverySendLinkButton}
                         </Button>
                     </div>

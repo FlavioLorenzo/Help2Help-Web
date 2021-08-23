@@ -1,49 +1,73 @@
 import { Link } from "react-router-dom";
 
-import Button from "../../../../components/UI/Button/Button";
-// import useLogin from "./hooks/useLogin"
+import useOrganizationLogin from "./useOrganizationLogin";
 
-import * as translations from "../../Authentication.translations";
+import Button from "../../../../components/UI/Button/Button";
+import FormField from "../../../../components/UI/FormField/FormField";
+
+import * as translations from "../../../../translations";
+import * as authTranslations from "../../Authentication.translations";
+import * as localTranslations from "./OrganizationLogin.translations";
 import styles from "../../Authentication.module.scss";
 
-interface OrganizationLoginProps {
-    onSubmit(e: any): void;
-}
+interface OrganizationLoginProps {}
 
 /**
  * This component is currently nearly identical to the VolunteerEmailLogin component.
  * They will be further diffferentiated in the future as they become more specialized for the two situations.
  */
 export const OrganizationLogin = (props: OrganizationLoginProps) => {
+    const {
+        loading,
+        onSubmit,
+        handleSubmit,
+        register,
+        errors,
+    } = useOrganizationLogin();
+
     return (
         <>
+            <div className={styles.TitleGroup}>
+                <h1 className={styles.Title}>
+                    {authTranslations.loginAsOrganization}
+                </h1>
+            </div>
+
             <div className={styles.AuthSection}>
-                <div className={styles.TitleGroup}>
-                    <h1 className={styles.Title}>
-                        {translations.loginAsOrganization}
-                    </h1>
-                </div>
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className={styles.AuthForm}
+                >
+                    <FormField
+                        label={translations.email}
+                        type="email"
+                        registerLabel="email"
+                        autoComplete="email"
+                        maxLength={255}
+                        error={
+                            errors.email &&
+                            authTranslations.formErrorEmailRequired
+                        }
+                        register={register}
+                    />
 
-                <form onSubmit={props.onSubmit} className={styles.AuthForm}>
-                    <label>
-                        <div className={styles.AuthFormLabel}>Email</div>
-                        <div className={styles.AuthFormInput}>
-                            <input type="email" autoComplete="email" />
-                        </div>
-                    </label>
-
-                    <label>
-                        <div className={styles.AuthFormLabel}>Password</div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                type="password"
-                                autoComplete="current-password"
-                            />
-                        </div>
-                    </label>
+                    <FormField
+                        label={translations.password}
+                        type="password"
+                        registerLabel="password"
+                        autoComplete="new-password"
+                        maxLength={255}
+                        error={
+                            errors.password &&
+                            authTranslations.formErrorPasswordRequired
+                        }
+                        register={register}
+                    />
 
                     <div className={styles.ButtonGroup}>
-                        <Button colorStyle="White">Login</Button>
+                        <Button colorStyle="White" disabled={loading} submit>
+                            {authTranslations.loginAsOrganization}
+                        </Button>
                     </div>
                 </form>
             </div>
@@ -51,13 +75,13 @@ export const OrganizationLogin = (props: OrganizationLoginProps) => {
             <div className={styles.AuthSection}>
                 <div className={styles.LinkText}>
                     <Link to="/password-recovery/organization">
-                        {translations.loginWithEmailPasswordForgotten}
+                        {localTranslations.loginWithEmailPasswordForgotten}
                     </Link>
                 </div>
 
                 <div className={styles.LinkText}>
                     <Link to="/signup/organization">
-                        {translations.loginRegisterAsOrganization}
+                        {localTranslations.loginRegisterAsOrganization}
                     </Link>
                 </div>
             </div>

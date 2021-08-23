@@ -6,7 +6,7 @@ import { getURLSearchParamsFromURL } from "../../../../shared/miscUtils";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-import schema from "./VolunteerNewPassword.form";
+import schema from "./OrganizationNewPassword.form";
 
 interface IFormInputs {
     password: string;
@@ -14,9 +14,9 @@ interface IFormInputs {
 }
 
 /**
- * Business logic for the VolunteerNewPasswordComponent
+ * Business logic for the OrganizationNewPasswordComponent
  */
-export default function useVolunteerNewPassword() {
+export default function useOrganizationNewPassword() {
     const [params] = useState<any>(
         getURLSearchParamsFromURL(window.location.href)
     );
@@ -63,13 +63,13 @@ export default function useVolunteerNewPassword() {
                 // TODO: Define error-based translation
                 .catch((error: any) => {
                     setToastErrorMessage(
-                        toastGenericTranslations.titleStandardInformalError,
+                        toastGenericTranslations.titleStandardFormalError,
                         error
                     );
                 });
         } catch (error) {
             setToastErrorMessage(
-                toastGenericTranslations.titleStandardInformalError,
+                toastGenericTranslations.titleStandardFormalError,
                 toastAuthTranslations.descPasswordRecoveryError
             );
         }
@@ -81,7 +81,7 @@ export default function useVolunteerNewPassword() {
     useEffect(() => {
         if (!params["oobCode"]) {
             setToastErrorMessage(
-                toastGenericTranslations.titleStandardInformalError,
+                toastGenericTranslations.titleStandardFormalError,
                 toastAuthTranslations.descWrongLinkError
             );
 

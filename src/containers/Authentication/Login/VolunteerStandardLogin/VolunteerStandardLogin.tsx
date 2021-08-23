@@ -23,12 +23,11 @@ export const VolunteerStandardLogin = (props: StandardLoginProps) => {
 
     return (
         <>
+            <div className={styles.TitleGroup}>
+                <h1 className={styles.Title}>{translations.loginAccessWith}</h1>
+            </div>
+
             <div className={styles.AuthSection}>
-                <div className={styles.TitleGroup}>
-                    <h1 className={styles.Title}>
-                        {translations.loginAccessWith}
-                    </h1>
-                </div>
                 <div className={styles.ButtonGroup}>
                     <div className={styles.Button}>
                         <Button
@@ -68,7 +67,7 @@ export const VolunteerStandardLogin = (props: StandardLoginProps) => {
             <div className={styles.AuthSection}>
                 <div className={styles.LinkText}>
                     <Link to="/login/organization">
-                        {translations.loginOrganization}
+                        {translations.loginAsOrganizationRedirect}
                     </Link>
                 </div>
             </div>

@@ -1,69 +1,70 @@
 import { Link } from "react-router-dom";
 
 import Button from "../../../../components/UI/Button/Button";
+import FormField from "../../../../components/UI/FormField/FormField";
 
-// import useLogin from "./hooks/useLogin"
-
-import * as translations from "../../Authentication.translations";
+import * as translations from "../../../../translations";
+import * as authTranslations from "../../Authentication.translations";
+import * as localTranslations from "./VolunteerEmailLogin.translations";
 import styles from "../../Authentication.module.scss";
 import useVolunteerEmailLogin from "./useVolunteerEmailLogin";
 
-interface VolunteerEmailLoginProps {
-    onSubmit(e: any): void;
-}
+interface VolunteerEmailLoginProps {}
 
 export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
     const {
-        emailRef,
-        passwordRef,
         loading,
+        onSubmit,
         handleSubmit,
+        register,
+        errors,
     } = useVolunteerEmailLogin();
 
     return (
         <>
-            <div className={styles.AuthSection}>
-                <div className={styles.TitleGroup}>
-                    <h1 className={styles.Title}>
-                        {translations.loginAccessWithEmail}
-                    </h1>
-                    <div className={styles.LinkSubtitle}>
-                        <Link to="/login">{translations.authGoBack}</Link>
-                    </div>
+            <div className={styles.TitleGroup}>
+                <h1 className={styles.Title}>
+                    {localTranslations.loginAccessWithEmail}
+                </h1>
+                <div className={styles.LinkSubtitle}>
+                    <Link to="/login">{authTranslations.authGoBack}</Link>
                 </div>
+            </div>
 
-                <form onSubmit={props.onSubmit} className={styles.AuthForm}>
-                    <label>
-                        <div className={styles.AuthFormLabel}>Email</div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                type="email"
-                                autoComplete="email"
-                                ref={emailRef}
-                                required
-                            />
-                        </div>
-                    </label>
+            <div className={styles.AuthSection}>
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className={styles.AuthForm}
+                >
+                    <FormField
+                        label={translations.email}
+                        type="email"
+                        registerLabel="email"
+                        autoComplete="email"
+                        maxLength={255}
+                        error={
+                            errors.email &&
+                            authTranslations.formErrorEmailRequired
+                        }
+                        register={register}
+                    />
 
-                    <label>
-                        <div className={styles.AuthFormLabel}>Password</div>
-                        <div className={styles.AuthFormInput}>
-                            <input
-                                type="password"
-                                autoComplete="current-password"
-                                ref={passwordRef}
-                                required
-                            />
-                        </div>
-                    </label>
+                    <FormField
+                        label={translations.password}
+                        type="password"
+                        registerLabel="password"
+                        autoComplete="new-password"
+                        maxLength={255}
+                        error={
+                            errors.password &&
+                            authTranslations.formErrorPasswordRequired
+                        }
+                        register={register}
+                    />
 
                     <div className={styles.ButtonGroup}>
-                        <Button
-                            colorStyle="White"
-                            disabled={loading}
-                            clicked={handleSubmit}
-                        >
-                            Login
+                        <Button colorStyle="White" disabled={loading} submit>
+                            {authTranslations.loginStandardMessage}
                         </Button>
                     </div>
                 </form>
@@ -72,13 +73,13 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
             <div className={styles.AuthSection}>
                 <div className={styles.LinkText}>
                     <Link to="/password-recovery">
-                        {translations.loginWithEmailPasswordForgotten}
+                        {localTranslations.loginWithEmailPasswordForgotten}
                     </Link>
                 </div>
 
                 <div className={styles.LinkText}>
                     <Link to="/signup">
-                        {translations.loginRegisterWithEmail}
+                        {localTranslations.loginRegisterWithEmail}
                     </Link>
                 </div>
             </div>
