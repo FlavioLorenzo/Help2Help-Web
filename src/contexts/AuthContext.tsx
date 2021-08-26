@@ -74,6 +74,10 @@ export function AuthProvider(props: AuthProviderProps) {
             .then((userCredential) => {
                 userCredential.user?.sendEmailVerification();
 
+                userCredential.user?.updateProfile({
+                    displayName: firstName + " " + lastName,
+                });
+
                 firestoreDB
                     .collection("volunteers")
                     .doc(userCredential.user?.uid)
@@ -103,6 +107,10 @@ export function AuthProvider(props: AuthProviderProps) {
             .createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 userCredential.user?.sendEmailVerification();
+
+                userCredential.user?.updateProfile({
+                    displayName: name,
+                });
 
                 firestoreDB
                     .collection("organizations")
@@ -153,12 +161,22 @@ export function AuthProvider(props: AuthProviderProps) {
             .then((userCredential) => {
                 if (!userCredential.additionalUserInfo?.isNewUser) return;
 
+                let newVolunteer: any = {
+                    newUser: true,
+                };
+
+                // If name and surname are available populate the related fields
+                const profile = userCredential.additionalUserInfo
+                    ?.profile as any;
+                if (profile && profile.family_name)
+                    newVolunteer.lastName = profile.family_name;
+                if (profile && profile.given_name)
+                    newVolunteer.firstName = profile.given_name;
+
                 firestoreDB
                     .collection("volunteers")
                     .doc(userCredential.user?.uid)
-                    .set({
-                        newUser: true,
-                    });
+                    .set(newVolunteer);
 
                 return Promise.resolve(userCredential);
             });
@@ -170,12 +188,22 @@ export function AuthProvider(props: AuthProviderProps) {
             .then((userCredential) => {
                 if (!userCredential.additionalUserInfo?.isNewUser) return;
 
+                let newVolunteer: any = {
+                    newUser: true,
+                };
+
+                // If name and surname are available populate the related fields
+                const profile = userCredential.additionalUserInfo
+                    ?.profile as any;
+                if (profile && profile.last_name)
+                    newVolunteer.lastName = profile.last_name;
+                if (profile && profile.first_name)
+                    newVolunteer.firstName = profile.first_name;
+
                 firestoreDB
                     .collection("volunteers")
                     .doc(userCredential.user?.uid)
-                    .set({
-                        newUser: true,
-                    });
+                    .set(newVolunteer);
 
                 return Promise.resolve(userCredential);
             });
