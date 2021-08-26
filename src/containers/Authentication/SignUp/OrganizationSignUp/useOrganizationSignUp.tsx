@@ -28,7 +28,7 @@ export default function useOrganizationSignUp() {
         resolver: schema,
     });
 
-    const { signup } = useAuth();
+    const { signupOrganization } = useAuth();
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
@@ -40,7 +40,7 @@ export default function useOrganizationSignUp() {
     } = useToast();
 
     const onSubmit = (data: IFormInputs) => {
-        if (!signup) return;
+        if (!signupOrganization) return;
 
         if (Object.keys(errors).length) {
             setToastErrorMessage(
@@ -54,7 +54,7 @@ export default function useOrganizationSignUp() {
         try {
             setLoading(true);
 
-            signup(data.email, data.password)
+            signupOrganization(data.email, data.password, data.organizationName)
                 .then(() => {
                     setToastSuccessMessage(
                         toastGenericTranslations.titleStandardFormalSuccess,

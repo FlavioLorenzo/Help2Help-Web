@@ -7,7 +7,7 @@
  */
 
 import React, { useContext, useState, useEffect } from "react";
-import firebase, { firebaseAuth } from "../config/firebaseConfig";
+import firebase, { firebaseAuth, firestoreDB } from "../config/firebaseConfig";
 
 import * as translations from "./AuthContext.translations";
 
@@ -24,9 +24,19 @@ interface AuthContextType {
         email: string,
         password: string
     ) => Promise<any>;
-    loginWithGoogle: () => Promise<firebase.auth.UserCredential>;
-    loginWithFacebook: () => Promise<firebase.auth.UserCredential>;
-    signup: (email: string, password: string) => Promise<any>; // Promise<firebase.auth.UserCredential>
+    loginWithGoogle: () => Promise<any>;
+    loginWithFacebook: () => Promise<any>;
+    signupVolunteer: (
+        email: string,
+        password: string,
+        firstName: string,
+        lastName: string
+    ) => Promise<any>; // Promise<firebase.auth.UserCredential>
+    signupOrganization: (
+        email: string,
+        password: string,
+        name: string
+    ) => Promise<any>;
     logout: () => Promise<void>;
     resetPassword: (email: string) => Promise<void>;
     updateEmail: (email: string) => Promise<void> | undefined;
@@ -53,11 +63,55 @@ export function AuthProvider(props: AuthProviderProps) {
     // The loading check determines whether this initialization has already been done
     const [loading, setLoading] = useState<boolean>(true);
 
-    function signup(email: string, password: string) {
+    function signupVolunteer(
+        email: string,
+        password: string,
+        firstName: string,
+        lastName: string
+    ) {
         return firebaseAuth
             .createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 userCredential.user?.sendEmailVerification();
+
+                firestoreDB
+                    .collection("volunteers")
+                    .doc(userCredential.user?.uid)
+                    .set({
+                        firstName: firstName,
+                        lastName: lastName,
+                        newUser: true,
+                    });
+
+                firebaseAuth.signOut();
+            })
+            .catch((error) => {
+                // TODO: Handle error codes with translation and more in detail
+                switch (error.code) {
+                    case "auth/email-already-in-use":
+                        return Promise.reject(
+                            translations.authErrorMessageEmailAlreadyInUse
+                        );
+                    default:
+                        break;
+                }
+            });
+    }
+
+    function signupOrganization(email: string, password: string, name: string) {
+        return firebaseAuth
+            .createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                userCredential.user?.sendEmailVerification();
+
+                firestoreDB
+                    .collection("organizations")
+                    .doc(userCredential.user?.uid)
+                    .set({
+                        name: name,
+                        newUser: true,
+                    });
+
                 firebaseAuth.signOut();
             })
             .catch((error) => {
@@ -94,11 +148,37 @@ export function AuthProvider(props: AuthProviderProps) {
     }
 
     function loginWithGoogle() {
-        return firebaseAuth.signInWithPopup(googleProvider);
+        return firebaseAuth
+            .signInWithPopup(googleProvider)
+            .then((userCredential) => {
+                if (!userCredential.additionalUserInfo?.isNewUser) return;
+
+                firestoreDB
+                    .collection("volunteers")
+                    .doc(userCredential.user?.uid)
+                    .set({
+                        newUser: true,
+                    });
+
+                return Promise.resolve(userCredential);
+            });
     }
 
     function loginWithFacebook() {
-        return firebaseAuth.signInWithPopup(facebookProvider);
+        return firebaseAuth
+            .signInWithPopup(facebookProvider)
+            .then((userCredential) => {
+                if (!userCredential.additionalUserInfo?.isNewUser) return;
+
+                firestoreDB
+                    .collection("volunteers")
+                    .doc(userCredential.user?.uid)
+                    .set({
+                        newUser: true,
+                    });
+
+                return Promise.resolve(userCredential);
+            });
     }
 
     function logout() {
@@ -184,7 +264,8 @@ export function AuthProvider(props: AuthProviderProps) {
         loginWithEmailAndPassword,
         loginWithGoogle,
         loginWithFacebook,
-        signup,
+        signupVolunteer,
+        signupOrganization,
         logout,
         resetPassword,
         updateEmail,

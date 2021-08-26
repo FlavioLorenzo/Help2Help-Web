@@ -17,7 +17,7 @@ const index = client.initIndex("organizations");
 
 // Update the algolia Index whenever a new document is created
 exports.indexOrganization = functions.firestore
-    .document("organization/{organizationId}")
+    .document("organizations/{organizationId}")
     .onCreate((snap, context) => {
         const data = snap.data();
         data.objectID = context.params.organizationId;
@@ -30,7 +30,7 @@ exports.indexOrganization = functions.firestore
 
 // Remove an Algolia Index whenever a document is deleted
 exports.unindexOrganization = functions.firestore
-    .document("organization/{organizationId}")
+    .document("organizations/{organizationId}")
     .onDelete((snap, context) => {
         const objectId = snap.id;
 
@@ -40,7 +40,7 @@ exports.unindexOrganization = functions.firestore
 
 // Update an Algolia Index whenever a document is modified
 exports.updateOrganization = functions.firestore
-    .document("organization/{organizationId}")
+    .document("organizations/{organizationId}")
     .onUpdate((change, context) => {
         const data = change.after.data();
         data.objectID = context.params.organizationId;

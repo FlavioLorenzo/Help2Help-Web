@@ -29,7 +29,7 @@ export default function useVolunteerSignUp() {
         resolver: schema,
     });
 
-    const { signup } = useAuth();
+    const { signupVolunteer } = useAuth();
     const [loading, setLoading] = useState(false);
     const history = useHistory();
 
@@ -41,7 +41,7 @@ export default function useVolunteerSignUp() {
     } = useToast();
 
     const onSubmit = (data: IFormInputs) => {
-        if (!signup) return;
+        if (!signupVolunteer) return;
 
         if (Object.keys(errors).length) {
             setToastErrorMessage(
@@ -55,7 +55,12 @@ export default function useVolunteerSignUp() {
         try {
             setLoading(true);
 
-            signup(data.email, data.password)
+            signupVolunteer(
+                data.email,
+                data.password,
+                data.firstName,
+                data.lastName
+            )
                 .then(() => {
                     setToastSuccessMessage(
                         toastGenericTranslations.titleStandardInformalSuccess,
