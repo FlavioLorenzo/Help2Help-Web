@@ -72,22 +72,28 @@ export function AuthProvider(props: AuthProviderProps) {
         return firebaseAuth
             .createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                userCredential.user?.sendEmailVerification();
+                const promises = [];
 
-                userCredential.user?.updateProfile({
-                    displayName: firstName + " " + lastName,
-                });
+                promises.push(
+                    firestoreDB
+                        .collection("volunteers")
+                        .doc(userCredential.user?.uid)
+                        .set({
+                            firstName: firstName,
+                            lastName: lastName,
+                            newUser: true,
+                        })
+                );
 
-                firestoreDB
-                    .collection("volunteers")
-                    .doc(userCredential.user?.uid)
-                    .set({
-                        firstName: firstName,
-                        lastName: lastName,
-                        newUser: true,
-                    });
+                promises.push(userCredential.user?.sendEmailVerification());
 
-                firebaseAuth.signOut();
+                promises.push(
+                    userCredential.user?.updateProfile({
+                        displayName: firstName + " " + lastName,
+                    })
+                );
+
+                return Promise.all(promises).then(() => firebaseAuth.signOut());
             })
             .catch((error) => {
                 // TODO: Handle error codes with translation and more in detail
@@ -106,21 +112,27 @@ export function AuthProvider(props: AuthProviderProps) {
         return firebaseAuth
             .createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                userCredential.user?.sendEmailVerification();
+                const promises = [];
 
-                userCredential.user?.updateProfile({
-                    displayName: name,
-                });
+                promises.push(
+                    firestoreDB
+                        .collection("organizations")
+                        .doc(userCredential.user?.uid)
+                        .set({
+                            name: name,
+                            newUser: true,
+                        })
+                );
 
-                firestoreDB
-                    .collection("organizations")
-                    .doc(userCredential.user?.uid)
-                    .set({
-                        name: name,
-                        newUser: true,
-                    });
+                promises.push(userCredential.user?.sendEmailVerification());
 
-                firebaseAuth.signOut();
+                promises.push(
+                    userCredential.user?.updateProfile({
+                        displayName: name,
+                    })
+                );
+
+                return Promise.all(promises).then(() => firebaseAuth.signOut());
             })
             .catch((error) => {
                 // TODO: Handle error codes with translation and more in detail
@@ -148,6 +160,7 @@ export function AuthProvider(props: AuthProviderProps) {
                 // if they lose it
                 if (!userCredential.user?.emailVerified) {
                     firebaseAuth.signOut();
+
                     return Promise.reject(
                         translations.authErrorMessageEmailNotVerified
                     );
@@ -280,7 +293,9 @@ export function AuthProvider(props: AuthProviderProps) {
     useEffect(() => {
         // The unsubscribe method will get triggered when component gets unmounted
         const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
-            setCurrentUser(user);
+            // Set the user as current only if verified
+            if (!user || user?.emailVerified) setCurrentUser(user);
+
             setLoading(false);
         });
 

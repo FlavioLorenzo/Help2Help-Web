@@ -63,7 +63,7 @@ export default function useOrganizationSignUp() {
 
                     setLoading(false);
 
-                    history.push("/login/organization/email");
+                    history.push("/login/organization");
                 })
                 .catch((error: any) => {
                     // TODO: Add error based translation
