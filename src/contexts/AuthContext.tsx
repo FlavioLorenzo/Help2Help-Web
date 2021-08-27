@@ -76,6 +76,16 @@ export function AuthProvider(props: AuthProviderProps) {
 
                 promises.push(
                     firestoreDB
+                        .collection("users_metadata")
+                        .doc(userCredential.user?.uid)
+                        .set({
+                            type: "volunteer",
+                            isNew: true,
+                        })
+                );
+
+                promises.push(
+                    firestoreDB
                         .collection("volunteers")
                         .doc(userCredential.user?.uid)
                         .set({
@@ -112,6 +122,16 @@ export function AuthProvider(props: AuthProviderProps) {
             .createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
                 const promises = [];
+
+                promises.push(
+                    firestoreDB
+                        .collection("users_metadata")
+                        .doc(userCredential.user?.uid)
+                        .set({
+                            type: "organization",
+                            isNew: true,
+                        })
+                );
 
                 promises.push(
                     firestoreDB
@@ -182,12 +202,26 @@ export function AuthProvider(props: AuthProviderProps) {
                 if (profile && profile.given_name)
                     newVolunteer.firstName = profile.given_name;
 
-                firestoreDB
-                    .collection("volunteers")
-                    .doc(userCredential.user?.uid)
-                    .set(newVolunteer);
+                const promises = [];
 
-                return Promise.resolve(userCredential);
+                promises.push(
+                    firestoreDB
+                        .collection("users_metadata")
+                        .doc(userCredential.user?.uid)
+                        .set({
+                            type: "volunteer",
+                            isNew: true,
+                        })
+                );
+
+                promises.push(
+                    firestoreDB
+                        .collection("volunteers")
+                        .doc(userCredential.user?.uid)
+                        .set(newVolunteer)
+                );
+
+                return Promise.all(promises);
             });
     }
 
@@ -207,12 +241,26 @@ export function AuthProvider(props: AuthProviderProps) {
                 if (profile && profile.first_name)
                     newVolunteer.firstName = profile.first_name;
 
-                firestoreDB
-                    .collection("volunteers")
-                    .doc(userCredential.user?.uid)
-                    .set(newVolunteer);
+                const promises = [];
 
-                return Promise.resolve(userCredential);
+                promises.push(
+                    firestoreDB
+                        .collection("users_metadata")
+                        .doc(userCredential.user?.uid)
+                        .set({
+                            type: "volunteer",
+                            isNew: true,
+                        })
+                );
+
+                promises.push(
+                    firestoreDB
+                        .collection("volunteers")
+                        .doc(userCredential.user?.uid)
+                        .set(newVolunteer)
+                );
+
+                return Promise.all(promises);
             });
     }
 

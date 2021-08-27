@@ -1,9 +1,5 @@
-import {
-    addVolunteerMetadata,
-    addOrganizationMetadata,
-    removeUserData,
-} from "./auth";
-export { addVolunteerMetadata, addOrganizationMetadata, removeUserData };
+import { removeUserData } from "./auth";
+export { removeUserData };
 
 import {
     indexOrganization,
