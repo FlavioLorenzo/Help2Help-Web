@@ -81,7 +81,6 @@ export function AuthProvider(props: AuthProviderProps) {
                         .set({
                             firstName: firstName,
                             lastName: lastName,
-                            newUser: true,
                         })
                 );
 
@@ -120,7 +119,6 @@ export function AuthProvider(props: AuthProviderProps) {
                         .doc(userCredential.user?.uid)
                         .set({
                             name: name,
-                            newUser: true,
                         })
                 );
 
@@ -174,9 +172,7 @@ export function AuthProvider(props: AuthProviderProps) {
             .then((userCredential) => {
                 if (!userCredential.additionalUserInfo?.isNewUser) return;
 
-                let newVolunteer: any = {
-                    newUser: true,
-                };
+                let newVolunteer: any = {};
 
                 // If name and surname are available populate the related fields
                 const profile = userCredential.additionalUserInfo
@@ -201,9 +197,7 @@ export function AuthProvider(props: AuthProviderProps) {
             .then((userCredential) => {
                 if (!userCredential.additionalUserInfo?.isNewUser) return;
 
-                let newVolunteer: any = {
-                    newUser: true,
-                };
+                let newVolunteer: any = {};
 
                 // If name and surname are available populate the related fields
                 const profile = userCredential.additionalUserInfo
