@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 
 import Button from "../../../../components/UI/Button/Button";
-import FormField from "../../../../components/UI/FormField/FormField";
+import FullGradientFormField from "../../../../components/UI/FullGradientFormField/FullGradientFormField";
 
 import useVolunteerSignUp from "./useVolunteerSignUp";
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import * as localTranslations from "./VolunteerSignUp.translations";
-
-import styles from "../../Authentication.module.scss";
 
 export const VolunteerSignUp = () => {
     const {
@@ -22,18 +20,18 @@ export const VolunteerSignUp = () => {
 
     return (
         <>
-            <div className={styles.TitleGroup}>
-                <h1 className={styles.Title}>
+            <div className="title-group">
+                <h1 className="title">
                     {localTranslations.signupAsVolunteerTitle}
                 </h1>
             </div>
 
-            <div className={styles.AuthSection}>
+            <div className="full-gradient-form-section">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className={styles.AuthForm}
+                    className="full-gradient-form"
                 >
-                    <FormField
+                    <FullGradientFormField
                         label={translations.firstName}
                         type="text"
                         registerLabel="firstName"
@@ -46,7 +44,7 @@ export const VolunteerSignUp = () => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={translations.surname}
                         type="text"
                         registerLabel="lastName"
@@ -59,7 +57,7 @@ export const VolunteerSignUp = () => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={translations.email}
                         type="email"
                         registerLabel="email"
@@ -72,7 +70,7 @@ export const VolunteerSignUp = () => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={translations.password}
                         type="password"
                         registerLabel="password"
@@ -85,7 +83,7 @@ export const VolunteerSignUp = () => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={authTranslations.authConfirmPassword}
                         type="password"
                         registerLabel="passwordConfirmation"
@@ -98,7 +96,7 @@ export const VolunteerSignUp = () => {
                         register={register}
                     />
 
-                    <div className={styles.ButtonGroup}>
+                    <div className="button-group">
                         <Button submit colorStyle="White" disabled={loading}>
                             {localTranslations.signupAsVolunteerButton}
                         </Button>
@@ -106,8 +104,8 @@ export const VolunteerSignUp = () => {
                 </form>
             </div>
 
-            <div className={styles.AuthSection}>
-                <div className={styles.LinkText}>
+            <div className="full-gradient-form-section">
+                <div className="link-text">
                     <Link to="/login">
                         {localTranslations.signupAsVolunteerAlreadySubscribed}
                     </Link>

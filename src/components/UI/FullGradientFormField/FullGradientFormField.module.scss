@@ -1,6 +1,6 @@
 @import "../../../styles/colors.scss";
 
-.AuthFormField {
+.FullGradientFormField {
     display: block;
     margin: 15px auto;
     max-width: 250px;
@@ -8,7 +8,7 @@
     label {
         width: 100%;
 
-        .AuthFormLabel {
+        .FullGradientFormLabel {
             text-align: left;
             width: 100%;
             margin-bottom: 0.2em;
@@ -18,7 +18,7 @@
             }
         }
 
-        .AuthFormInput {
+        .FullGradientFormInput {
             display: flex;
             align-items: center;
             position: relative;

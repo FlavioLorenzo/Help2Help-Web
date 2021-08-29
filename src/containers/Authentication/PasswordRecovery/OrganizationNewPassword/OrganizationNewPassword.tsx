@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
 import Button from "../../../../components/UI/Button/Button";
-import FormField from "../../../../components/UI/FormField/FormField";
+import FullGradientFormField from "../../../../components/UI/FullGradientFormField/FullGradientFormField";
 
 import useOrganizationNewPassword from "./useOrganizationNewPassword";
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
-import styles from "../../Authentication.module.scss";
 
 interface OrganizationNewPasswordProps {}
 
@@ -24,23 +23,23 @@ export const OrganizationNewPassword = (
 
     return (
         <>
-            <div className={styles.TitleGroup}>
-                <h1 className={styles.Title}>
+            <div className="title-group">
+                <h1 className="title">
                     {authTranslations.recoveryAsOrganizationTitle}
                 </h1>
-                <div className={styles.LinkSubtitle}>
+                <div className="link-subtitle">
                     <Link to="/login/organization">
                         {authTranslations.authGoBack}
                     </Link>
                 </div>
             </div>
 
-            <div className={styles.AuthSection}>
+            <div className="full-gradient-form-section">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className={styles.AuthForm}
+                    className="full-gradient-form"
                 >
-                    <FormField
+                    <FullGradientFormField
                         label={translations.password}
                         type="password"
                         registerLabel="password"
@@ -53,7 +52,7 @@ export const OrganizationNewPassword = (
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={authTranslations.authConfirmPassword}
                         type="password"
                         registerLabel="passwordConfirmation"
@@ -66,7 +65,7 @@ export const OrganizationNewPassword = (
                         register={register}
                     />
 
-                    <div className={styles.ButtonGroup}>
+                    <div className="button-group">
                         <Button submit colorStyle="White" disabled={loading}>
                             {authTranslations.createNewPasswordButton}
                         </Button>

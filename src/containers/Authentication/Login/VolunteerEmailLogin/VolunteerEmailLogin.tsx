@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 
 import Button from "../../../../components/UI/Button/Button";
-import FormField from "../../../../components/UI/FormField/FormField";
+import FullGradientFormField from "../../../../components/UI/FullGradientFormField/FullGradientFormField";
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import * as localTranslations from "./VolunteerEmailLogin.translations";
-import styles from "../../Authentication.module.scss";
 import useVolunteerEmailLogin from "./useVolunteerEmailLogin";
 
 interface VolunteerEmailLoginProps {}
@@ -22,21 +21,21 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
 
     return (
         <>
-            <div className={styles.TitleGroup}>
-                <h1 className={styles.Title}>
+            <div className="title-group">
+                <h1 className="title">
                     {localTranslations.loginAccessWithEmail}
                 </h1>
-                <div className={styles.LinkSubtitle}>
+                <div className="link-subtitle">
                     <Link to="/login">{authTranslations.authGoBack}</Link>
                 </div>
             </div>
 
-            <div className={styles.AuthSection}>
+            <div className="full-gradient-form-section">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className={styles.AuthForm}
+                    className="full-gradient-form"
                 >
-                    <FormField
+                    <FullGradientFormField
                         label={translations.email}
                         type="email"
                         registerLabel="email"
@@ -49,7 +48,7 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={translations.password}
                         type="password"
                         registerLabel="password"
@@ -62,7 +61,7 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
                         register={register}
                     />
 
-                    <div className={styles.ButtonGroup}>
+                    <div className="button-group">
                         <Button colorStyle="White" disabled={loading} submit>
                             {authTranslations.loginStandardMessage}
                         </Button>
@@ -70,14 +69,14 @@ export const VolunteerEmailLogin = (props: VolunteerEmailLoginProps) => {
                 </form>
             </div>
 
-            <div className={styles.AuthSection}>
-                <div className={styles.LinkText}>
+            <div className="full-gradient-form-section">
+                <div className="link-text">
                     <Link to="/password-recovery">
                         {localTranslations.loginWithEmailPasswordForgotten}
                     </Link>
                 </div>
 
-                <div className={styles.LinkText}>
+                <div className="link-text">
                     <Link to="/signup">
                         {localTranslations.loginRegisterWithEmail}
                     </Link>

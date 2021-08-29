@@ -8,6 +8,7 @@
 
 import React, { useContext, useState, useEffect } from "react";
 import firebase, { firebaseAuth, firestoreDB } from "../config/firebaseConfig";
+import { MetadataType } from "../types/UsersMetadataType";
 
 import * as translations from "./AuthContext.translations";
 
@@ -20,6 +21,8 @@ interface AuthProviderProps {
 
 interface AuthContextType {
     currentUser: firebase.User | null | undefined;
+    type: string | null | undefined;
+    isNew: boolean | null | undefined;
     loginWithEmailAndPassword: (
         email: string,
         password: string
@@ -57,6 +60,9 @@ export function useAuth() {
 
 export function AuthProvider(props: AuthProviderProps) {
     const [currentUser, setCurrentUser] = useState<firebase.User | null>();
+    const [type, setType] = useState<string | null>();
+    const [isNew, setIsNew] = useState<boolean | null>();
+
     // When the page initially gets rendered, the current user will be null. Only after
     // the local storage is configured by Firebase the currentUser variable will be
     // populated.
@@ -334,9 +340,26 @@ export function AuthProvider(props: AuthProviderProps) {
      */
     useEffect(() => {
         // The unsubscribe method will get triggered when component gets unmounted
-        const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
+        const unsubscribe = firebaseAuth.onAuthStateChanged(async (user) => {
             // Set the user as current only if verified
-            if (!user || user?.emailVerified) setCurrentUser(user);
+            if (user && user?.emailVerified) {
+                await firestoreDB
+                    .collection("users_metadata")
+                    .doc(user.uid)
+                    .get()
+                    .then((response) => {
+                        const metadata = response.data() as MetadataType;
+                        setIsNew(metadata.isNew);
+                        setType(metadata.type);
+                    });
+
+                setCurrentUser(user);
+            } else {
+                // If user is not logged in or is not verified
+                setCurrentUser(user);
+                setType(null);
+                setIsNew(null);
+            }
 
             setLoading(false);
         });
@@ -346,6 +369,8 @@ export function AuthProvider(props: AuthProviderProps) {
 
     const value: AuthContextType = {
         currentUser,
+        type,
+        isNew,
         loginWithEmailAndPassword,
         loginWithGoogle,
         loginWithFacebook,

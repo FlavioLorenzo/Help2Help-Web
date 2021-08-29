@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import FullGradientFormField from "../../../../components/UI/FullGradientFormField/FullGradientFormField";
 import Button from "../../../../components/UI/Button/Button";
 
 import useOrganizationSignUp from "./useOrganizationSignUp";
@@ -7,8 +8,6 @@ import useOrganizationSignUp from "./useOrganizationSignUp";
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import * as localTranslations from "./OrganizationSignUp.translations";
-import styles from "../../Authentication.module.scss";
-import FormField from "../../../../components/UI/FormField/FormField";
 
 interface OrganizationSignUpProps {}
 
@@ -23,18 +22,18 @@ export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
 
     return (
         <>
-            <div className={styles.TitleGroup}>
-                <h1 className={styles.Title}>
+            <div className="title-group">
+                <h1 className="title">
                     {localTranslations.signupAsOrganizationTitle}
                 </h1>
             </div>
 
-            <div className={styles.AuthSection}>
+            <div className="full-gradient-form-section">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className={styles.AuthForm}
+                    className="full-gradient-form"
                 >
-                    <FormField
+                    <FullGradientFormField
                         label={translations.organizationName}
                         type="text"
                         registerLabel="organizationName"
@@ -47,7 +46,7 @@ export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={translations.email}
                         type="email"
                         registerLabel="email"
@@ -60,7 +59,7 @@ export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={translations.password}
                         type="password"
                         registerLabel="password"
@@ -73,7 +72,7 @@ export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={authTranslations.authConfirmPassword}
                         type="password"
                         registerLabel="passwordConfirmation"
@@ -86,7 +85,7 @@ export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
                         register={register}
                     />
 
-                    <div className={styles.ButtonGroup}>
+                    <div className="button-group">
                         <Button submit colorStyle="White" disabled={loading}>
                             {localTranslations.signupAsOrganizationButton}
                         </Button>
@@ -94,8 +93,8 @@ export const OrganizationSignUp = (props: OrganizationSignUpProps) => {
                 </form>
             </div>
 
-            <div className={styles.AuthSection}>
-                <div className={styles.LinkText}>
+            <div className="full-gradient-form-section">
+                <div className="link-text">
                     <Link to="/login/organization">
                         {
                             localTranslations.signupAsOrganizationAlreadySubscribed

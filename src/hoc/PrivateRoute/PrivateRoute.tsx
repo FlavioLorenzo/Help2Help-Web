@@ -7,13 +7,19 @@ import { useAuth } from "../../contexts/AuthContext";
  */
 const PrivateRoute = (props: RouteProps) => {
     const { ...rest } = props;
-    const { currentUser } = useAuth();
+    const { currentUser, isNew } = useAuth();
 
-    if (currentUser) {
-        return <Route {...rest} />;
-    } else {
-        return <Redirect to="/login" />;
-    }
+    if (
+        currentUser &&
+        isNew &&
+        rest.path !== "/onboarding" &&
+        rest.path !== "/logout"
+    )
+        return <Redirect to="/onboarding" />;
+
+    if (currentUser) return <Route {...rest} />;
+
+    return <Redirect to="/login" />;
 };
 
 export default PrivateRoute;

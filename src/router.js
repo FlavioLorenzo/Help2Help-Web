@@ -8,6 +8,7 @@ import useDeviceDetect from "./hooks/useDeviceDetect";
 import SearchResults from "./containers/SearchResults/SearchResults";
 import Homepage from "./containers/Homepage/Homepage";
 import Authentication from "./containers/Authentication/Authentication";
+import Onboarding from "./containers/Onboarding/Onboarding";
 
 const Router = () => {
     const isMobile = useDeviceDetect();
@@ -20,7 +21,8 @@ const Router = () => {
                 component={Homepage}
                 isMobile={isMobile}
             />
-            <PrivateRoute path="/search" component={SearchResults} />
+            <PrivateRoute path={"/search"} component={SearchResults} />
+            <PrivateRoute path={"/onboarding"} component={Onboarding} />
 
             {/* AUTHENTICATION - the exact routing is properly handled in the Authentication component */}
             <PublicRoute

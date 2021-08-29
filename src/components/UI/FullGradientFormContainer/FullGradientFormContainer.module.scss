@@ -1,0 +1,97 @@
+@import "../../../styles/colors";
+
+.FullGradientFormContainer {
+    position: absolute;
+
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    width: 100%;
+    text-align: center;
+
+    &.FullGradientFormLongContainer {
+        position: static;
+        transform: none;
+        margin: 25px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .TitleGroup {
+        .Title {
+            color: white;
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        .LinkSubtitle {
+            a {
+                color: white;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .FullGradientFormSection {
+        margin-bottom: 30px;
+
+        .Text {
+            color: white;
+            font-size: 1.15rem;
+            font-weight: bold;
+            padding: 0 30px;
+
+            &.Normal {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+        }
+
+        .BackToStandardButton {
+            color: white;
+            font-size: 1.5rem;
+
+            position: absolute;
+            left: 10px;
+        }
+
+        .ButtonGroup {
+            width: 225px;
+
+            margin: 10px auto;
+
+            .Button {
+                margin: 10px 0;
+            }
+        }
+
+        .LinkText {
+            margin: 15px 0;
+
+            a {
+                color: rgb(187, 184, 184);
+                text-decoration: underline;
+            }
+        }
+
+        .FullGradientForm {
+            color: white;
+            margin: 15px 0;
+
+            .ButtonGroup {
+                margin-top: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-height: 400px) {
+    .FullGradientFormContainer {
+        position: static;
+        transform: none;
+        margin: 25px 0;
+        width: 100%;
+        text-align: center;
+    }
+}

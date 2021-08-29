@@ -1,6 +1,6 @@
-@import "../../styles/colors";
+@import "./colors";
 
-.Authentication {
+.full-gradient-form-container {
     position: absolute;
 
     top: 50%;
@@ -10,7 +10,7 @@
     width: 100%;
     text-align: center;
 
-    &.AuthenticationLongForm {
+    &.full-gradient-form-long-container {
         position: static;
         transform: none;
         margin: 25px 0;
@@ -19,14 +19,14 @@
     }
 }
 
-.TitleGroup {
-    .Title {
+.title-group {
+    .title {
         color: white;
         font-size: 1.15rem;
         font-weight: bold;
     }
 
-    .LinkSubtitle {
+    .link-subtitle {
         a {
             color: white;
             text-decoration: underline;
@@ -34,29 +34,22 @@
     }
 }
 
-.Errors {
-    background: white;
-    margin: 0 auto;
-    max-width: 250px;
-    padding: 10px;
-}
-
-.AuthSection {
+.full-gradient-form-section {
     margin-bottom: 30px;
 
-    .Text {
+    .text {
         color: white;
         font-size: 1.15rem;
         font-weight: bold;
         padding: 0 30px;
 
-        &.Normal {
+        &.normal {
             font-size: 1rem;
             font-weight: 400;
         }
     }
 
-    .BackToStandardButton {
+    .back-to-standard-button {
         color: white;
         font-size: 1.5rem;
 
@@ -64,37 +57,37 @@
         left: 10px;
     }
 
-    .ButtonGroup {
+    .button-group {
         width: 225px;
 
         margin: 10px auto;
 
-        .Button {
+        .button {
             margin: 10px 0;
         }
     }
 
-    .LinkText {
+    .link-text {
         margin: 15px 0;
 
         a {
-            color: white;
+            color: rgb(211, 211, 211);
             text-decoration: underline;
         }
     }
 
-    .AuthForm {
+    .full-gradient-form {
         color: white;
         margin: 15px 0;
 
-        .ButtonGroup {
+        .button-group {
             margin-top: 20px;
         }
     }
 }
 
 @media only screen and (max-height: 400px) {
-    .Authentication {
+    .full-gradient-form-container {
         position: static;
         transform: none;
         margin: 25px 0;

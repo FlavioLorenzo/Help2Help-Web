@@ -2,11 +2,10 @@ import Button from "../../../../components/UI/Button/Button";
 
 import useVolunteerNewPassword from "./useVolunteerNewPassword";
 
-import FormField from "../../../../components/UI/FormField/FormField";
+import FullGradientFormField from "../../../../components/UI/FullGradientFormField/FullGradientFormField";
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
-import styles from "../../Authentication.module.scss";
 
 interface VolunteerNewPasswordProps {}
 
@@ -21,18 +20,18 @@ export const VolunteerNewPassword = (props: VolunteerNewPasswordProps) => {
 
     return (
         <>
-            <div className={styles.TitleGroup}>
-                <h1 className={styles.Title}>
+            "
+            <div className="title-group">
+                <h1 className="title">
                     {authTranslations.recoveryAsVolunteerTitle}
                 </h1>
             </div>
-
-            <div className={styles.AuthSection}>
+            <div className="full-gradient-form-section">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className={styles.AuthForm}
+                    className="full-gradient-form"
                 >
-                    <FormField
+                    <FullGradientFormField
                         label={translations.password}
                         type="password"
                         registerLabel="password"
@@ -45,7 +44,7 @@ export const VolunteerNewPassword = (props: VolunteerNewPasswordProps) => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={authTranslations.authConfirmPassword}
                         type="password"
                         registerLabel="passwordConfirmation"
@@ -58,7 +57,7 @@ export const VolunteerNewPassword = (props: VolunteerNewPasswordProps) => {
                         register={register}
                     />
 
-                    <div className={styles.ButtonGroup}>
+                    <div className="button-group">
                         <Button submit colorStyle="White" disabled={loading}>
                             {authTranslations.createNewPasswordButton}
                         </Button>

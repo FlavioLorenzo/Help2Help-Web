@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 
+import FullGradientFormField from "../../../../components/UI/FullGradientFormField/FullGradientFormField";
 import Button from "../../../../components/UI/Button/Button";
 
 import useVolunteerPasswordRecovery from "./useVolunteerPasswordRecovery";
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
-import styles from "../../Authentication.module.scss";
-import FormField from "../../../../components/UI/FormField/FormField";
 
 export const VolunteerPasswordRecovery = () => {
     const {
@@ -20,23 +19,23 @@ export const VolunteerPasswordRecovery = () => {
 
     return (
         <>
-            <div className={styles.TitleGroup}>
-                <h1 className={styles.Title}>
+            <div className="title-group">
+                <h1 className="title">
                     {authTranslations.recoveryAsVolunteerTitle}
                 </h1>
-                <div className={styles.LinkSubtitle}>
+                <div className="link-subtitle">
                     <Link to="/login/volunteer/email">
                         {authTranslations.authGoBack}
                     </Link>
                 </div>
             </div>
 
-            <div className={styles.AuthSection}>
+            <div className="full-gradient-form-section">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className={styles.AuthForm}
+                    className="full-gradient-form"
                 >
-                    <FormField
+                    <FullGradientFormField
                         label={translations.email}
                         type="email"
                         registerLabel="email"
@@ -49,7 +48,7 @@ export const VolunteerPasswordRecovery = () => {
                         register={register}
                     />
 
-                    <div className={styles.ButtonGroup}>
+                    <div className="button-group">
                         <Button submit colorStyle="White" disabled={loading}>
                             {authTranslations.recoverySendLinkButton}
                         </Button>

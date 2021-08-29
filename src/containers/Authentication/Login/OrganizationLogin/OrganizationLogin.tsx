@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import useOrganizationLogin from "./useOrganizationLogin";
 
 import Button from "../../../../components/UI/Button/Button";
-import FormField from "../../../../components/UI/FormField/FormField";
+import FullGradientFormField from "../../../../components/UI/FullGradientFormField/FullGradientFormField";
 
 import * as translations from "../../../../translations";
 import * as authTranslations from "../../Authentication.translations";
 import * as localTranslations from "./OrganizationLogin.translations";
-import styles from "../../Authentication.module.scss";
 
 interface OrganizationLoginProps {}
 
@@ -27,18 +26,18 @@ export const OrganizationLogin = (props: OrganizationLoginProps) => {
 
     return (
         <>
-            <div className={styles.TitleGroup}>
-                <h1 className={styles.Title}>
+            <div className="title-group">
+                <h1 className="title">
                     {authTranslations.loginAsOrganization}
                 </h1>
             </div>
 
-            <div className={styles.AuthSection}>
+            <div className="full-gradient-form-section">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className={styles.AuthForm}
+                    className="full-gradient-form"
                 >
-                    <FormField
+                    <FullGradientFormField
                         label={translations.email}
                         type="email"
                         registerLabel="email"
@@ -51,7 +50,7 @@ export const OrganizationLogin = (props: OrganizationLoginProps) => {
                         register={register}
                     />
 
-                    <FormField
+                    <FullGradientFormField
                         label={translations.password}
                         type="password"
                         registerLabel="password"
@@ -64,7 +63,7 @@ export const OrganizationLogin = (props: OrganizationLoginProps) => {
                         register={register}
                     />
 
-                    <div className={styles.ButtonGroup}>
+                    <div className="button-group">
                         <Button colorStyle="White" disabled={loading} submit>
                             {authTranslations.loginAsOrganization}
                         </Button>
@@ -72,14 +71,14 @@ export const OrganizationLogin = (props: OrganizationLoginProps) => {
                 </form>
             </div>
 
-            <div className={styles.AuthSection}>
-                <div className={styles.LinkText}>
+            <div className="full-gradient-form-section">
+                <div className="link-text">
                     <Link to="/password-recovery/organization">
                         {localTranslations.loginWithEmailPasswordForgotten}
                     </Link>
                 </div>
 
-                <div className={styles.LinkText}>
+                <div className="link-text">
                     <Link to="/signup/organization">
                         {localTranslations.loginRegisterAsOrganization}
                     </Link>

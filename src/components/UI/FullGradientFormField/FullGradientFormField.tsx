@@ -7,10 +7,10 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 import FormError from "../FormError/FormError";
 
-import styles from "./FormField.module.scss";
+import styles from "./FullGradientFormField.module.scss";
 import { useEffect } from "react";
 
-interface FormFieldProps {
+interface FullGradientFormFieldProps {
     /**
      * Text of the label for the form
      */
@@ -49,7 +49,7 @@ interface FormFieldProps {
     register: UseFormRegister<any>;
 }
 
-const FormField = (props: FormFieldProps) => {
+const FullGradientFormField = (props: FullGradientFormFieldProps) => {
     const [hide, setHide] = useState<boolean>(true);
     const [actualType, setActualType] = useState<string>(props.type);
 
@@ -84,11 +84,13 @@ const FormField = (props: FormFieldProps) => {
     }, [props.type, hide]);
 
     return (
-        <div className={styles.AuthFormField}>
+        <div className={styles.FullGradientFormField}>
             <label>
-                <div className={styles.AuthFormLabel}>{props.label}</div>
+                <div className={styles.FullGradientFormLabel}>
+                    {props.label}
+                </div>
 
-                <div className={styles.AuthFormInput}>
+                <div className={styles.FullGradientFormInput}>
                     <input
                         className={formInputClasses.join(" ")}
                         {...props.register(props.registerLabel)}
@@ -105,4 +107,4 @@ const FormField = (props: FormFieldProps) => {
     );
 };
 
-export default FormField;
+export default FullGradientFormField;

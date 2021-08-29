@@ -5,7 +5,6 @@ import useVolunteerStandardLogin from "./useVolunteerStandardLogin";
 import Button from "../../../../components/UI/Button/Button";
 
 import * as translations from "../../Authentication.translations";
-import styles from "../../Authentication.module.scss";
 
 import facebookLogo from "../../../../assets/images/facebookLogo.png";
 import googleLogo from "../../../../assets/images/googleLogo.svg";
@@ -23,13 +22,13 @@ export const VolunteerStandardLogin = (props: StandardLoginProps) => {
 
     return (
         <>
-            <div className={styles.TitleGroup}>
-                <h1 className={styles.Title}>{translations.loginAccessWith}</h1>
+            <div className="title-group">
+                <h1 className="title">{translations.loginAccessWith}</h1>
             </div>
 
-            <div className={styles.AuthSection}>
-                <div className={styles.ButtonGroup}>
-                    <div className={styles.Button}>
+            <div className="full-gradient-form-section">
+                <div className="button-group">
+                    <div className="button">
                         <Button
                             colorStyle="White"
                             clicked={onGoogleLoginClicked}
@@ -38,7 +37,7 @@ export const VolunteerStandardLogin = (props: StandardLoginProps) => {
                             Google
                         </Button>
                     </div>
-                    <div className={styles.Button}>
+                    <div className="button">
                         <Button
                             colorStyle="White"
                             clicked={onFacebookLoginClicked}
@@ -50,10 +49,10 @@ export const VolunteerStandardLogin = (props: StandardLoginProps) => {
                 </div>
             </div>
 
-            <div className={styles.AuthSection}>
-                <div className={styles.Text}>{translations.loginInstead}</div>
-                <div className={styles.ButtonGroup}>
-                    <div className={styles.Button}>
+            <div className="full-gradient-form-section">
+                <div className="text">{translations.loginInstead}</div>
+                <div className="button-group">
+                    <div className="button">
                         <Button
                             colorStyle="White"
                             clicked={onEmailPageButtonClicked}
@@ -64,8 +63,8 @@ export const VolunteerStandardLogin = (props: StandardLoginProps) => {
                 </div>
             </div>
 
-            <div className={styles.AuthSection}>
-                <div className={styles.LinkText}>
+            <div className="full-gradient-form-section">
+                <div className="link-text">
                     <Link to="/login/organization">
                         {translations.loginAsOrganizationRedirect}
                     </Link>
