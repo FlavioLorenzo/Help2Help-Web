@@ -1,7 +1,17 @@
+import { useAuth } from "../../contexts/AuthContext";
+
 import FullGradientFormContainer from "../../components/UI/FullGradientFormContainer/FullGradientFormContainer";
+import VolunteerOnboarding from "./VolunteerOnboarding/VolunteerOnboarding";
 
 const Onboarding = () => {
-    return <FullGradientFormContainer>Funge</FullGradientFormContainer>;
+    const { type } = useAuth();
+
+    const onboardingType = <VolunteerOnboarding />;
+    if (type === "organization") console.log("organization");
+
+    return (
+        <FullGradientFormContainer>{onboardingType}</FullGradientFormContainer>
+    );
 };
 
 export default Onboarding;

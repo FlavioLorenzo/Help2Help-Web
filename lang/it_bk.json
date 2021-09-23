@@ -1,14 +1,14 @@
 {
     "auth_confirm_password": {
-        "defaultMessage": "Nel caso ci fossimo capiti male: riscrivi la tua password!.",
+        "defaultMessage": "Conferma la tua password",
         "description": "Message for the form's field where the user must provide for a second time his password."
     },
     "auth_error_message_email_already_in_use": {
-        "defaultMessage": "Ehi! Questo indirizzo e-mail non ci è nuovo! Sicuro di non essere già dei nostri?.",
+        "defaultMessage": "L'indirizzo email è già in uso da un altro account.",
         "description": "Error message if user signs up with an email already present at database"
     },
     "auth_error_message_email_not_verified": {
-        "defaultMessage": "Mmm…devi essere nuovo di queste parti! Per essere dei nostri registrati prima di effettuare il login!.",
+        "defaultMessage": "L'indirizzo mail non è stato ancora verificato.",
         "description": "Error message if user tried to login with an unverified account"
     },
     "auth_go_back": {
@@ -52,23 +52,23 @@
         "description": "Example message with device's name injection"
     },
     "form_error_email_required": {
-        "defaultMessage": "Guarda qui! Hai dimenticato l’e-mail!",
+        "defaultMessage": "Inserisci la tua email",
         "description": "Error message when user does not fill the email field"
     },
     "form_error_first_name_required": {
-        "defaultMessage": "Dai non fare il/la timido/a! Devi avercelo un nome!",
+        "defaultMessage": "Inserisci il tuo nome",
         "description": "Error message when user does not fill the first name field"
     },
     "form_error_last_name_required": {
-        "defaultMessage": "Troppo formali se ti chiediamo anche il cognome?",
+        "defaultMessage": "Inserisci il tuo cognome",
         "description": "Error message when user does not fill the last name field"
     },
     "form_error_password_must_match": {
-        "defaultMessage": "Non siamo la tua maestra di italiano ma dobbiamo dirtelo: c’è un errore in una delle due password!",
+        "defaultMessage": "Le password fornite devono coincidere",
         "description": "Error message when user fills the password and confirmation password fields with different values"
     },
     "form_error_password_required": {
-        "defaultMessage": "La tua password deve avere almeno 8 caratteri ed al massimo 32! Ti stressiamo ma per la tua sicurezza!",
+        "defaultMessage": "Inserisci la tua password tra gli 8 e i 32 caratteri",
         "description": "Error message when user does not fill the password field or the field is wrongly valued"
     },
     "global_email": {
@@ -108,7 +108,7 @@
         "description": "Events reference in the homepage"
     },
     "homepage_volunteering_intro": {
-        "defaultMessage": "Scopri le offerte di volontariato perfette per te!",
+        "defaultMessage": "Scopri le offerte di volontariato!",
         "description": "Message at the top of the homepage search results box"
     },
     "homepage_volunteering_know_more": {
@@ -152,7 +152,7 @@
         "description": "Text for the button to trigger the new password creation in the password-recovery/new-password page"
     },
     "recovery_organization_title": {
-        "defaultMessage": "Non ti ricordi più la tua password? Clicca qui, ti aiutiamo noi!",
+        "defaultMessage": "Servizio di ripristino password",
         "description": "Title of the organizations's password recovery page"
     },
     "recovery_send_link_button": {
@@ -160,7 +160,7 @@
         "description": "Password recovery page's button so start the recovery process by sending the appropriate link to the user"
     },
     "recovery_volunteer_title": {
-        "defaultMessage": "Non ti ricordi più la password? Clicca qui, ti aiutiamo noi!",
+        "defaultMessage": "Ripristina la tua password",
         "description": "Title of the volunteer's password recovery page"
     },
     "side_drawer_edit_profile": {
@@ -192,7 +192,7 @@
         "description": "Link to give the user the opportunity to go back to the login page"
     },
     "signup_volunteer_mail_sent_congratulations": {
-        "defaultMessage": "Congratulazioni!",
+        "defaultMessage": "Congratulazioni",
         "description": "Title of the congratulatory page where the volunteer will be redirected upon successful signup"
     },
     "signup_volunteer_mail_sent_main_text": {
@@ -208,43 +208,43 @@
         "description": "Description to show when user successfully verified their email."
     },
     "toast_desc_generic_login_error": {
-        "defaultMessage": "Huston abbiamo un problema! Si è verificato un errore durante il login. Scusaci e ritenta!",
+        "defaultMessage": "Si è verificato un errore durante il login. Si prega di riprovare più tardi.",
         "description": "A generic error when user cannot login due to unknown reasons."
     },
     "toast_desc_generic_missing_data_error": {
-        "defaultMessage": "Manca qualcosa! Assicurati di aver completato tutti i campi prima di proseguire!",
+        "defaultMessage": "Completa tutti i campi per poter proseguire",
         "description": "Generic description when user still needs to complete all required fields in a form"
     },
     "toast_desc_generic_signup_error": {
-        "defaultMessage": "Pff! Maledetta tecnologia! Si è verificato un errore durante la creazione dell'account!",
+        "defaultMessage": "Si è verificato un errore durante la creazione dell'account",
         "description": "A generic error when user cannot sign up."
     },
     "toast_desc_logout_success": {
-        "defaultMessage": "Ciao, a presto!",
+        "defaultMessage": "Attendiamo con ansia il tuo ritorno.",
         "description": "Description to show when user successfully logged out."
     },
     "toast_desc_password_do_not_match_errror": {
-        "defaultMessage": "Non siamo la tua maestra di italiano, vero, ma dobbiamo dirtelo: c’è un errore in una delle due password!",
+        "defaultMessage": "Le password fornite non corrispondono.",
         "description": "Error message to show when the two passwords provided in a registration or password reset form do not match."
     },
     "toast_desc_password_recovery_error": {
-        "defaultMessage": "Ops! Si è verificato un errore durante la procedura di ripristino password! Ma niente panico! Non c’è nulla che il tempo non possa risolvere: riprova più tardi!",
+        "defaultMessage": "Si è verificato un errore durante la procedura di ripristino password, riprovare più tardi.",
         "description": "Error message to show when password recovery was not successful."
     },
     "toast_desc_password_recovery_reset_success": {
-        "defaultMessage": "La tua nuova password è stata approvata! Prova ad accedere all'app!",
+        "defaultMessage": "La tua password è stata reimpostata correttamente. Prova ad accedere all'app!",
         "description": "Success message to show when password reset due to password recovery request was successful."
     },
     "toast_desc_password_recovery_success": {
-        "defaultMessage": "Ti abbiamo inviato una mail con il link per il ripristino della password!",
+        "defaultMessage": "Una mail con il link per il ripristino della password è stata inviata al tuo account",
         "description": "Success message to show when password recovery request was successful."
     },
     "toast_desc_signup_success": {
-        "defaultMessage": "You did it! E’ ufficiale, sei uno dei nostri! Ti abbiamo inviato una mail di conferma.",
+        "defaultMessage": "Iscrizione avvenuta correttamente. Dovrebbe esserti stata inviata una mail.",
         "description": "Description to show when user successfully signed up."
     },
     "toast_desc_wrong_link_error": {
-        "defaultMessage": "Mmm…Il link risulta errato, prova a ricontrollare la tua mail.",
+        "defaultMessage": "Il link risulta errato, prova a ricontrollare la tua mail.",
         "description": "Error message to show when email action (recover pwd, verify mail) could not be completed due to incorrect link."
     },
     "toast_title_email_verification_success": {
@@ -252,31 +252,31 @@
         "description": "Title to show when user successfully verified their email."
     },
     "toast_title_invalid_data_error": {
-        "defaultMessage": " Che fai? Ci menti o sei solo sbadato? I dati che hai inserito non sono validi!",
+        "defaultMessage": "Dati non validi",
         "description": "Title when user has filled all fields but the inserted values are not valid"
     },
     "toast_title_logout_success": {
-        "defaultMessage": "Ciao, a presto!",
+        "defaultMessage": "Arrivederci",
         "description": "Title of the message to show when user successfully logged out."
     },
     "toast_title_missing_data_error": {
-        "defaultMessage": " Attenzione! Manca qualcosa qui! Verifica di aver completato tutti i campi!",
+        "defaultMessage": "Dati mancanti",
         "description": "Title when user still needs to complete all required fields in a form"
     },
     "toast_title_standard_formal_error": {
-        "defaultMessage": "Si è verificato un errore",
+        "defaultMessage": "Errore",
         "description": "A formal error message to signal the user that something went wrong"
     },
     "toast_title_standard_formal_success": {
-        "defaultMessage": "l’operazione è stata completata con successo!",
+        "defaultMessage": "Successo",
         "description": "A formal success message to signal the user that the operation was successful"
     },
     "toast_title_standard_informal_error": {
-        "defaultMessage": "Ooops! Qualcosa è andato storto! Ma cosa? ",
+        "defaultMessage": "Ooops",
         "description": "An informal error message to signal the user that something went wrong"
     },
     "toast_title_standard_informal_success": {
-        "defaultMessage": " Perfetto! Tutto procede secondo i piani!",
+        "defaultMessage": "Urrà",
         "description": "An informal success message to signal the user that the operation was successful"
     },
     "user_menu_profile_photo_alt_text": {

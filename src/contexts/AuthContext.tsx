@@ -7,6 +7,7 @@
  */
 
 import React, { useContext, useState, useEffect } from "react";
+import { SearchLocationInputType } from "../components/UI/SearchLocationInput/SearchLocationInput.types";
 import firebase, { firebaseAuth, firestoreDB } from "../config/firebaseConfig";
 import { MetadataType } from "../types/UsersMetadataType";
 
@@ -50,6 +51,10 @@ interface AuthContextType {
         actionCode: string,
         newPassword: string
     ) => Promise<void>;
+    onboardVolunteer: (
+        fieldsOfInterest: Array<string>,
+        locationInput: SearchLocationInputType
+    ) => Promise<any>;
 }
 
 const AuthContext = React.createContext<Partial<AuthContextType>>({});
@@ -335,6 +340,28 @@ export function AuthProvider(props: AuthProviderProps) {
     }
 
     /**
+     * Set the volunteer account upon gathering the information required during the onboarding procedure
+     * @param fieldsOfInterest An array collecting all the fields of interest of a user
+     * @param locationInput An object that stores the location information concerning the user
+     */
+    function onboardVolunteer(
+        fieldsOfInterest: Array<string>,
+        locationInput: SearchLocationInputType
+    ) {
+        return firestoreDB
+            .collection("users_metadata")
+            .doc(currentUser?.uid)
+            .set({
+                isNew: false,
+                fieldsOfInterest: fieldsOfInterest,
+                location: locationInput,
+            })
+            .then(() => {
+                setIsNew(false);
+            });
+    }
+
+    /**
      * When the user logs in or gets created Firebase notifies the event through the listener onAuthStateChanged.
      * This gets run only when the component gets mounted
      */
@@ -383,6 +410,7 @@ export function AuthProvider(props: AuthProviderProps) {
         handleEmailVerification,
         validateResetPassword,
         confirmResetPassword,
+        onboardVolunteer,
     };
 
     return (

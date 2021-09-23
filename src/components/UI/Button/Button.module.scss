@@ -44,14 +44,18 @@
         left: 10px;
         width: 25px;
     }
+
+    &:disabled,
+    &[disabled] {
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+    }
 }
 
 .White {
     background-color: white;
     color: black;
-
-    &.Active {
-    }
 }
 
 .Green {

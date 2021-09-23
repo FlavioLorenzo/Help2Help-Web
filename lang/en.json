@@ -1,6 +1,50 @@
 {
+  "closed_event_card_know_more": {
+    "defaultMessage": "Scopri di più",
+    "description": "Invitation to expand closed card and get full details about event"
+  },
+  "closed_volunteer_card_know_more": {
+    "defaultMessage": "Scopri di più",
+    "description": "Invitation to expand closed card and get full details about volunteer"
+  },
+  "closed_volunteer_card_years_old": {
+    "defaultMessage": "anni",
+    "description": "Words that follow up the digits that compose the age, e.g. '20 years old'"
+  },
   "exampleMessage": {
-    "defaultMessage": "Hi, you're accessing through {device}",
+    "defaultMessage": "Ciao, stai accedendo via {device}",
     "description": "Example message with device's name injection"
+  },
+  "homepage_volunteering_all": {
+    "defaultMessage": "Tutti",
+    "description": "Reference to both events and organizations in the homepage"
+  },
+  "homepage_volunteering_events": {
+    "defaultMessage": "Eventi",
+    "description": "Events reference in the homepage"
+  },
+  "homepage_volunteering_intro": {
+    "defaultMessage": "Scopri le offerte di volontariato!",
+    "description": "Message at the top of the homepage search results box"
+  },
+  "homepage_volunteering_know_more": {
+    "defaultMessage": "Scopri di più",
+    "description": "Invitation to go to the dedicated search view"
+  },
+  "homepage_volunteering_organizations": {
+    "defaultMessage": "Enti",
+    "description": "Organizations reference in the homepage"
+  },
+  "side_drawer_edit_profile": {
+    "defaultMessage": "Modifica profilo",
+    "description": "Edit the profile text in the app's menu"
+  },
+  "user_menu_profile_photo_alt_text": {
+    "defaultMessage": "La mia foto utente",
+    "description": "Alt text for image of the current user"
+  },
+  "volunteer_profile_alt_text": {
+    "defaultMessage": "Foto profilo del volontario",
+    "description": "Alt text for image of the volunteer"
   }
 }

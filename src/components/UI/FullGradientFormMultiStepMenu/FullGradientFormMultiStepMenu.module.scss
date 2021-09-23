@@ -1,0 +1,45 @@
+.MultiStepMenu {
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+}
+
+.MultiStepProgressBar {
+    display: flex;
+    justify-content: space-evenly;
+    column-gap: 5px;
+
+    width: 250px;
+    margin: 20px auto;
+}
+
+.MultiStepProgressStep {
+    flex: 1 1 auto;
+    height: 5px;
+
+    background-color: rgba($color: #ffffff, $alpha: 0.1);
+
+    &:first-child {
+        border-radius: 15px 0 0 15px;
+    }
+
+    &:last-child {
+        border-radius: 0 15px 15px 0;
+    }
+
+    &.Active {
+        background-color: rgba($color: #ffffff, $alpha: 0.5);
+    }
+}
+
+.MultiStepProgressButtons {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin: 10px 5%;
+}
+
+.MultiStepButton {
+    width: 130px;
+}

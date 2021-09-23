@@ -1,4 +1,76 @@
 {
+  "auth_confirm_password": [
+    {
+      "type": 0,
+      "value": "Nel caso ci fossimo capiti male: riscrivi la tua password!."
+    }
+  ],
+  "auth_error_message_email_already_in_use": [
+    {
+      "type": 0,
+      "value": "Ehi! Questo indirizzo e-mail non ci è nuovo! Sicuro di non essere già dei nostri?."
+    }
+  ],
+  "auth_error_message_email_not_verified": [
+    {
+      "type": 0,
+      "value": "Mmm…devi essere nuovo di queste parti! Per essere dei nostri registrati prima di effettuare il login!."
+    }
+  ],
+  "auth_go_back": [
+    {
+      "type": 0,
+      "value": "Torna indietro"
+    }
+  ],
+  "closed_event_card_know_more": [
+    {
+      "type": 0,
+      "value": "Scopri di più"
+    }
+  ],
+  "closed_volunteer_card_know_more": [
+    {
+      "type": 0,
+      "value": "Scopri di più"
+    }
+  ],
+  "closed_volunteer_card_years_old": [
+    {
+      "type": 0,
+      "value": "anni"
+    }
+  ],
+  "email_login_as_organization_access": [
+    {
+      "type": 0,
+      "value": "Accedi"
+    }
+  ],
+  "email_login_as_organization_password_forgotten": [
+    {
+      "type": 0,
+      "value": "Ho dimenticato la password"
+    }
+  ],
+  "email_login_as_volunteer_access": [
+    {
+      "type": 0,
+      "value": "Accedi"
+    }
+  ],
+  "email_login_as_volunteer_password_forgotten": [
+    {
+      "type": 0,
+      "value": "Ho dimenticato la mia password"
+    }
+  ],
+  "email_login_as_volunteer_register": [
+    {
+      "type": 0,
+      "value": "Non sei ancora iscritto? Registrati adesso!"
+    }
+  ],
   "exampleMessage": [
     {
       "type": 0,
@@ -7,6 +79,360 @@
     {
       "type": 1,
       "value": "device"
+    }
+  ],
+  "form_error_email_required": [
+    {
+      "type": 0,
+      "value": "Guarda qui! Hai dimenticato l’e-mail!"
+    }
+  ],
+  "form_error_first_name_required": [
+    {
+      "type": 0,
+      "value": "Dai non fare il/la timido/a! Devi avercelo un nome!"
+    }
+  ],
+  "form_error_last_name_required": [
+    {
+      "type": 0,
+      "value": "Troppo formali se ti chiediamo anche il cognome?"
+    }
+  ],
+  "form_error_password_must_match": [
+    {
+      "type": 0,
+      "value": "Non siamo la tua maestra di italiano ma dobbiamo dirtelo: c’è un errore in una delle due password!"
+    }
+  ],
+  "form_error_password_required": [
+    {
+      "type": 0,
+      "value": "La tua password deve avere almeno 8 caratteri ed al massimo 32! Ti stressiamo ma per la tua sicurezza!"
+    }
+  ],
+  "global_email": [
+    {
+      "type": 0,
+      "value": "email"
+    }
+  ],
+  "global_first_name": [
+    {
+      "type": 0,
+      "value": "nome"
+    }
+  ],
+  "global_organization": [
+    {
+      "type": 0,
+      "value": "ente"
+    }
+  ],
+  "global_organization_name": [
+    {
+      "type": 0,
+      "value": "Nome dell'ente"
+    }
+  ],
+  "global_password": [
+    {
+      "type": 0,
+      "value": "password"
+    }
+  ],
+  "global_surname": [
+    {
+      "type": 0,
+      "value": "cognome"
+    }
+  ],
+  "global_volunteer": [
+    {
+      "type": 0,
+      "value": "volontario"
+    }
+  ],
+  "homepage_volunteering_all": [
+    {
+      "type": 0,
+      "value": "Tutti"
+    }
+  ],
+  "homepage_volunteering_events": [
+    {
+      "type": 0,
+      "value": "Eventi"
+    }
+  ],
+  "homepage_volunteering_intro": [
+    {
+      "type": 0,
+      "value": "Scopri le offerte di volontariato perfette per te!"
+    }
+  ],
+  "homepage_volunteering_know_more": [
+    {
+      "type": 0,
+      "value": "Scopri di più"
+    }
+  ],
+  "homepage_volunteering_organizations": [
+    {
+      "type": 0,
+      "value": "Enti"
+    }
+  ],
+  "login_instead": [
+    {
+      "type": 0,
+      "value": "oppure"
+    }
+  ],
+  "login_organization": [
+    {
+      "type": 0,
+      "value": "Accedi come Ente"
+    }
+  ],
+  "login_organization_redirect": [
+    {
+      "type": 0,
+      "value": "Sei un ente? Clicca qui!"
+    }
+  ],
+  "login_register_as_organization": [
+    {
+      "type": 0,
+      "value": "Registra il tuo ente"
+    }
+  ],
+  "login_standard_message": [
+    {
+      "type": 0,
+      "value": "Accedi"
+    }
+  ],
+  "login_volunteer_access_with_standard": [
+    {
+      "type": 0,
+      "value": "Accedi con"
+    }
+  ],
+  "login_volunteer_continue_with_email": [
+    {
+      "type": 0,
+      "value": "Accedi con l'email"
+    }
+  ],
+  "recovery_create_new_password_button": [
+    {
+      "type": 0,
+      "value": "Crea password"
+    }
+  ],
+  "recovery_organization_title": [
+    {
+      "type": 0,
+      "value": "Non ti ricordi più la tua password? Clicca qui, ti aiutiamo noi!"
+    }
+  ],
+  "recovery_send_link_button": [
+    {
+      "type": 0,
+      "value": "Invia link"
+    }
+  ],
+  "recovery_volunteer_title": [
+    {
+      "type": 0,
+      "value": "Non ti ricordi più la password? Clicca qui, ti aiutiamo noi!"
+    }
+  ],
+  "side_drawer_edit_profile": [
+    {
+      "type": 0,
+      "value": "Modifica profilo"
+    }
+  ],
+  "signup_organization_already_subscribed": [
+    {
+      "type": 0,
+      "value": "Il tuo ente è già iscritto? Accedi al portale"
+    }
+  ],
+  "signup_organization_button": [
+    {
+      "type": 0,
+      "value": "Registrazione"
+    }
+  ],
+  "signup_organization_title": [
+    {
+      "type": 0,
+      "value": "Registra il tuo ente"
+    }
+  ],
+  "signup_volunteer_already_subscribed": [
+    {
+      "type": 0,
+      "value": "Sei già iscritto? Accedi al portale"
+    }
+  ],
+  "signup_volunteer_button": [
+    {
+      "type": 0,
+      "value": "Iscriviti"
+    }
+  ],
+  "signup_volunteer_mail_sent_back_to_login": [
+    {
+      "type": 0,
+      "value": "Vai alla schermata di login"
+    }
+  ],
+  "signup_volunteer_mail_sent_congratulations": [
+    {
+      "type": 0,
+      "value": "Congratulazioni!"
+    }
+  ],
+  "signup_volunteer_mail_sent_main_text": [
+    {
+      "type": 0,
+      "value": "Manca poco! Ti abbiamo inviato una mail per confermare che tu non sia una spia aliena."
+    }
+  ],
+  "signup_volunteer_title": [
+    {
+      "type": 0,
+      "value": "Iscrizione"
+    }
+  ],
+  "toast_desc_email_verification_success": [
+    {
+      "type": 0,
+      "value": "La tua mail è stata verificata. Benvenuto in Help2Help!"
+    }
+  ],
+  "toast_desc_generic_login_error": [
+    {
+      "type": 0,
+      "value": "Huston abbiamo un problema! Si è verificato un errore durante il login. Scusaci e ritenta!"
+    }
+  ],
+  "toast_desc_generic_missing_data_error": [
+    {
+      "type": 0,
+      "value": "Manca qualcosa! Assicurati di aver completato tutti i campi prima di proseguire!"
+    }
+  ],
+  "toast_desc_generic_signup_error": [
+    {
+      "type": 0,
+      "value": "Pff! Maledetta tecnologia! Si è verificato un errore durante la creazione dell'account!"
+    }
+  ],
+  "toast_desc_logout_success": [
+    {
+      "type": 0,
+      "value": "Ciao, a presto!"
+    }
+  ],
+  "toast_desc_password_do_not_match_errror": [
+    {
+      "type": 0,
+      "value": "Non siamo la tua maestra di italiano, vero, ma dobbiamo dirtelo: c’è un errore in una delle due password!"
+    }
+  ],
+  "toast_desc_password_recovery_error": [
+    {
+      "type": 0,
+      "value": "Ops! Si è verificato un errore durante la procedura di ripristino password! Ma niente panico! Non c’è nulla che il tempo non possa risolvere: riprova più tardi!"
+    }
+  ],
+  "toast_desc_password_recovery_reset_success": [
+    {
+      "type": 0,
+      "value": "La tua nuova password è stata approvata! Prova ad accedere all'app!"
+    }
+  ],
+  "toast_desc_password_recovery_success": [
+    {
+      "type": 0,
+      "value": "Ti abbiamo inviato una mail con il link per il ripristino della password!"
+    }
+  ],
+  "toast_desc_signup_success": [
+    {
+      "type": 0,
+      "value": "You did it! E’ ufficiale, sei uno dei nostri! Ti abbiamo inviato una mail di conferma."
+    }
+  ],
+  "toast_desc_wrong_link_error": [
+    {
+      "type": 0,
+      "value": "Mmm…Il link risulta errato, prova a ricontrollare la tua mail."
+    }
+  ],
+  "toast_title_email_verification_success": [
+    {
+      "type": 0,
+      "value": "Sei dei nostri!"
+    }
+  ],
+  "toast_title_invalid_data_error": [
+    {
+      "type": 0,
+      "value": " Che fai? Ci menti o sei solo sbadato? I dati che hai inserito non sono validi!"
+    }
+  ],
+  "toast_title_logout_success": [
+    {
+      "type": 0,
+      "value": "Ciao, a presto!"
+    }
+  ],
+  "toast_title_missing_data_error": [
+    {
+      "type": 0,
+      "value": " Attenzione! Manca qualcosa qui! Verifica di aver completato tutti i campi!"
+    }
+  ],
+  "toast_title_standard_formal_error": [
+    {
+      "type": 0,
+      "value": "Si è verificato un errore"
+    }
+  ],
+  "toast_title_standard_formal_success": [
+    {
+      "type": 0,
+      "value": "l’operazione è stata completata con successo!"
+    }
+  ],
+  "toast_title_standard_informal_error": [
+    {
+      "type": 0,
+      "value": "Ooops! Qualcosa è andato storto! Ma cosa? "
+    }
+  ],
+  "toast_title_standard_informal_success": [
+    {
+      "type": 0,
+      "value": " Perfetto! Tutto procede secondo i piani!"
+    }
+  ],
+  "user_menu_profile_photo_alt_text": [
+    {
+      "type": 0,
+      "value": "La mia foto utente"
+    }
+  ],
+  "volunteer_profile_alt_text": [
+    {
+      "type": 0,
+      "value": "Foto profilo del volontario"
     }
   ]
 }

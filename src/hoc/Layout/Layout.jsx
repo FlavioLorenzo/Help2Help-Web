@@ -20,7 +20,8 @@ const Layout = (props) => {
         case "login":
         case "signup":
         case "password-recovery":
-        case "email-verification":
+        case "email-action":
+        case "onboarding":
             showHeader = false;
             break;
         case "search":

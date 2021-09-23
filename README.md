@@ -16,7 +16,7 @@ That's it, let's develop this bad boy!
 The adopted localization framework is React-intl (part of Format.js). More info here: (https://formatjs.io/docs/getting-started/installation).
 
 -   Externalize the messages to be translated
-    `npm run extract -- 'src/**/*.js*' --out-file lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'`
+    `npm run extract -- 'src/**/*.{js,jsx,ts,tsx}' --out-file lang/en.json --id-interpolation-pattern '[sha512:contenthash:base64:6]'`
 -   Compile the translated languages to embed them in the application
     `npm run compile -- lang/fr.json --ast --out-file src/lang/fr.json`
 

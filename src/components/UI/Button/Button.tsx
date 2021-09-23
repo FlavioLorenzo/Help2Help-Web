@@ -45,7 +45,7 @@ interface ButtonProps {
     children: React.ReactNode;
 }
 
-const button = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
     const classes = [styles.Button, styles[props.colorStyle]];
 
     if (props.outline) {
@@ -74,4 +74,4 @@ const button = (props: ButtonProps) => {
     );
 };
 
-export default button;
+export default Button;
