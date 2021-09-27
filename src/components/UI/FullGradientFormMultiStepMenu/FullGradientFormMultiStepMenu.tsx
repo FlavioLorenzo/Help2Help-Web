@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import Button from "../../../components/UI/Button/Button";
+import Button from "../Button/Button";
 
 import styles from "./FullGradientFormMultiStepMenu.module.scss";
 

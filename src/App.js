@@ -2,13 +2,13 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import { IntlProvider } from "react-intl";
-import { AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider } from "./services/auth/AuthContext";
 
 import getUserLocale from "get-user-locale";
 import locale_en from "./lang/en.json";
 import locale_it from "./lang/it.json";
 
-import Layout from "./hoc/Layout/Layout";
+import Layout from "./components/hoc/Layout/Layout";
 
 import Router from "./router";
 

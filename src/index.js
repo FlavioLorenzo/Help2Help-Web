@@ -9,7 +9,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 import { createStore, applyMiddleware, compose } from "redux";
-import rootReducer from "./store/reducers/rootReducer";
+import rootReducer from "./redux/reducers/rootReducer";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 

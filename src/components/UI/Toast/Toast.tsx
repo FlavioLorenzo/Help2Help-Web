@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../../store/actions/index";
-import { RootState } from "../../../store/reducers/rootReducer";
+import * as actions from "../../../redux/actions/index";
+import { RootState } from "../../../redux/reducers/rootReducer";
 
 import toastInfo from "../../../assets/images/toastInfo.svg";
 import toastWarning from "../../../assets/images/toastWarning.svg";

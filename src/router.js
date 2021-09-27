@@ -1,14 +1,14 @@
 import { Switch, Redirect } from "react-router-dom";
 
-import PublicRoute from "./hoc/PublicRoute/PublicRoute";
-import PrivateRoute from "./hoc/PrivateRoute/PrivateRoute";
+import PublicRoute from "./components/hoc/PublicRoute/PublicRoute";
+import PrivateRoute from "./components/hoc/PrivateRoute/PrivateRoute";
 
 import useDeviceDetect from "./hooks/useDeviceDetect";
 
-import SearchResults from "./containers/SearchResults/SearchResults";
-import Homepage from "./containers/Homepage/Homepage";
-import Authentication from "./containers/Authentication/Authentication";
-import Onboarding from "./containers/Onboarding/Onboarding";
+import SearchResults from "./pages/SearchResults/SearchResults";
+import Homepage from "./pages/Homepage/Homepage";
+import Authentication from "./pages/Authentication/Authentication";
+import Onboarding from "./pages/Onboarding/Onboarding";
 
 const Router = () => {
     const isMobile = useDeviceDetect();

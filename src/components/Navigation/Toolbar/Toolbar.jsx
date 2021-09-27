@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import NavBurger from "./NavBurger/NavBurger";
 import SideDrawer from "../SideDrawer/SideDrawer";
-import SearchBar from "../../UI/SearchBar/SearchBar";
+import SearchBar from "../../ui/SearchBar/SearchBar";
 
 import styles from "./Toolbar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

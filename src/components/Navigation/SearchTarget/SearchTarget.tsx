@@ -1,6 +1,6 @@
 import React from "react";
 
-import Button from "../../UI/Button/Button";
+import Button from "../../ui/Button/Button";
 
 import styles from "./SearchTarget.module.scss";
 import * as translations from "./SearchTarget.translations";

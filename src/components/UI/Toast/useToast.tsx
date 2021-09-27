@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 
 import { useDispatch } from "react-redux";
-import * as actions from "../../../store/actions/index";
+import * as actions from "../../../redux/actions/index";
 
 import * as toastTranslations from "./Translations/Toast.translations";
 
