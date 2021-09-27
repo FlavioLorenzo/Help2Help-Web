@@ -11,7 +11,7 @@ import GooglePlacesAutocomplete, {
 } from "react-google-places-autocomplete";
 import chroma from "chroma-js";
 
-import { GoogleApiKey } from "../../../config/envConfig";
+import { GCPApiKey } from "../../../config/envConfig";
 import styles from "./SearchLocationInput.module.scss";
 import { SearchLocationInputType } from "./SearchLocationInput.types";
 
@@ -120,7 +120,7 @@ const SearchLocationInput = ({
 
                 <div className={formInputClasses.join(" ")}>
                     <GooglePlacesAutocomplete
-                        apiKey={GoogleApiKey}
+                        apiKey={GCPApiKey}
                         autocompletionRequest={{
                             componentRestrictions: {
                                 country: ["it"],

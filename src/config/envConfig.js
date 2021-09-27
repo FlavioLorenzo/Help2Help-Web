@@ -1,1 +1,1 @@
-export const GoogleApiKey = "AIzaSyCAXT-tOOy0AS6aVnAkDvoMddLOLiyfJfk";
+export const GCPApiKey = "AIzaSyCAXT-tOOy0AS6aVnAkDvoMddLOLiyfJfk";

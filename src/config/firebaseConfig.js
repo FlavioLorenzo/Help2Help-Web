@@ -3,9 +3,11 @@ import "firebase/firestore";
 import "firebase/auth";
 import "firebase/storage";
 
+import { GCPApiKey } from "./envConfig";
+
 // Configuration for firebase service
 const firebaseConfig = {
-    apiKey: "AIzaSyCAXT-tOOy0AS6aVnAkDvoMddLOLiyfJfk",
+    apiKey: GCPApiKey,
     authDomain: "help-2-help.firebaseapp.com",
     databaseURL:
         "https://help-2-help-default-rtdb.europe-west1.firebasedatabase.app",
