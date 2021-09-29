@@ -5,7 +5,7 @@ interface Step3Props {
     /**
      * Structure representing the value retrieved by the Search Location Input box
      */
-    value?: string;
+    value?: SearchLocationInputType;
     /**
      * Function triggered when state changes
      */

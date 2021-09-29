@@ -1,19 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /**
  * This component provides an input though which the user can insert his address
- * For further information please refer to the Google Places Autocomplete component documentation: https://tintef.github.io/react-google-places-autocomplete/docs/
+ * For further information please refer to the React Places Autocomplete component documentation: https://github.com/hibiken/react-places-autocomplete
  */
 
-// TODO: Substitute Google Places Autocomplete with  https://github.com/hibiken/react-places-autocomplete
-import { useState, useEffect } from "react";
-import GooglePlacesAutocomplete, {
+import { useState } from "react";
+
+import styles from "./SearchLocationInput.module.scss";
+import {
+    SearchLocationInputAddressType,
+    SearchLocationInputType,
+} from "./SearchLocationInput.types";
+
+import PlacesAutocomplete, {
     geocodeByAddress,
     getLatLng,
-} from "react-google-places-autocomplete";
-import chroma from "chroma-js";
-
-import { GCPApiKey } from "../../../config/envConfig";
-import styles from "./SearchLocationInput.module.scss";
-import { SearchLocationInputType } from "./SearchLocationInput.types";
+} from "react-places-autocomplete";
 
 interface SearchLocationInputProps {
     /**
@@ -23,11 +25,12 @@ interface SearchLocationInputProps {
     /**
      * Original value for the user's location
      */
-    value?: string;
+    value?: SearchLocationInputType;
     /**
      * Error text to show when error occurs
      */
     error?: any;
+
     /**
      * Function triggered when address is selected
      */
@@ -40,105 +43,138 @@ const SearchLocationInput = ({
     error,
     onChange,
 }: SearchLocationInputProps) => {
-    const [currentValue, setCurrentValue] = useState<any>(null);
+    const [address, setAddress] = useState(
+        value ? value.formatted_address : ""
+    );
 
     const formInputClasses = [styles.FullGradientFormInput];
-
-    const googleStyles = {
-        input: (styles: any, { isFocused, isSelected }: any) => ({
-            ...styles,
-            color: "#838383",
-        }),
-        option: (styles: any, { isDisabled, isFocused, isSelected }: any) => {
-            const h2hColor = chroma("#FF5789");
-            return {
-                ...styles,
-                color: "#838383",
-                backgroundColor: isFocused
-                    ? h2hColor.alpha(0.1).css()
-                    : "default",
-                ":active": {
-                    ...styles[":active"],
-                    backgroundColor: h2hColor.alpha(0.3).css(),
-                },
-            };
-        },
-        singleValue: (provided: any) => ({
-            ...styles,
-            color: "#212529",
-        }),
-    };
 
     // TODO: Style error correctly... actually style every part of this mess correctly
     if (error) {
         formInputClasses.push(styles.Error);
     }
 
-    // When the user provided address is inserted, it's latitude and longitude are retrieved and passed to the parent component
-    useEffect(() => {
-        if (!currentValue) return;
+    const handleChange = (address: any) => {
+        setAddress(address);
+    };
 
-        geocodeByAddress(currentValue.label)
-            .then((results) => getLatLng(results[0]))
-            .then(({ lat, lng }) => {
+    const populateAddress = (addressComponents: any) => {
+        const address: SearchLocationInputAddressType = {};
+        addressComponents.forEach((component: any) => {
+            switch (component["types"][0]) {
+                case "street_number":
+                    address["street_number"] = component["long_name"];
+                    break;
+                case "route":
+                    address["route"] = component["long_name"];
+                    break;
+                case "locality":
+                    address["locality"] = component["long_name"];
+                    break;
+                case "administrative_area_level_1":
+                    address["administrative_area_level_1"] =
+                        component["long_name"];
+                    break;
+                case "administrative_area_level_2":
+                    address["administrative_area_level_2"] =
+                        component["short_name"];
+                    break;
+                case "country":
+                    address["country"] = component["long_name"];
+                    break;
+                case "postal_code":
+                    address["postal_code"] = component["long_name"];
+                    break;
+            }
+        });
+
+        return address;
+    };
+
+    const handleSelect = (address: any) => {
+        let selectedValue: SearchLocationInputType;
+        setAddress(address);
+
+        geocodeByAddress(address)
+            .then((results) => {
+                const geocode = results[0];
+
+                selectedValue = {
+                    formatted_address: geocode.formatted_address,
+                    place_id: geocode.place_id,
+                    address: populateAddress(geocode.address_components),
+                };
+
+                return getLatLng(geocode);
+            })
+            .then((latLng) => {
                 if (!onChange) return;
-                const length: number = currentValue.value.terms.length;
 
-                onChange({
-                    label: currentValue.label,
-                    address: {
-                        street:
-                            length >= 4
-                                ? currentValue.value.terms[length - 4].value
-                                : null,
-                        city:
-                            length >= 3
-                                ? currentValue.value.terms[length - 3].value
-                                : null,
-                        province:
-                            length >= 2
-                                ? currentValue.value.terms[length - 2].value
-                                : null,
-                        country:
-                            length >= 1
-                                ? currentValue.value.terms[length - 1].value
-                                : null,
-                    },
-                    coordinates: {
-                        lat,
-                        lng,
-                    },
-                });
+                selectedValue.coordinates = {
+                    lat: latLng["lat"],
+                    lng: latLng["lng"],
+                };
+
+                onChange(selectedValue);
             });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentValue /*, onChange*/]);
+    };
 
     return (
-        <div className={styles.SearchLocationInput}>
+        <div className={styles.SearchLocationInputContainer}>
             <label>
                 <div className={styles.FullGradientFormLabel}>{label}</div>
 
                 <div className={formInputClasses.join(" ")}>
-                    <GooglePlacesAutocomplete
-                        apiKey={GCPApiKey}
-                        autocompletionRequest={{
-                            componentRestrictions: {
-                                country: ["it"],
-                            },
-                        }}
-                        selectProps={{
-                            value: currentValue,
-                            onChange: setCurrentValue,
-                            styles: googleStyles,
-                            defaultInputValue: value,
-                        }}
-                        onLoadFailed={(error) =>
-                            console.error(
-                                "Could not inject Google script",
-                                error
-                            )
-                        }
-                    />
+                    <PlacesAutocomplete
+                        value={address}
+                        onChange={handleChange}
+                        onSelect={handleSelect}
+                    >
+                        {({
+                            getInputProps,
+                            suggestions,
+                            getSuggestionItemProps,
+                            loading,
+                        }) => (
+                            <div>
+                                <input
+                                    {...getInputProps({
+                                        // TODO: Traduzione
+                                        placeholder: "Ricerca ...",
+                                        className: styles.SearchLocationInput,
+                                    })}
+                                />
+                                <div
+                                    className={
+                                        styles.AutocompleteDropdownContainer
+                                    }
+                                >
+                                    {loading && <div>Loading...</div>}
+                                    {suggestions.map((suggestion) => {
+                                        const className = suggestion.active
+                                            ? styles.SuggestionItemActive
+                                            : styles.SuggestionItem;
+
+                                        return (
+                                            <div
+                                                {...getSuggestionItemProps(
+                                                    suggestion,
+                                                    {
+                                                        className,
+                                                    }
+                                                )}
+                                                key={suggestion.index}
+                                            >
+                                                <span>
+                                                    {suggestion.description}
+                                                </span>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                        )}
+                    </PlacesAutocomplete>
                 </div>
             </label>
         </div>

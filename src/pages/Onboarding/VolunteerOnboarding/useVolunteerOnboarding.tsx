@@ -65,7 +65,7 @@ export default function useVolunteerOnboarding() {
             case 3:
                 return (
                     <VolunteerOnboardingStep3
-                        value={state.locationInput?.label}
+                        value={state.locationInput}
                         onChanged={setLocationInput}
                     />
                 );
@@ -93,7 +93,7 @@ export default function useVolunteerOnboarding() {
         // No location was provided
         if (
             !(
-                currentState.locationInput?.label &&
+                currentState.locationInput?.formatted_address &&
                 currentState.locationInput?.coordinates
             )
         ) {

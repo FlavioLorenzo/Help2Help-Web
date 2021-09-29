@@ -25,10 +25,10 @@
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.4",
     "react-dom": "^17.0.2",
-    "react-google-places-autocomplete": "^3.3.2",
     "react-hook-form": "^7.16.1",
     "react-instantsearch-dom": "^6.12.1",
     "react-intl": "^5.20.12",
+    "react-places-autocomplete": "^7.3.0",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
     "react-scripts": "^4.0.3",
@@ -66,6 +66,7 @@
     "@formatjs/cli": "^3.2.0",
     "@types/chroma-js": "^2.1.3",
     "@types/react-instantsearch-dom": "^6.12.0",
+    "@types/react-places-autocomplete": "^7.2.9",
     "@types/react-redux": "^7.1.18",
     "@types/react-router-dom": "^5.3.0"
   }

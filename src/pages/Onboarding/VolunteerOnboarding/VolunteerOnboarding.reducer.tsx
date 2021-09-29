@@ -42,7 +42,12 @@ export const reducer = (
             if (!action.fieldsOfInterest) return state;
             return updateObject(state, {
                 fieldsOfInterest: [...action.fieldsOfInterest],
-                lastValidStep: action.fieldsOfInterest.length > 0 ? 2 : 1,
+                lastValidStep:
+                    action.fieldsOfInterest.length > 0
+                        ? state.locationInput
+                            ? 4
+                            : 2
+                        : 0,
             });
         case VolunteerOnboardingActionKind.SET_LOCATION_INPUT:
             if (!action.locationInput) return state;
