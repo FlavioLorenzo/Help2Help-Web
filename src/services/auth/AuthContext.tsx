@@ -346,7 +346,7 @@ export function AuthProvider(props: AuthProviderProps) {
         // The unsubscribe method will get triggered when component gets unmounted
         const unsubscribe = firebaseAuth.onAuthStateChanged(async (user) => {
             // Set the user as current only if verified
-            if (user && user?.emailVerified) {
+            if (user?.emailVerified) {
                 await firestoreDB
                     .collection("users_metadata")
                     .doc(user.uid)

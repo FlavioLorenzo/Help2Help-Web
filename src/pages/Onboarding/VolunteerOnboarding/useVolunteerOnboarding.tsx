@@ -105,10 +105,7 @@ export default function useVolunteerOnboarding() {
         }
 
         // Fallback error for whatever reason
-        if (
-            !onboardVolunteer ||
-            currentState.currentStep !== currentState.lastValidStep
-        ) {
+        if (currentState.currentStep !== currentState.lastValidStep) {
             setToastErrorMessage(
                 toastGenericTranslations.titleStandardInformalError,
                 "Si è verificato un errore inatteso."

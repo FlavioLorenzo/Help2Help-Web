@@ -129,7 +129,7 @@ const setToastEraseMessage = (state: ToastState, action: ToastAction) => {
  * @param action The action provided by the user
  * @returns The updated Toast state with all items removed
  */
-const setToastEraseAllMessages = (state: ToastState, action: ToastAction) => {
+const setToastEraseAllMessages = (state: ToastState) => {
     const updatedState = { toastMessages: [] };
     return updateObject(state, updatedState);
 };
@@ -147,7 +147,7 @@ const toastReducer = (state: ToastState = initState, action: ToastAction) => {
         case actionTypes.SET_TOAST_ERASE_MESSAGE:
             return setToastEraseMessage(state, action);
         case actionTypes.SET_TOAST_ERASE_ALL_MESSAGES:
-            return setToastEraseAllMessages(state, action);
+            return setToastEraseAllMessages(state);
         default:
             return state;
     }
