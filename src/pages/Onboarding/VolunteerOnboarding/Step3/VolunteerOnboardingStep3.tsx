@@ -1,5 +1,9 @@
 import SearchLocationInput from "../../../../components/ui/SearchLocationInput/SearchLocationInput";
 import { SearchLocationInputType } from "../../../../components/ui/SearchLocationInput/SearchLocationInput.types";
+import {
+    onboardingVolunteerStepLocationInputLabel,
+    onboardingVolunteerStepLocationTitle,
+} from "../VolunteerOnboarding.translations";
 
 interface Step3Props {
     /**
@@ -15,10 +19,10 @@ interface Step3Props {
 const VolunteerOnboardingStep3 = ({ value, onChanged }: Step3Props) => {
     return (
         <>
-            <h2>Dove vorresti cercare opportunità di volontariato?</h2>
+            <h2>{onboardingVolunteerStepLocationTitle}</h2>
 
             <SearchLocationInput
-                label="Inserisci un indirizzo o città"
+                label={onboardingVolunteerStepLocationInputLabel}
                 value={value}
                 onChange={onChanged}
             />

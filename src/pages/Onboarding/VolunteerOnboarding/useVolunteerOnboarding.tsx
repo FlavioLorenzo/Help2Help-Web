@@ -16,6 +16,7 @@ import VolunteerOnboardingStep1 from "./Step1/VolunteerOnboardingStep1";
 import VolunteerOnboardingStep2 from "./Step2/VolunteerOnboardingStep2";
 import VolunteerOnboardingStep3 from "./Step3/VolunteerOnboardingStep3";
 import VolunteerOnboardingStep4 from "./Step4/VolunteerOnboardingStep4";
+import { useFieldsOfInterestService } from "../../../services/fieldsOfInterest/fieldsOfInterest";
 
 export default function useVolunteerOnboarding() {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -28,6 +29,8 @@ export default function useVolunteerOnboarding() {
 
     const { onboardVolunteer } = useUserService();
     const history = useHistory();
+
+    const { fieldsOfInterest } = useFieldsOfInterestService();
 
     const previousClicked = () => {
         dispatch({ type: VolunteerOnboardingActionKind.PREVIOUS });
@@ -58,6 +61,7 @@ export default function useVolunteerOnboarding() {
             case 2:
                 return (
                     <VolunteerOnboardingStep2
+                        availableFields={fieldsOfInterest}
                         selectedFields={state.fieldsOfInterest}
                         onChanged={setFieldsOfInterest}
                     />

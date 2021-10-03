@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
+import { FieldsOfInterestTranslationType } from "../../../../services/fieldsOfInterest/fieldsOfInterest";
+import { onboardingVolunteerStepFieldTitle } from "../VolunteerOnboarding.translations";
 
 interface Step2Props {
+    /**
+     * The fields of interest the user can select
+     */
+    availableFields: Array<FieldsOfInterestTranslationType>;
     /**
      * The fields of interest selected by the user
      */
@@ -12,18 +18,10 @@ interface Step2Props {
 }
 
 const VolunteerOnboardingStep2 = ({
+    availableFields,
     selectedFields,
     onChanged,
 }: Step2Props) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const [fieldsOfInterest, setFieldsOfInterest] = useState([
-        "Ambiente",
-        "Animali",
-        "Sport",
-        "Cultura",
-        "Sviluppo",
-        "Religione",
-    ]);
     const [multiboxElems, setMultiboxElems] = useState<any>();
 
     useEffect(() => {
@@ -39,30 +37,30 @@ const VolunteerOnboardingStep2 = ({
         };
 
         setMultiboxElems(
-            fieldsOfInterest.map((elem) => {
+            availableFields.map((elem) => {
                 const classes = ["multibox-selection-elem"];
 
-                if (selectedFields.includes(elem))
+                if (selectedFields.includes(elem.key))
                     classes.push("multibox-selection-elem-selected");
 
                 return (
                     <div
                         className={classes.join(" ")}
-                        key={elem}
-                        onClick={() => selectionElementClicked(elem)}
+                        key={elem.key}
+                        onClick={() => selectionElementClicked(elem.key)}
                     >
                         <div className="multibox-selection-elem-content">
-                            {elem}
+                            {elem.translation}
                         </div>
                     </div>
                 );
             })
         );
-    }, [fieldsOfInterest, selectedFields, onChanged]);
+    }, [availableFields, selectedFields, onChanged]);
 
     return (
         <>
-            <h2>Quali sono i tuoi ambiti di interesse?</h2>
+            <h2>{onboardingVolunteerStepFieldTitle}</h2>
 
             <div className="multibox-selection">{multiboxElems}</div>
         </>
