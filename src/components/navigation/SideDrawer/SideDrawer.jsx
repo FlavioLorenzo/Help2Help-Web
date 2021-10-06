@@ -5,9 +5,12 @@ import { FormattedMessage } from "react-intl";
 import styles from "./SideDrawer.module.scss";
 
 import NavigationItems from "../NavigationItems/NavigationItems";
+import { useAuth } from "../../../services/auth/AuthContext";
 
-const sideDrawer = (props) => {
+const SideDrawer = (props) => {
     let classes = [styles.SideDrawer];
+
+    const { currentUser } = useAuth();
 
     if (props.isMenuOpen) {
         classes.push(styles.IsMenuOpen);
@@ -25,7 +28,7 @@ const sideDrawer = (props) => {
         <div className={classes.join(" ")}>
             <div className={styles.MenuProfileHeader}>
                 <div>
-                    <div>Nome e Cognome</div>
+                    <div>{currentUser.displayName}</div>
                     <div>{editProfile}</div>
                 </div>
             </div>
@@ -37,11 +40,11 @@ const sideDrawer = (props) => {
     );
 };
 
-sideDrawer.propTypes = {
+SideDrawer.propTypes = {
     /**
      * True if menu is open.
      */
     isMenuOpen: PropTypes.bool,
 };
 
-export default sideDrawer;
+export default SideDrawer;

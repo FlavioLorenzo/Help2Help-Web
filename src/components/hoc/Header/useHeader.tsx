@@ -1,13 +1,18 @@
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { RootState } from "../../../../redux/reducers/rootReducer";
-import { NavigationFilters } from "../../../../redux/types/navigationFilters";
+import { RootState } from "../../../redux/reducers/rootReducer";
+import { NavigationFilters } from "../../../redux/types/navigationFilters";
+// import { useAuth } from "../../../services/auth/AuthContext";
+
+import profileImage from "../../../assets/images/example_profile.jpg";
 
 /*
  * Business logic for the Header component
  */
 export default function useHeader() {
+    // const { currentUser } = useAuth();
+
     // TODO: Include indication about volunteer
     // Setting the filter based on user type (volunteer / association)
     const searchFilters = useSelector(
@@ -51,6 +56,7 @@ export default function useHeader() {
     };
 
     return {
+        profileImage,
         goBack,
         searchQuery,
         searchTarget,

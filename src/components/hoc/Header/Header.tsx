@@ -3,10 +3,8 @@ import React from "react";
 import Toolbar from "../../navigation/Toolbar/Toolbar";
 import SearchTarget from "../../navigation/SearchTarget/SearchTarget";
 
-import profileImage from "../../../assets/images/example_profile.jpg";
-
 import styles from "./Header.module.scss";
-import useHeader from "./hooks/useHeader";
+import useHeader from "./useHeader";
 
 interface HeaderProps {
     isBackRequired: boolean;
@@ -18,6 +16,7 @@ interface HeaderProps {
 
 const Header = (props: HeaderProps) => {
     const {
+        profileImage,
         goBack,
         searchQuery,
         searchTarget,
