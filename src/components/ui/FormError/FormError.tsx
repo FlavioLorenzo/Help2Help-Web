@@ -14,7 +14,7 @@ const formError = (props: FormErrorProps) => {
     return (
         <div className={styles.FormError}>
             <div className={styles.FormErrorImage}>
-                <img src={toastError} alt={"Descrizione"} />
+                <img src={toastError} alt={"Descrizione"}/>
             </div>
             <div className={styles.FormErrorMessage}>{props.children}</div>
         </div>
