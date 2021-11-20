@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import {useReducer} from "react";
 
 import {
     initialState,
@@ -8,15 +8,16 @@ import {
 } from "./VolunteerOnboarding.reducer";
 
 import useToast from "../../../components/ui/Toast/useToast";
-import { useHistory } from "react-router";
-import { useUserService } from "../../../services/users/users";
+import {useHistory} from "react-router";
+import {useUserService} from "../../../services/users/users";
 
-import { SearchLocationInputType } from "../../../components/ui/SearchLocationInput/SearchLocationInput.types";
+import {SearchLocationInputType} from "../../../components/ui/SearchLocationInput/SearchLocationInput.types";
 import VolunteerOnboardingStep1 from "./Step1/VolunteerOnboardingStep1";
 import VolunteerOnboardingStep2 from "./Step2/VolunteerOnboardingStep2";
 import VolunteerOnboardingStep3 from "./Step3/VolunteerOnboardingStep3";
 import VolunteerOnboardingStep4 from "./Step4/VolunteerOnboardingStep4";
-import { useFieldsOfInterestService } from "../../../services/fieldsOfInterest/fieldsOfInterest";
+import VolunteerOnboardingStep5 from "./Step5/VolunteerOnboardingStep5";
+import {useFieldsOfInterestService} from "../../../services/fieldsOfInterest/fieldsOfInterest";
 
 export default function useVolunteerOnboarding() {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -27,17 +28,17 @@ export default function useVolunteerOnboarding() {
         toastAuthTranslations,
     } = useToast();
 
-    const { onboardVolunteer } = useUserService();
+    const {onboardVolunteer} = useUserService();
     const history = useHistory();
 
-    const { fieldsOfInterest } = useFieldsOfInterestService();
+    const {fieldsOfInterest} = useFieldsOfInterestService();
 
     const previousClicked = () => {
-        dispatch({ type: VolunteerOnboardingActionKind.PREVIOUS });
+        dispatch({type: VolunteerOnboardingActionKind.PREVIOUS});
     };
 
     const nextClicked = () => {
-        dispatch({ type: VolunteerOnboardingActionKind.NEXT });
+        dispatch({type: VolunteerOnboardingActionKind.NEXT});
     };
 
     const setFieldsOfInterest = (fieldsOfInterest: Array<string>) => {
@@ -57,7 +58,7 @@ export default function useVolunteerOnboarding() {
     const displayStep = () => {
         switch (state.currentStep) {
             case 1:
-                return <VolunteerOnboardingStep1 />;
+                return <VolunteerOnboardingStep1/>;
             case 2:
                 return (
                     <VolunteerOnboardingStep2
@@ -74,7 +75,9 @@ export default function useVolunteerOnboarding() {
                     />
                 );
             case 4:
-                return <VolunteerOnboardingStep4 />;
+                return <VolunteerOnboardingStep4/>;
+            case 5:
+                return <VolunteerOnboardingStep5/>;
             default:
                 break;
         }

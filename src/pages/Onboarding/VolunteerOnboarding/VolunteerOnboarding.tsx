@@ -1,8 +1,9 @@
-import FullGradientFormMultiStepMenu from "../../../components/ui/FullGradientFormMultiStepMenu/FullGradientFormMultiStepMenu";
+import FullGradientFormMultiStepMenu
+    from "../../../components/ui/FullGradientFormMultiStepMenu/FullGradientFormMultiStepMenu";
 import useVolunteerOnboarding from "./useVolunteerOnboarding";
 
 const VolunteerOnboarding = () => {
-    const { state, previousClicked, nextClicked, displayStep, handleSubmit } =
+    const {state, previousClicked, nextClicked, displayStep, handleSubmit} =
         useVolunteerOnboarding();
 
     return (
@@ -12,7 +13,7 @@ const VolunteerOnboarding = () => {
                     <div className="onboarding-form-step">{displayStep()}</div>
 
                     <FullGradientFormMultiStepMenu
-                        totalSteps={4}
+                        totalSteps={5}
                         currentStep={state.currentStep}
                         leftClicked={previousClicked}
                         rightClicked={nextClicked}

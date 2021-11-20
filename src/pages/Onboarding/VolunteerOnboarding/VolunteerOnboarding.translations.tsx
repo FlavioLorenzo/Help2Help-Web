@@ -1,4 +1,4 @@
-import { FormattedMessage } from "react-intl";
+import {FormattedMessage} from "react-intl";
 
 export const onboardingVolunteerStep1Welcome = (
     <FormattedMessage
@@ -37,6 +37,14 @@ export const onboardingVolunteerStepLocationInputLabel = (
         id="onboarding_volunteer_step_location_input_label"
         defaultMessage="Inserisci un indirizzo o città"
         description="Label for the location search input form during volunteer's onboarding"
+    />
+);
+
+export const onboardingVolunteerStepAvailabilitiesTitle = (
+    <FormattedMessage
+        id="onboarding_volunteer_step_availabilities_title"
+        defaultMessage="Quali sono le tue disponibilità?"
+        description="CTitle of the onboarding step to ask the volunteer's time availabilities"
     />
 );
 
