@@ -1,5 +1,3 @@
-import {useState} from "react";
-
 import {
     onboardingVolunteerStepAvailabilitiesTitle,
 } from "../VolunteerOnboarding.translations";
@@ -8,28 +6,38 @@ import AvailabilitySelectionSection
     from "../../../../components/ui/AvailabilitySelectionSection/AvailabilitySelectionSection"
 import {AvailabilityType} from "../../../../types/AvailabilityType";
 
-const VolunteerOnboardingStep4 = () => {
-    const [availabilities, setAvailabilities] = useState<AvailabilityType[]>([]);
+interface Step4Props {
+    /**
+     * The time availabilities selected by the user
+     */
+    selectedAvailabilities: AvailabilityType;
+    /**
+     * Function triggered when state changes
+     */
+    onChanged: (value: AvailabilityType) => void;
+}
 
+const VolunteerOnboardingStep4 = ({selectedAvailabilities, onChanged}: Step4Props) => {
     const onAvailabilityElemClicked = (dayOfWeek: string, timeOfDay: string) => {
-        const currentAvailability = availabilities.find(availability => availability.day === dayOfWeek);
-        
-        if (!currentAvailability) {
-            availabilities.push({
-                day: dayOfWeek,
-                timeAvailability: [timeOfDay]
-            });
-            setAvailabilities([...availabilities]);
+        const currentDayAvailabilities = selectedAvailabilities[dayOfWeek];
+
+        if (!currentDayAvailabilities) {
+            selectedAvailabilities[dayOfWeek] = [timeOfDay];
+            onChanged({...selectedAvailabilities});
+
             return;
         }
 
-        const index = currentAvailability.timeAvailability.indexOf(timeOfDay);
-        if (index > -1)
-            currentAvailability.timeAvailability.splice(index);
-        else
-            currentAvailability.timeAvailability.push(timeOfDay);
+        const index = currentDayAvailabilities.indexOf(timeOfDay);
+        if (index > -1) {
+            currentDayAvailabilities.splice(index);
 
-        setAvailabilities([...availabilities]);
+            if (currentDayAvailabilities.length === 0)
+                delete selectedAvailabilities[dayOfWeek]
+        } else
+            currentDayAvailabilities.push(timeOfDay);
+
+        onChanged({...selectedAvailabilities});
     }
 
     return (
@@ -37,7 +45,7 @@ const VolunteerOnboardingStep4 = () => {
             <h2>{onboardingVolunteerStepAvailabilitiesTitle}</h2>
 
             <AvailabilitySelectionSection
-                availabilities={availabilities}
+                availabilities={selectedAvailabilities}
                 availabilityElemClicked={onAvailabilityElemClicked}
             />
         </>

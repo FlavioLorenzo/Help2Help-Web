@@ -18,6 +18,7 @@ import VolunteerOnboardingStep3 from "./Step3/VolunteerOnboardingStep3";
 import VolunteerOnboardingStep4 from "./Step4/VolunteerOnboardingStep4";
 import VolunteerOnboardingStep5 from "./Step5/VolunteerOnboardingStep5";
 import {useFieldsOfInterestService} from "../../../services/fieldsOfInterest/fieldsOfInterest";
+import {AvailabilityType} from "../../../types/AvailabilityType";
 
 export default function useVolunteerOnboarding() {
     const [state, dispatch] = useReducer(reducer, initialState);
@@ -55,6 +56,13 @@ export default function useVolunteerOnboarding() {
         });
     };
 
+    const setAvailabilities = (value: AvailabilityType) => {
+        dispatch({
+            type: VolunteerOnboardingActionKind.SET_AVAILABILITIES,
+            availabilities: value,
+        });
+    };
+
     const displayStep = () => {
         switch (state.currentStep) {
             case 1:
@@ -75,7 +83,11 @@ export default function useVolunteerOnboarding() {
                     />
                 );
             case 4:
-                return <VolunteerOnboardingStep4/>;
+                return (
+                    <VolunteerOnboardingStep4
+                        selectedAvailabilities={state.availabilities}
+                        onChanged={setAvailabilities}
+                    />);
             case 5:
                 return <VolunteerOnboardingStep5/>;
             default:
@@ -111,6 +123,15 @@ export default function useVolunteerOnboarding() {
             return;
         }
 
+        // No fields of interest were provided, output an error
+        if (Object.keys(state.availabilities).length === 0) {
+            setToastErrorMessage(
+                toastGenericTranslations.titleStandardInformalError,
+                "Shit! Mancano pure le disponibilità orarie."
+            );
+            return;
+        }
+
         // Fallback error for whatever reason
         if (currentState.currentStep !== currentState.lastValidStep) {
             setToastErrorMessage(
@@ -122,7 +143,8 @@ export default function useVolunteerOnboarding() {
 
         onboardVolunteer(
             currentState.fieldsOfInterest,
-            currentState.locationInput
+            currentState.locationInput,
+            currentState.availabilities
         ).then(() => history.push("/"));
     };
 

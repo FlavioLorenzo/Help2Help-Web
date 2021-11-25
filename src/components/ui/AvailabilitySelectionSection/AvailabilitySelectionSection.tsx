@@ -8,14 +8,14 @@ interface AvailabilitySelectionSectionProps {
     /**
      * Array of objects representing the time availabilities of the user
      */
-    availabilities: AvailabilityType[];
+    availabilities: AvailabilityType;
     /**
      * Function triggered upon clicking one of the availabilities buttons
      */
     availabilityElemClicked: (dayOfWeek: string, timeOfDay: string) => void;
 }
 
-const AvailabilitySelectionSection = (props: AvailabilitySelectionSectionProps) => {
+const AvailabilitySelectionSection = ({availabilities, availabilityElemClicked}: AvailabilitySelectionSectionProps) => {
     const [availabilityRows, setAvailabilityRow] = useState<any>();
 
     useEffect(() => {
@@ -23,17 +23,17 @@ const AvailabilitySelectionSection = (props: AvailabilitySelectionSectionProps) 
 
             let tempAvailabilityRow = daysOfWeek.map(
                 (dayOfWeek: string) => {
-                    const availabilitiesOfDay = props.availabilities.find(availability => availability.day === dayOfWeek);
+                    const availabilitiesOfDay = availabilities[dayOfWeek];
 
                     return (<AvailabilityRow
                         dayOfWeek={dayOfWeek}
-                        selectedAvailabilities={availabilitiesOfDay ? availabilitiesOfDay.timeAvailability : []}
-                        availabilityElemClicked={props.availabilityElemClicked}
+                        selectedAvailabilities={availabilitiesOfDay ? availabilitiesOfDay : []}
+                        availabilityElemClicked={availabilityElemClicked}
                     />)
                 });
 
             setAvailabilityRow(tempAvailabilityRow);
-        }, [props.availabilities, props.availabilityElemClicked]
+        }, [availabilities, availabilityElemClicked]
     );
 
     return (
