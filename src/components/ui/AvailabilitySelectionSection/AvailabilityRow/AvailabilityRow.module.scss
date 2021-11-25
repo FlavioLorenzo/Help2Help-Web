@@ -1,0 +1,38 @@
+.AvailabilityRow {
+    display: flex;
+    align-items: center;
+
+    margin-bottom: 5px;
+
+    .AvailabilityRowLabel {
+        flex: 3;
+
+        font-size: 1.05rem;
+        font-weight: bold;
+        text-align: left;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    .AvailabilitySelectionBlock {
+        display: flex;
+        flex: 4;
+
+        .AvailabilitySelectionElem {
+            flex: 1;
+
+            text-align: center;
+
+            img {
+                padding: 5%;
+                width: 100%;
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

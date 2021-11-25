@@ -1,4 +1,4 @@
-import { FormattedMessage } from "react-intl";
+import {FormattedMessage} from "react-intl";
 
 /**
  * Root translation file with the most common terms used throughout the application
@@ -57,5 +57,61 @@ export const password = (
         id="global_password"
         defaultMessage="password"
         description="Password's translation"
+    />
+);
+
+export const dow_monday = (
+    <FormattedMessage
+        id="global_day_of_week_monday"
+        defaultMessage="lunedì"
+        description="Monday day of week translation"
+    />
+);
+
+export const dow_tuesday = (
+    <FormattedMessage
+        id="global_day_of_week_tuesday"
+        defaultMessage="martedì"
+        description="Tuesday day of week translation"
+    />
+);
+
+export const dow_wednesday = (
+    <FormattedMessage
+        id="global_day_of_week_wednesday"
+        defaultMessage="mercoledì"
+        description="Wednesday day of week translation"
+    />
+);
+
+export const dow_thursday = (
+    <FormattedMessage
+        id="global_day_of_week_thursday"
+        defaultMessage="giovedì"
+        description="Thursday day of week translation"
+    />
+);
+
+export const dow_friday = (
+    <FormattedMessage
+        id="global_day_of_week_friday"
+        defaultMessage="venerdì"
+        description="Friday day of week translation"
+    />
+);
+
+export const dow_saturday = (
+    <FormattedMessage
+        id="global_day_of_week_saturday"
+        defaultMessage="sabato"
+        description="Saturday day of week translation"
+    />
+);
+
+export const dow_sunday = (
+    <FormattedMessage
+        id="global_day_of_week_sunday"
+        defaultMessage="domenica"
+        description="Sunday day of week translation"
     />
 );

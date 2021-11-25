@@ -1,137 +1,45 @@
+import {useState} from "react";
+
 import {
     onboardingVolunteerStepAvailabilitiesTitle,
 } from "../VolunteerOnboarding.translations";
 
-import onboardingMorning from "../../../../assets/images/onboardingMorning.png";
-import onboardingAfternoon from "../../../../assets/images/onboardingAfternoon.png";
-import onboardingNight from "../../../../assets/images/onboardingNight.png";
-
+import AvailabilitySelectionSection
+    from "../../../../components/ui/AvailabilitySelectionSection/AvailabilitySelectionSection"
+import {AvailabilityType} from "../../../../types/AvailabilityType";
 
 const VolunteerOnboardingStep4 = () => {
+    const [availabilities, setAvailabilities] = useState<AvailabilityType[]>([]);
+
+    const onAvailabilityElemClicked = (dayOfWeek: string, timeOfDay: string) => {
+        const currentAvailability = availabilities.find(availability => availability.day === dayOfWeek);
+        
+        if (!currentAvailability) {
+            availabilities.push({
+                day: dayOfWeek,
+                timeAvailability: [timeOfDay]
+            });
+            setAvailabilities([...availabilities]);
+            return;
+        }
+
+        const index = currentAvailability.timeAvailability.indexOf(timeOfDay);
+        if (index > -1)
+            currentAvailability.timeAvailability.splice(index);
+        else
+            currentAvailability.timeAvailability.push(timeOfDay);
+
+        setAvailabilities([...availabilities]);
+    }
+
     return (
         <>
             <h2>{onboardingVolunteerStepAvailabilitiesTitle}</h2>
 
-            <div className="availability-section">
-                <div className="availability-row">
-                    <div className="availability-day-label">
-                        Lunedì
-                    </div>
-                    <div className={"availability-selection-block"}>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingMorning} alt="Morning availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingAfternoon} alt="Afternoon availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingNight} alt="Evening availability"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="availability-row">
-                    <div className="availability-day-label">
-                        Giovedì
-                    </div>
-                    <div className={"availability-selection-block"}>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingMorning} alt="Morning availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingAfternoon} alt="Afternoon availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingNight} alt="Evening availability"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="availability-row">
-                    <div className="availability-day-label">
-                        Mercoledì
-                    </div>
-                    <div className={"availability-selection-block"}>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingMorning} alt="Morning availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingAfternoon} alt="Afternoon availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingNight} alt="Evening availability"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="availability-row">
-                    <div className="availability-day-label">
-                        Giovedì
-                    </div>
-                    <div className={"availability-selection-block"}>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingMorning} alt="Morning availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingAfternoon} alt="Afternoon availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingNight} alt="Evening availability"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="availability-row">
-                    <div className="availability-day-label">
-                        Venerdì
-                    </div>
-                    <div className={"availability-selection-block"}>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingMorning} alt="Morning availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingAfternoon} alt="Afternoon availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingNight} alt="Evening availability"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="availability-row">
-                    <div className="availability-day-label">
-                        Sabato
-                    </div>
-                    <div className={"availability-selection-block"}>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingMorning} alt="Morning availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingAfternoon} alt="Afternoon availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingNight} alt="Evening availability"/>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="availability-row">
-                    <div className="availability-day-label">
-                        Domenica
-                    </div>
-                    <div className={"availability-selection-block"}>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingMorning} alt="Morning availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingAfternoon} alt="Afternoon availability"/>
-                        </div>
-                        <div className={"availability-selection-elem"}>
-                            <img src={onboardingNight} alt="Evening availability"/>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <AvailabilitySelectionSection
+                availabilities={availabilities}
+                availabilityElemClicked={onAvailabilityElemClicked}
+            />
         </>
     );
 };
