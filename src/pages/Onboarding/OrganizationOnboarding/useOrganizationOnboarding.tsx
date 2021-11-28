@@ -3,66 +3,66 @@ import {useReducer} from "react";
 import {
     initialState,
     reducer,
-    VolunteerOnboardingType,
-    VolunteerOnboardingActionKind,
-} from "./VolunteerOnboarding.reducer";
+    OrganizationOnboardingType,
+    OrganizationOnboardingActionKind,
+} from "./OrganizationOnboarding.reducer";
 
 import useToast from "../../../components/ui/Toast/useToast";
 import {useHistory} from "react-router";
 import {useUserService} from "../../../services/users/users";
 
 import {SearchLocationInputType} from "../../../components/ui/SearchLocationInput/SearchLocationInput.types";
-import VolunteerOnboardingStep1 from "./Step1/VolunteerOnboardingStep1";
-import VolunteerOnboardingStep2 from "./Step2/VolunteerOnboardingStep2";
-import VolunteerOnboardingStep3 from "./Step3/VolunteerOnboardingStep3";
-import VolunteerOnboardingStep4 from "./Step4/VolunteerOnboardingStep4";
-import VolunteerOnboardingStep5 from "./Step5/VolunteerOnboardingStep5";
+import OrganizationOnboardingStep1 from "./Step1/OrganizationOnboardingStep1";
+import OrganizationOnboardingStep2 from "./Step2/OrganizationOnboardingStep2";
+import OrganizationOnboardingStep3 from "./Step3/OrganizationOnboardingStep3";
+import OrganizationOnboardingStep4 from "./Step4/OrganizationOnboardingStep4";
+import OrganizationOnboardingStep5 from "./Step5/OrganizationOnboardingStep5";
 import {useFieldsOfInterestService} from "../../../services/fieldsOfInterest/fieldsOfInterest";
 import {AvailabilityType} from "../../../types/AvailabilityType";
 import {
-    onboardingVolunteerOnSubmitFieldsOfInterestError,
-    onboardingVolunteerOnSubmitLocationError,
-    onboardingVolunteerOnSubmitAvailabilitiesError,
-    onboardingVolunteerOnSubmitOtherError
-} from "./VolunteerOnboarding.translations";
+    onboardingOrganizationOnSubmitFieldsOfInterestError,
+    onboardingOrganizationOnSubmitLocationError,
+    onboardingOrganizationOnSubmitAvailabilitiesError,
+    onboardingOrganizationOnSubmitOtherError
+} from "./OrganizationOnboarding.translations";
 
-export default function useVolunteerOnboarding() {
+export default function useOrganizationOnboarding() {
     const [state, dispatch] = useReducer(reducer, initialState);
     const {
         setToastErrorMessage,
         toastGenericTranslations,
     } = useToast();
 
-    const {onboardVolunteer} = useUserService();
+    const {onboardOrganization} = useUserService();
     const history = useHistory();
 
     const {fieldsOfInterest} = useFieldsOfInterestService();
 
     const previousClicked = () => {
-        dispatch({type: VolunteerOnboardingActionKind.PREVIOUS});
+        dispatch({type: OrganizationOnboardingActionKind.PREVIOUS});
     };
 
     const nextClicked = () => {
-        dispatch({type: VolunteerOnboardingActionKind.NEXT});
+        dispatch({type: OrganizationOnboardingActionKind.NEXT});
     };
 
     const setFieldsOfInterest = (fieldsOfInterest: Array<string>) => {
         dispatch({
-            type: VolunteerOnboardingActionKind.SET_FIELDS_OF_INTEREST,
+            type: OrganizationOnboardingActionKind.SET_FIELDS_OF_INTEREST,
             fieldsOfInterest: fieldsOfInterest,
         });
     };
 
     const setLocationInput = (value: SearchLocationInputType) => {
         dispatch({
-            type: VolunteerOnboardingActionKind.SET_LOCATION_INPUT,
+            type: OrganizationOnboardingActionKind.SET_LOCATION_INPUT,
             locationInput: value,
         });
     };
 
     const setAvailabilities = (value: AvailabilityType) => {
         dispatch({
-            type: VolunteerOnboardingActionKind.SET_AVAILABILITIES,
+            type: OrganizationOnboardingActionKind.SET_AVAILABILITIES,
             availabilities: value,
         });
     };
@@ -70,10 +70,10 @@ export default function useVolunteerOnboarding() {
     const displayStep = () => {
         switch (state.currentStep) {
             case 1:
-                return <VolunteerOnboardingStep1/>;
+                return <OrganizationOnboardingStep1/>;
             case 2:
                 return (
-                    <VolunteerOnboardingStep2
+                    <OrganizationOnboardingStep2
                         availableFields={fieldsOfInterest}
                         selectedFields={state.fieldsOfInterest}
                         onChanged={setFieldsOfInterest}
@@ -81,19 +81,19 @@ export default function useVolunteerOnboarding() {
                 );
             case 3:
                 return (
-                    <VolunteerOnboardingStep3
+                    <OrganizationOnboardingStep3
                         value={state.locationInput}
                         onChanged={setLocationInput}
                     />
                 );
             case 4:
                 return (
-                    <VolunteerOnboardingStep4
+                    <OrganizationOnboardingStep4
                         selectedAvailabilities={state.availabilities}
                         onChanged={setAvailabilities}
                     />);
             case 5:
-                return <VolunteerOnboardingStep5/>;
+                return <OrganizationOnboardingStep5/>;
             default:
                 break;
         }
@@ -102,13 +102,13 @@ export default function useVolunteerOnboarding() {
     const handleSubmit = (e: any) => {
         e.preventDefault();
 
-        const currentState: VolunteerOnboardingType = state;
+        const currentState: OrganizationOnboardingType = state;
 
         // No fields of interest were provided, output an error
         if (currentState.fieldsOfInterest.length === 0) {
             setToastErrorMessage(
                 toastGenericTranslations.titleStandardInformalError,
-                onboardingVolunteerOnSubmitFieldsOfInterestError
+                onboardingOrganizationOnSubmitFieldsOfInterestError
             );
             return;
         }
@@ -122,7 +122,7 @@ export default function useVolunteerOnboarding() {
         ) {
             setToastErrorMessage(
                 toastGenericTranslations.titleStandardInformalError,
-                onboardingVolunteerOnSubmitLocationError
+                onboardingOrganizationOnSubmitLocationError
             );
             return;
         }
@@ -131,7 +131,7 @@ export default function useVolunteerOnboarding() {
         if (Object.keys(state.availabilities).length === 0) {
             setToastErrorMessage(
                 toastGenericTranslations.titleStandardInformalError,
-                onboardingVolunteerOnSubmitAvailabilitiesError
+                onboardingOrganizationOnSubmitAvailabilitiesError
             );
             return;
         }
@@ -140,12 +140,12 @@ export default function useVolunteerOnboarding() {
         if (currentState.currentStep !== currentState.lastValidStep) {
             setToastErrorMessage(
                 toastGenericTranslations.titleStandardInformalError,
-                onboardingVolunteerOnSubmitOtherError
+                onboardingOrganizationOnSubmitOtherError
             );
             return;
         }
 
-        onboardVolunteer(
+        onboardOrganization(
             currentState.fieldsOfInterest,
             currentState.locationInput,
             currentState.availabilities

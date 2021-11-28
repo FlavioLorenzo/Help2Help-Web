@@ -11,6 +11,10 @@ const env = functions.config();
 const client = algoliasearch(env.algolia.appid, env.algolia.apikey);
 const index = client.initIndex("organizations");
 
+/**
+ * ORGANIZATIONS INDEX
+ */
+
 // Update the algolia Index whenever a new document is created
 export const indexOrganization = functions.firestore
     .document("organization/{organizationId}")
@@ -44,3 +48,7 @@ export const updateOrganization = functions.firestore
         // Add the data to the Algolia index
         return index.saveObject(data);
     });
+
+/**
+ * VOLUNTEERS INDEX
+ */

@@ -1,4 +1,4 @@
-import { Route, Switch, Redirect } from "react-router-dom";
+import {Route, Switch, Redirect} from "react-router-dom";
 
 import * as Login from "./Login/Login";
 import * as SignUp from "./SignUp/SignUp";
@@ -84,10 +84,10 @@ const AuthRouter = (props) => {
             />
 
             {/* Logout */}
-            <Route path={"/logout"} render={(props) => <Logout {...props} />} />
+            <Route path={"/logout"} render={(props) => <Logout {...props} />}/>
 
-            {/* Default to logint */}
-            <Redirect to="/login" />
+            {/* Default to login */}
+            <Redirect to="/login"/>
         </Switch>
     );
 };

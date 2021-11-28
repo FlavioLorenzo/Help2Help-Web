@@ -67,7 +67,39 @@ export const onboardingVolunteerFinalStepBody1 = (
 export const onboardingVolunteerFinalStepBody2 = (
     <FormattedMessage
         id="onboarding_volunteer_final_step_body2"
-        defaultMessage=" Vorrei dirti qualcosa di più furbo, ma poi le ragazze mi cazziano che spreco tempo sulle stronzate."
+        defaultMessage="Vorrei dirti qualcosa di più furbo, ma poi le ragazze mi cazziano che spreco tempo sulle 'sciocchezze' (versione family friendly che anche Giada si lamenta)."
         description="Second text body section when volunteer completes onboarding process"
+    />
+);
+
+export const onboardingVolunteerOnSubmitFieldsOfInterestError = (
+    <FormattedMessage
+        id="onboarding_volunteer_on_submit_fields_of_interest_error"
+        defaultMessage="Dottore! Seleziona almeno un ambito di interesse."
+        description="Error shown when no fields of interest has been submitted by the volunteer during the onboarding process"
+    />
+);
+
+export const onboardingVolunteerOnSubmitLocationError = (
+    <FormattedMessage
+        id="onboarding_volunteer_on_submit_location_error"
+        defaultMessage="Devi inserire un indirizzo o città."
+        description="Error shown when no location was provided by the volunteer during the onboarding process"
+    />
+);
+
+export const onboardingVolunteerOnSubmitAvailabilitiesError = (
+    <FormattedMessage
+        id="onboarding_volunteer_on_submit_availabilities_error"
+        defaultMessage="Shit! Mancano pure le disponibilità orarie."
+        description="Error shown when no time availability was provided by the volunteer during the onboarding process"
+    />
+);
+
+export const onboardingVolunteerOnSubmitOtherError = (
+    <FormattedMessage
+        id="onboarding_volunteer_on_submit_other_error"
+        defaultMessage="Si è verificato un errore inatteso. Contattare la dottoressa Eleonora per chiarimenti"
+        description="Generic error shown to the volunteer for any other error occurred during the onboarding process"
     />
 );
