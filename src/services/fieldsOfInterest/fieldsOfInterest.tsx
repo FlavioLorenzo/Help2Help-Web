@@ -2,14 +2,14 @@
  * Service function which retrieves available fields of interest and provides the respective translation
  */
 
-import { useEffect, useState } from "react";
-import { firestoreDB } from "../../config/firebaseConfig";
+import {useEffect, useState} from "react";
+import {firestoreDB} from "../../config/firebaseConfig";
 import {
     foiAnimals,
     foiAssistance,
     foiCulture,
     foiDisability,
-    foiEducation,
+    foiEducation, foiEnvironment,
     foiGrowth,
     foiHealth,
     foiHumanRights,
@@ -32,9 +32,7 @@ interface FieldsOfInterestServiceType {
 }
 
 export function useFieldsOfInterestService(): FieldsOfInterestServiceType {
-    const [fieldsOfInterest, setFieldsOfInterest] = useState<
-        Array<FieldsOfInterestTranslationType>
-    >([]);
+    const [fieldsOfInterest, setFieldsOfInterest] = useState<Array<FieldsOfInterestTranslationType>>([]);
 
     /**
      * Retrieve all fields of interest
@@ -91,7 +89,7 @@ export function useFieldsOfInterestService(): FieldsOfInterestServiceType {
             case "environment":
                 return {
                     key: fieldOfInterest,
-                    translation: foiAnimals,
+                    translation: foiEnvironment,
                 };
             case "growth":
                 return {
@@ -135,5 +133,5 @@ export function useFieldsOfInterestService(): FieldsOfInterestServiceType {
         }
     }
 
-    return { fieldsOfInterest, getFieldsOfInterestTranslation };
+    return {fieldsOfInterest, getFieldsOfInterestTranslation};
 }

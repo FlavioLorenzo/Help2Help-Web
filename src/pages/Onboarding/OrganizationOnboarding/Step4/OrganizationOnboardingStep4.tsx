@@ -30,7 +30,7 @@ const OrganizationOnboardingStep4 = ({selectedAvailabilities, onChanged}: Step4P
 
         const index = currentDayAvailabilities.indexOf(timeOfDay);
         if (index > -1) {
-            currentDayAvailabilities.splice(index);
+            currentDayAvailabilities.splice(index, 1);
 
             if (currentDayAvailabilities.length === 0)
                 delete selectedAvailabilities[dayOfWeek]
