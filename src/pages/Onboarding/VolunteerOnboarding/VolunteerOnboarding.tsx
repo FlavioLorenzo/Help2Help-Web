@@ -1,27 +1,33 @@
 import FullGradientFormMultiStepMenu
     from "../../../components/ui/FullGradientFormMultiStepMenu/FullGradientFormMultiStepMenu";
 import useVolunteerOnboarding from "./useVolunteerOnboarding";
+import FullGradientFormContainer from "../../../components/ui/FullGradientFormContainer/FullGradientFormContainer";
 
 const VolunteerOnboarding = () => {
-    const {state, previousClicked, nextClicked, displayStep, handleSubmit} =
-        useVolunteerOnboarding();
+    const {state, previousClicked, nextClicked, displayTitle, displayStep, handleSubmit} = useVolunteerOnboarding();
 
     return (
-        <>
-            <div className="full-gradient-form-section">
-                <form className="onboarding-form" onSubmit={handleSubmit}>
-                    <div className="onboarding-form-step">{displayStep()}</div>
+        <FullGradientFormContainer>
+            <form onSubmit={handleSubmit}>
+                <div className="full-gradient-header"></div>
 
-                    <FullGradientFormMultiStepMenu
-                        totalSteps={5}
-                        currentStep={state.currentStep}
-                        leftClicked={previousClicked}
-                        rightClicked={nextClicked}
-                        rightDisabled={state.currentStep > state.lastValidStep}
-                    />
-                </form>
-            </div>
-        </>
+                <div className="full-gradient-title-group">
+                    {displayTitle()}
+                </div>
+
+                <div className="full-gradient-form-main-content">
+                    {displayStep()}
+                </div>
+
+                <FullGradientFormMultiStepMenu
+                    totalSteps={5}
+                    currentStep={state.currentStep}
+                    leftClicked={previousClicked}
+                    rightClicked={nextClicked}
+                    rightDisabled={state.currentStep > state.lastValidStep}
+                />
+            </form>
+        </FullGradientFormContainer>
     );
 };
 

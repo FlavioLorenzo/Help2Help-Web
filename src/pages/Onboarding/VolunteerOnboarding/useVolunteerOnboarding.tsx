@@ -23,7 +23,10 @@ import {
     onboardingVolunteerOnSubmitFieldsOfInterestError,
     onboardingVolunteerOnSubmitLocationError,
     onboardingVolunteerOnSubmitAvailabilitiesError,
-    onboardingVolunteerOnSubmitOtherError
+    onboardingVolunteerOnSubmitOtherError,
+    onboardingVolunteerStep1Welcome,
+    onboardingVolunteerStepFieldTitle,
+    onboardingVolunteerStepLocationTitle, onboardingVolunteerStepAvailabilitiesTitle, onboardingVolunteerFinalStepTitle
 } from "./VolunteerOnboarding.translations";
 
 export default function useVolunteerOnboarding() {
@@ -65,6 +68,27 @@ export default function useVolunteerOnboarding() {
             type: VolunteerOnboardingActionKind.SET_AVAILABILITIES,
             availabilities: value,
         });
+    };
+
+    const displayTitle = () => {
+        switch (state.currentStep) {
+            case 1:
+                return (
+                    <h1 className="full-gradient-title full-gradient-big-title">{onboardingVolunteerStep1Welcome}</h1>
+                );
+            case 2:
+                return (<h1 className="full-gradient-title">{onboardingVolunteerStepFieldTitle}</h1>);
+            case 3:
+                return (<h1 className="full-gradient-title">{onboardingVolunteerStepLocationTitle}</h1>);
+            case 4:
+                return (<h1 className="full-gradient-title">{onboardingVolunteerStepAvailabilitiesTitle}</h1>);
+            case 5:
+                return (
+                    <h1 className="full-gradient-title full-gradient-big-title">{onboardingVolunteerFinalStepTitle}</h1>
+                );
+            default:
+                break;
+        }
     };
 
     const displayStep = () => {
@@ -156,6 +180,7 @@ export default function useVolunteerOnboarding() {
         state,
         previousClicked,
         nextClicked,
+        displayTitle,
         displayStep,
         handleSubmit,
     };

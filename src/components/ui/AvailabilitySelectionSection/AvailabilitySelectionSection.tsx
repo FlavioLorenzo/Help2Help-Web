@@ -1,5 +1,3 @@
-import styles from "./AvailabilitySelectionSection.module.scss";
-
 import React, {useEffect, useState} from "react";
 import AvailabilityRow from "./AvailabilityRow/AvailabilityRow";
 import {AvailabilityType} from "../../../types/AvailabilityType";
@@ -37,7 +35,7 @@ const AvailabilitySelectionSection = ({availabilities, availabilityElemClicked}:
     );
 
     return (
-        <div className={styles.AvailabilitySection}>
+        <div>
             {availabilityRows}
         </div>
     )

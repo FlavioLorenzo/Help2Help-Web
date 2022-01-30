@@ -1,6 +1,5 @@
 import {useAuth} from "../../services/auth/AuthContext";
 
-import FullGradientFormContainer from "../../components/ui/FullGradientFormContainer/FullGradientFormContainer";
 import VolunteerOnboarding from "./VolunteerOnboarding/VolunteerOnboarding";
 import OrganizationOnboarding from "./OrganizationOnboarding/OrganizationOnboarding";
 
@@ -20,7 +19,7 @@ const Onboarding = () => {
     );
 
     return (
-        <FullGradientFormContainer>{onboardingType}</FullGradientFormContainer>
+        <>{onboardingType}</>
     );
 };
 

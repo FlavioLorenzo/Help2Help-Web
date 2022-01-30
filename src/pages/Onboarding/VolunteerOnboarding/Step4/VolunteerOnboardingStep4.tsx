@@ -1,7 +1,3 @@
-import {
-    onboardingVolunteerStepAvailabilitiesTitle,
-} from "../VolunteerOnboarding.translations";
-
 import AvailabilitySelectionSection
     from "../../../../components/ui/AvailabilitySelectionSection/AvailabilitySelectionSection"
 import {AvailabilityType} from "../../../../types/AvailabilityType";
@@ -41,14 +37,12 @@ const VolunteerOnboardingStep4 = ({selectedAvailabilities, onChanged}: Step4Prop
     }
 
     return (
-        <>
-            <h2>{onboardingVolunteerStepAvailabilitiesTitle}</h2>
 
-            <AvailabilitySelectionSection
-                availabilities={selectedAvailabilities}
-                availabilityElemClicked={onAvailabilityElemClicked}
-            />
-        </>
+        <AvailabilitySelectionSection
+            availabilities={selectedAvailabilities}
+            availabilityElemClicked={onAvailabilityElemClicked}
+        />
+
     );
 };
 

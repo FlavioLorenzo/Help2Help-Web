@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import { FieldsOfInterestTranslationType } from "../../../../services/fieldsOfInterest/fieldsOfInterest";
-import { onboardingVolunteerStepFieldTitle } from "../VolunteerOnboarding.translations";
+import {useEffect, useState} from "react";
+import {FieldsOfInterestTranslationType} from "../../../../services/fieldsOfInterest/fieldsOfInterest";
 
 interface Step2Props {
     /**
@@ -18,10 +17,10 @@ interface Step2Props {
 }
 
 const VolunteerOnboardingStep2 = ({
-    availableFields,
-    selectedFields,
-    onChanged,
-}: Step2Props) => {
+                                      availableFields,
+                                      selectedFields,
+                                      onChanged,
+                                  }: Step2Props) => {
     const [multiboxElems, setMultiboxElems] = useState<any>();
 
     useEffect(() => {
@@ -59,11 +58,7 @@ const VolunteerOnboardingStep2 = ({
     }, [availableFields, selectedFields, onChanged]);
 
     return (
-        <>
-            <h2>{onboardingVolunteerStepFieldTitle}</h2>
-
-            <div className="multibox-selection">{multiboxElems}</div>
-        </>
+        <div className="multibox-selection">{multiboxElems}</div>
     );
 };
 

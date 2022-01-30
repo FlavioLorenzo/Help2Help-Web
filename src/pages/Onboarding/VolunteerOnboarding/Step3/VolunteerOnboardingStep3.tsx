@@ -1,8 +1,7 @@
 import SearchLocationInput from "../../../../components/ui/SearchLocationInput/SearchLocationInput";
-import { SearchLocationInputType } from "../../../../components/ui/SearchLocationInput/SearchLocationInput.types";
+import {SearchLocationInputType} from "../../../../components/ui/SearchLocationInput/SearchLocationInput.types";
 import {
     onboardingVolunteerStepLocationInputLabel,
-    onboardingVolunteerStepLocationTitle,
 } from "../VolunteerOnboarding.translations";
 
 interface Step3Props {
@@ -16,17 +15,15 @@ interface Step3Props {
     onChanged?: (value: SearchLocationInputType) => void;
 }
 
-const VolunteerOnboardingStep3 = ({ value, onChanged }: Step3Props) => {
+const VolunteerOnboardingStep3 = ({value, onChanged}: Step3Props) => {
     return (
-        <>
-            <h2>{onboardingVolunteerStepLocationTitle}</h2>
-
+        <div className="full-gradient-form-section">
             <SearchLocationInput
                 label={onboardingVolunteerStepLocationInputLabel}
                 value={value}
                 onChange={onChanged}
             />
-        </>
+        </div>
     );
 };
 

@@ -1,14 +1,12 @@
 import styles from "./AvailabilityRow.module.scss";
 
-import onboardingMorning from "../../../../assets/images/onboardingMorning.png";
+/*import onboardingMorning from "../../../../assets/images/onboardingMorning.png";
 import onboardingAfternoon from "../../../../assets/images/onboardingAfternoon.png";
 import onboardingNight from "../../../../assets/images/onboardingNight.png";
 import onboardingMorningActive from "../../../../assets/images/onboardingMorningActive.png";
 import onboardingAfternoonActive from "../../../../assets/images/onboardingAfternoonActive.png";
-import onboardingNightActive from "../../../../assets/images/onboardingNightActive.png";
-import {
-    dow_monday, dow_tuesday, dow_wednesday, dow_thursday, dow_friday, dow_saturday, dow_sunday
-} from "../../../../translations";
+import onboardingNightActive from "../../../../assets/images/onboardingNightActive.png";*/
+import * as translation from "../../../../translations";
 
 import {useEffect, useState} from "react";
 
@@ -37,34 +35,66 @@ const AvailabilityRow = (props: AvailabilityRowProps) => {
     useEffect(() => {
             switch (dayOfWeek) {
                 case "mon":
-                    setTranslatedDayOfWeek(dow_monday)
+                    setTranslatedDayOfWeek(translation.dow_monday_short)
                     break;
                 case "tue":
-                    setTranslatedDayOfWeek(dow_tuesday)
+                    setTranslatedDayOfWeek(translation.dow_tuesday_short)
                     break;
                 case "wed":
-                    setTranslatedDayOfWeek(dow_wednesday)
+                    setTranslatedDayOfWeek(translation.dow_wednesday_short)
                     break;
                 case "thu":
-                    setTranslatedDayOfWeek(dow_thursday)
+                    setTranslatedDayOfWeek(translation.dow_thursday_short)
                     break;
                 case "fri":
-                    setTranslatedDayOfWeek(dow_friday)
+                    setTranslatedDayOfWeek(translation.dow_friday_short)
                     break;
                 case "sat":
-                    setTranslatedDayOfWeek(dow_saturday)
+                    setTranslatedDayOfWeek(translation.dow_saturday_short)
                     break;
                 default:
-                    setTranslatedDayOfWeek(dow_sunday)
+                    setTranslatedDayOfWeek(translation.dow_sunday_short)
                     break;
             }
         }, [dayOfWeek]
     );
 
+    /* Update when availabilities gets selected */
     useEffect(() => {
             setSelectedAvailabilities(props.selectedAvailabilities)
         }, [props.selectedAvailabilities]
     );
+
+    let todElems: any = [];
+    ['m', 'a', 'e'].forEach((tod) => {
+        let classes = [styles.AvailabilitySelectionElem];
+
+        if ((selectedAvailabilities.indexOf(tod) > -1))
+            classes.push(styles.AvailabilitySelectionElemActive);
+
+        let todTranslation;
+        switch (tod) {
+            case 'm':
+                todTranslation = translation.tod_morning;
+                break;
+            case 'a':
+                todTranslation = translation.tod_afternoon;
+                break;
+            case 'e':
+                todTranslation = translation.tod_evening;
+                break;
+        }
+
+        todElems.push((
+            <div
+                className={classes.join(' ')}
+                onClick={() => onAvailabilityElemClicked(dayOfWeek, tod)}
+                role={"button"}
+            >
+                {todTranslation}
+            </div>
+        ));
+    })
 
     const onAvailabilityElemClicked = (dayOfWeek: string, timeOfDay: string) => {
         props.availabilityElemClicked!(dayOfWeek, timeOfDay);
@@ -76,36 +106,7 @@ const AvailabilityRow = (props: AvailabilityRowProps) => {
                 {translatedDayOfWeek}
             </div>
             <div className={styles.AvailabilitySelectionBlock}>
-                <div
-                    className={styles.AvailabilitySelectionElem}
-                    onClick={() => onAvailabilityElemClicked(dayOfWeek, 'm')}
-                    role={"button"}
-                >
-                    <img
-                        src={(selectedAvailabilities.indexOf('m') > -1) ? onboardingMorningActive : onboardingMorning}
-                        alt="Morning availability"
-                    />
-                </div>
-                <div
-                    className={styles.AvailabilitySelectionElem}
-                    onClick={() => onAvailabilityElemClicked(dayOfWeek, 'd')}
-                    role={"button"}
-                >
-                    <img
-                        src={(selectedAvailabilities.indexOf('d') > -1) ? onboardingAfternoonActive : onboardingAfternoon}
-                        alt="Afternoon availability"
-                    />
-                </div>
-                <div
-                    className={styles.AvailabilitySelectionElem}
-                    onClick={() => onAvailabilityElemClicked(dayOfWeek, 'n')}
-                    role={"button"}
-                >
-                    <img
-                        src={(selectedAvailabilities.indexOf('n') > -1) ? onboardingNightActive : onboardingNight}
-                        alt="Evening availability"
-                    />
-                </div>
+                {todElems}
             </div>
         </div>
     )

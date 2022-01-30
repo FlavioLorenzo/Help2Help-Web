@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import {FormattedMessage} from "react-intl";
 
 /**
@@ -113,5 +115,93 @@ export const dow_sunday = (
         id="global_day_of_week_sunday"
         defaultMessage="domenica"
         description="Sunday day of week translation"
+    />
+);
+
+export const tod_morning = (
+    <FormattedMessage
+        id="global_time_of_day_morning"
+        defaultMessage="mattina"
+        description="Morning time of day translation"
+    />
+);
+
+export const tod_afternoon = (
+    <FormattedMessage
+        id="global_time_of_day_afternoon"
+        defaultMessage="pome"
+        description="Afternoon time of day translation"
+    />
+);
+
+export const tod_evening = (
+    <FormattedMessage
+        id="global_time_of_day_evening"
+        defaultMessage="sera"
+        description="Evening time of day translation"
+    />
+);
+
+export const tod_night = (
+    <FormattedMessage
+        id="global_time_of_day_night"
+        defaultMessage="notte"
+        description="Night time of day translation"
+    />
+);
+
+export const dow_monday_short = (
+    <FormattedMessage
+        id="global_day_of_week_monday_short"
+        defaultMessage="l"
+        description="Stripped version of monday for when only one or two letters are allowed"
+    />
+);
+
+export const dow_tuesday_short = (
+    <FormattedMessage
+        id="global_day_of_week_tuesday_short"
+        defaultMessage="m"
+        description="Stripped version of tuesday for when only one or two letters are allowed"
+    />
+);
+
+export const dow_wednesday_short = (
+    <FormattedMessage
+        id="global_day_of_week_wednesday_short"
+        defaultMessage="m"
+        description="Stripped version of wednesday for when only one or two letters are allowed"
+    />
+);
+
+export const dow_thursday_short = (
+    <FormattedMessage
+        id="global_day_of_week_thursday_short"
+        defaultMessage="g"
+        description="Stripped version of thursday for when only one or two letters are allowed"
+    />
+);
+
+export const dow_friday_short = (
+    <FormattedMessage
+        id="global_day_of_week_friday_short"
+        defaultMessage="v"
+        description="Stripped version of friday for when only one or two letters are allowed"
+    />
+);
+
+export const dow_saturday_short = (
+    <FormattedMessage
+        id="global_day_of_week_saturday_short"
+        defaultMessage="s"
+        description="Stripped version of saturday for when only one or two letters are allowed"
+    />
+);
+
+export const dow_sunday_short = (
+    <FormattedMessage
+        id="global_day_of_week_sunday_short"
+        defaultMessage="d"
+        description="Stripped version of sunday for when only one or two letters are allowed"
     />
 );

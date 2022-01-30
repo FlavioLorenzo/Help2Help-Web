@@ -1,14 +1,14 @@
-import { useState } from "react";
+import {useState} from "react";
 
-import { UseFormRegister } from "react-hook-form";
+import {UseFormRegister} from "react-hook-form";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons";
 
 import FormError from "../FormError/FormError";
 
 import styles from "./FullGradientFormField.module.scss";
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 interface FullGradientFormFieldProps {
     /**
@@ -47,6 +47,10 @@ interface FullGradientFormFieldProps {
      * Register function to connect to React Hook Form for form validation
      */
     register: UseFormRegister<any>;
+    /**
+     * Select the specific background where the input box will be placed.
+     */
+    backgroundColor?: "Gradient" | "White";
 }
 
 const FullGradientFormField = (props: FullGradientFormFieldProps) => {
@@ -71,9 +75,17 @@ const FullGradientFormField = (props: FullGradientFormFieldProps) => {
                     setHide(!hide);
                 }}
             >
-                <FontAwesomeIcon icon={hide ? faEye : faEyeSlash} />
+                <FontAwesomeIcon icon={hide ? faEye : faEyeSlash}/>
             </span>
         );
+    }
+
+    let formError = <FormError>{props.error}</FormError>;
+    switch (props.backgroundColor) {
+        case "White":
+            formInputClasses.push(styles.WhiteBackgroundVersion);
+            formError = <FormError backgroundColor="White">{props.error}</FormError>;
+            break;
     }
 
     // Effect triggered upon toggling password visibility to switch password input type
@@ -102,7 +114,7 @@ const FullGradientFormField = (props: FullGradientFormFieldProps) => {
                     {passwordEye}
                 </div>
             </label>
-            {props.error ? <FormError>{props.error}</FormError> : ""}
+            {props.error ? formError : ""}
         </div>
     );
 };

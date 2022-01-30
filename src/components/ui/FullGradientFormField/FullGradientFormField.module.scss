@@ -2,8 +2,6 @@
 
 .FullGradientFormField {
     display: block;
-    margin: 15px auto;
-    max-width: 250px;
 
     label {
         width: 100%;
@@ -40,6 +38,14 @@
                 &.Error {
                     border: 1px solid #9a0000d6;
                     box-shadow: 0px 0px 3px 2px #ffc8c8d6;
+
+                    &.WhiteBackgroundVersion {
+                        border: 1px solid #ffc8c8d6;
+                    }
+                }
+
+                &.WhiteBackgroundVersion {
+                    background-color: #f0f0f0;
                 }
             }
 
